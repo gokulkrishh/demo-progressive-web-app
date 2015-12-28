@@ -1,3 +1,10 @@
-body {
-  
+h1 {
+  text-align: center;
+}
+
+.container {
+  width: 200px;
+  margin: 30px auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+  padding: 20px;
 }
