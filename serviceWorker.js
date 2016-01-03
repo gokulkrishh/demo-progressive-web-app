@@ -11,6 +11,7 @@ var files = [
   '/index.html?page=1', //Query string is treated as new page in serviceWorker
   '/css/styles.css',
   '/js/app.js',
+  '/images/',
   '/js/jquery-2.1.4.js'
 ];
 

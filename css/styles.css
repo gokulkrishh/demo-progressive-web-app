@@ -95,13 +95,19 @@ ul, li {
   color: #424242;
 }
 
-#menu li:first-of-type a {
-  border-bottom: 0;
-  font-size: 20px;
-  font-weight: bold;
+#menu .homepage {
+  /*border-bottom: 0;*/
 }
 
-#menu li:first-of-type a:hover {
+#menu .homepage span {
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
+  position: relative;
+  top: -12px;
+}
+
+#menu .homepage:hover {
   text-decoration: none;
 }
 
@@ -110,10 +116,19 @@ ul, li {
   padding-left: 20px;
 }
 
-#menu li p {
+#menu li span {
   position: absolute;
-  bottom: 0;
+  bottom: 30px;
+}
+
+#menu li p,
+#menu li span {
+  position: absolute;
   left: 20px;
+}
+
+#menu li p {
+  bottom: 0;
 }
 
 #menu a:hover,
@@ -123,6 +138,11 @@ ul, li {
 
 #menu-overlay.visible {
   visibility: visible;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
 }
 
 .container {
@@ -151,7 +171,6 @@ ul, li {
   font-weight: 500;
   text-transform: capitalize;
 }
-
 
 p {
   margin-bottom: 20px;

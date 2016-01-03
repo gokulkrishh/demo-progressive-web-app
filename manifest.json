@@ -2,29 +2,29 @@
   "name": "Progressive Web App",
   "short_name": "PWA",
   "icons": [{
-        "src": "images/icons/GitHub-Mark-128px.png",
+        "src": "images/icons/G-Logo-128.png",
         "type": "image/png",
         "sizes": "128x128"
       }, {
-        "src": "images/icons/GitHub-Mark-152px.png",
+        "src": "images/icons/G-Logo-152.png",
         "type": "image/png",
         "sizes": "152x152"
       }, {
-        "src": "images/icons/GitHub-Mark-144px.png",
+        "src": "images/icons/G-Logo-144.png",
         "type": "image/png",
         "sizes": "144x144"
       }, {
-        "src": "images/icons/GitHub-Mark-192px.png",
+        "src": "images/icons/G-Logo-192.png",
         "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "images/icons/GitHub-Mark-256px.png",
+        "src": "images/icons/G-Logo-256.png",
         "type": "image/png",
         "sizes": "256x256"
       },
       {
-        "src": "images/icons/GitHub-Mark-512px.png",
+        "src": "images/icons/G-Logo-512.png",
         "type": "image/png",
         "sizes": "512x512"
       }],
