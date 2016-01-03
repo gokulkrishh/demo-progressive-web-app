@@ -1,10 +1,31 @@
+body {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  background: #F8F8F8;
+}
+
 h1 {
   text-align: center;
 }
 
 .container {
-  width: 200px;
+  width: 260px;
+  min-height: 120px;
   margin: 30px auto;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
   padding: 20px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #f1f1f1;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+}
+
+#main span {
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+
+p {
+  margin-bottom: 20px;
 }

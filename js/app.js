@@ -7,9 +7,9 @@ $(function () {
       return(
         $('#main').append(
           "<div class=\"container\">" +
-          "<p> Name: " + repo.name + "</p>" +
-          "<p> Star: " + repo.stargazers_count + "</p>" +
-          "<p> Fork: " + repo.forks_count + "</p>" +
+          "<p> <span>Name:</span> <a href=''>" + repo.name + "</a></p>" +
+          "<p> <span>Star:</span> " + repo.stargazers_count + "</p>" +
+          "<p> <span>Fork:</span> " + repo.forks_count + "</p>" +
           "</div>"
         )
       );

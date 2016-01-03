@@ -29,15 +29,15 @@
 
   - [x] - Added service worker file.
 
-  - [ ] - Cache API call's
-
-  - [ ] - Add web manifest.json file for splash screen, add to home screen.
+  - [x] - Add web manifest.json file for splash screen, add to home screen etc.
 
       *To generate manifest.json file, use this npm module [manifest-json](https://github.com/hemanth/manifest-json)*
 
       ```
         $ npm install --global manifest-json
       ```
+
+  - [ ] - Cache API call's
 
   - [ ] - Push notification
 
