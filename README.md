@@ -22,7 +22,7 @@
 
   4. In browser, open [http://localhost:3000](localhost:3000)
 
-  5. Load the page, turn on offline network throttling. To see the cached resources offline.
+  5. Load the page, turn on airplane mode or offline network throttling. To see the cached resources offline.
 
 
 ## Todo's
