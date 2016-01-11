@@ -1,24 +1,40 @@
 $(function () {
-  var url = 'https://api.github.com/users/gokulkrishh/repos?sort=updated';
+  var url = 'https://hacker-news.firebaseio.com/v0/newstories.json';
 
-  $.get(url)
-  .success(function (response) {
-    console.log(response)
-    response.map(function (repo, index) {
-      return(
-        $('#main').append(
-          "<div class=\"container\">" +
-          "<p> <span>Name:</span> <a href='"+ repo.html_url + "'>" + repo.name + "</a></p>" +
-          "<p> <span>Star:</span> " + repo.stargazers_count + "</p>" +
-          "<p> <span>Fork:</span> " + repo.forks_count + "</p>" +
-          "</div>"
-        )
-      );
-    });
-  })
-  .error(function (error) {
-    console.log(error);
+  $.ajax({
+    url: url,
+    method: 'GET',
+    success: function (response) {
+      var response = response.splice(1, 20);
+      response.map(function (contentId) {
+        return(getContents(contentId));
+      });
+    },
+    error: function (error) {
+      console.error(error);
+    }
   });
+
+  function getContents(contentId) {
+    var contentUrl = 'https://hacker-news.firebaseio.com/v0/item/' + contentId + '.json';
+
+    $.ajax({
+      url: contentUrl,
+      method: 'GET',
+      success: function (response) {
+        $('#main').append(
+          "<div class='container'>" +
+          "<p><a href='#'>" + response.title + "</a></p>" +
+          "<p> <span>" + response.score + "</span> point by <span class='author'>" + response.by + "</span></p>" +
+          "<a href='https://www.google.co.in/search?q=" + response.title + "' target='_blank' class='search-web'> search  web</a>" +
+          "</div>"
+        );
+      },
+      error: function (error) {
+        console.error(error);
+      }
+    });
+  }
 
 
   $('#menu-overlay, .menu-icon, #menu a').on('click', function (event) {

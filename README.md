@@ -37,7 +37,7 @@
         $ npm install --global manifest-json
       ```
 
-  - [ ] - Cache API call's
+  - [x] - Cache API call's to show API response from cache when offline. 
 
   - [ ] - Push notification
 
