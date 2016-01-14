@@ -2,11 +2,35 @@
 
   *An example for progressive web application*
 
-# Work In Progress
+## [Demo](https://gokulkrishh.github.io/demo/sw/index.html)
 
 ## Description
 
   This app web application will works in offline, has a splash screen, add to home screen etc,.
+
+## Screenshots
+
+  *From moto x 2014 - OS Android Marshmallow*
+
+  1. Home screen in chrome browser
+
+  ![Chrome Homescreen](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot1.png "Chrome Homescreen")
+
+  2. Add to home screen in chrome browser
+
+  ![Chrome Homescreen add to home screen](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot2.png "Chrome Homescreen add to home screen")
+
+  3. Standalone app home screen
+
+  ![Standalone Homescreen](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot3.png "Standalone Homescreen")
+
+  4. Standalone app menu
+
+  ![Standalone app menu](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot4.png "Standalone app menu")
+
+  5. Standalone app on scroll
+
+  ![Standalone app on scroll](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot5.png "Standalone app on scroll")
 
 ## Install
 
@@ -37,9 +61,9 @@
         $ npm install --global manifest-json
       ```
 
-  - [x] - Cache API call's to show API response from cache when offline. 
+  - [ ] - Cache API response to show when offline - In progress
 
-  - [ ] - Push notification
+  - [ ] - Push notification - In progress
 
 
 ## Reference

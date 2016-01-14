@@ -168,9 +168,8 @@ ul, li {
 }
 
 #menu .info {
-  position: relative;
-  top: 40px;
-  left: 20px;
+  padding-top: 30px;
+  padding-left: 25px;
 }
 
 #menu li p {

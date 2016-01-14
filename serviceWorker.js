@@ -48,9 +48,7 @@ self.addEventListener("install", function (event) {
 self.addEventListener("fetch", function (event) {
   console.log("Event: Fetch");
 
-  var requestURL = new URL(event.request.url);
-
-  console.log("Fetching -->", requestURL);
+  console.log("Fetching -->", event.request.url);
 
   //To tell browser to evaluate the result of event
   event.respondWith(
@@ -74,7 +72,7 @@ self.addEventListener("fetch", function (event) {
 self.addEventListener("activate", function (event) {
   console.log("Event: Activate");
 
-  var cacheWhitelist = ['initial-cache-v1', 'initial-api-cache-v1'];
+  var cacheWhitelist = ['initial-cache-v1'];
 
   //Delete unwanted caches
   event.waitUntil(
