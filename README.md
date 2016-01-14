@@ -14,23 +14,23 @@
 
   1. Home screen in chrome browser
 
-  ![Chrome Homescreen](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot1.png "Chrome Homescreen")
+  ![Chrome Homescreen](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot1.png "Chrome Homescreen" =300x100%)
 
   2. Add to home screen in chrome browser
 
-  ![Chrome Homescreen add to home screen](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot2.png "Chrome Homescreen add to home screen")
+  ![Chrome Homescreen add to home screen](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot2.png "Chrome Homescreen add to home screen" =300x100%)
 
   3. Standalone app home screen
 
-  ![Standalone Homescreen](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot3.png "Standalone Homescreen")
+  ![Standalone Homescreen](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot3.png "Standalone Homescreen" =300x100%)
 
   4. Standalone app menu
 
-  ![Standalone app menu](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot4.png "Standalone app menu")
+  ![Standalone app menu](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot4.png "Standalone app menu" =300x100%)
 
   5. Standalone app on scroll
 
-  ![Standalone app on scroll](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot5.png "Standalone app on scroll")
+  ![Standalone app on scroll](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot5.png "Standalone app on scroll" =300x100%)
 
 ## Install
 
