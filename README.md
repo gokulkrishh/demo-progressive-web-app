@@ -14,7 +14,7 @@
 
   1. Home screen in chrome browser
 
-  ![Chrome Homescreen](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot1.png "Chrome Homescreen" =300x100%)
+  ![Chrome Homescreen](https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot1.png "Chrome Homescreen" =300x)
 
   2. Add to home screen in chrome browser
 
