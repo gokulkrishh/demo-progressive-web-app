@@ -43,6 +43,12 @@
       <li><a target="_blank" href="https://github.com/gokulkrishh">Author</a></li>
       <li><a target="_blank" href="https://gokulkrishh.github.io">Blog</a></li>
       <li><a target="_blank" href="https://github.com/gokulkrishh/simple-progressive-web-app">Source</a></li>
+      <li class="custom-button">
+        <p>Push Notification: 
+          <input id="turn-on-notification" type="checkbox" hidden="hidden">
+  		    <label for="turn-on-notification" class="custom-checkbox"></label>
+        </p>
+      </li>
       <li class="info">
         <span>SW Registration:
           <b>
@@ -50,13 +56,13 @@
           </b>
         </span>
       </li>
-      <!-- <li class="info">
-        <span>Cached Offline:
+      <li class="info info-offline">
+        <span>Offline:
           <b>
             <span id="sw-offline-state">✕</span>
           </b>
         </span>
-      </li> -->
+      </li>
       <li>
         <iframe src="https://ghbtns.com/github-btn.html?user=gokulkrishh&repo=simple-progressive-web-app&type=star&count=true&size=large" frameborder="0" scrolling="0" width="130px" height="30px"></iframe>
         <iframe src="https://ghbtns.com/github-btn.html?user=gokulkrishh&repo=simple-progressive-web-app&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="130px" height="30px"></iframe>
@@ -69,21 +75,8 @@
 
   <div id="main"></div>
 
-  <script type="text/javascript">
-    //If serviceWorker supports, then register it.
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .register('./serviceWorker.js') //Point to serviceWorker file
-        .then(function () {
-          console.log('serviceWorker is registered');
-          document.getElementById('sw-register-state').textContent = '✓';
-        })
-        .catch(function (error) {
-          console.log('Failed to register serviceWorker');
-          document.getElementById('sw-register-state').textContent = '✕'; //Failed to register
-        });
-    }
-  </script>
+  <!-- JS Files  -->
+  <script src="js/main.js"></script>
   <script src="js/jquery-2.1.4.js"></script>
   <script src="js/app.js"></script>
   </body>

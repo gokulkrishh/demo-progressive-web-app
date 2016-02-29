@@ -46,21 +46,48 @@ self.addEventListener("install", function (event) {
 
 //Fetch event to fetch stored caches
 self.addEventListener("fetch", function (event) {
+  var request = event.request;
+  var requestURL = new URL(request.url);
+
   console.log("Event: Fetch");
 
   console.log("Fetching -->", event.request.url);
 
-  //To tell browser to evaluate the result of event
-  event.respondWith(
-    caches.match(event.request) //To match current request with cached request, return it
+  //Host name is hackernews, then cache the response
+  if (requestURL.hostname === "hacker-news.firebaseio.com") {
+    caches.match(request) //To match current request with cached request, return it
       .then(function(response) {
         //If response found return it else fetch again.
-        return response || fetch(event.request);
+        if (response) {
+          return response;
+        }
+        else {
+          return fetch(request)
+          .then(function (response) {
+            return caches.open(staticCache).then(function(cache) {
+              cache.put(event.request, response.clone());
+              return response;
+            });
+          });
+        }
       })
       .catch(function(error) {
         console.error("Error: ", error);
       })
-  );
+  }
+  else {
+    //To tell browser to evaluate the result of event
+    event.respondWith(
+      caches.match(request) //To match current request with cached request, return it
+        .then(function(response) {
+          //If response found return it else fetch again.
+          return response || fetch(event.request);;
+        })
+        .catch(function(error) {
+          console.error("Error: ", error);
+        })
+    );
+  }
 });
 
 /*
@@ -85,4 +112,22 @@ self.addEventListener("activate", function (event) {
         });
       })
   );
-})
+});
+
+
+//To cache api response
+function apiToCache(request, response) {
+  var cachedRequest = request.clone();
+  var cachedResponse = response.clone();
+
+  //API response not in cache, then add it
+  caches.get(staticCache).then(function(cache) {
+    cache.put(cachedRequest, cachedResponse)
+      .then(function() {
+        console.log('Adding hackernews API response to cache');
+      },
+      function (error) {
+        console.error("Failed to add hackernews API to cache ", error);
+      })
+  });
+}

@@ -79,4 +79,23 @@ $(function () {
     }
 
   });
+
+
+  //To find device is online/offline
+
+  //Online/offline event cb
+  function onLineStatus(event) {
+    var status = navigator.onLine ? true : false;
+    debugger
+    if (status) {
+      $("#sw-offline-state").html("✕");
+    }
+    else {
+      $("#sw-offline-state").html("✓");
+    }
+  }
+
+
+  window.addEventListener("online", onLineStatus);
+  window.addEventListener("offline", onLineStatus);
 });
