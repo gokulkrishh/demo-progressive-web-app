@@ -114,6 +114,24 @@ self.addEventListener("activate", function (event) {
   );
 });
 
+//Listen to push Event
+self.addEventListener("push", function(event) {
+  console.log("Push notification received ", event);
+
+  var title = "Push notification demo";
+  var body = "You have received a notification";
+  var tag = "demo";
+  var icon = "/images/icons/G-Logo-192.png";
+
+  event.waitUntil(
+    self.registration.showNotification(title, {
+      body: body,
+      tag: tag,
+      icon: icon
+    })
+  );
+});
+
 
 //To cache api response
 function apiToCache(request, response) {

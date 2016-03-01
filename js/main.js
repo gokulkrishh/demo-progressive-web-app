@@ -15,6 +15,9 @@ if ("serviceWorker" in navigator) {
     });
 }
 
+//Push notification button
+var btn = document.getElementById("turn-on-notification");
+
 //Tokens
 var apiKey = "AIzaSyCjrU5SqotSg2ybDLK_7rMMt9Rv0dMusvY";
 var payloadUrl = "https://android.googleapis.com/gcm/send";
@@ -27,8 +30,16 @@ function isPushNotification(serviceWorkerRegistration) {
   }
 
   serviceWorkerRegistration.pushManager.getSubscription()
-  .then(function (status) {
-    console.log("Push Notification Status: ", status);
+  .then(function (subscription) {
+    console.log("Push Notification Status: ", subscription);
+    //If already access granted, change status and send subscription
+    if (subscription) {
+      dataToServer(subscription);
+      changeStatus(true);
+    }
+    else {
+      changeStatus(false);
+    }
   })
   .catch(function (error) {
     console.log(error);
@@ -42,9 +53,38 @@ function requestPushNotification() {
     serviceWorkerRegistration.pushManager.subscribe()
       .then(function (subscription) {
         console.log("Subscription: ", subscription);
+        changeStatus(true);
+
+        //Send notification
+        return dataToServer(subscription);
       })
       .catch(function (error) {
         console.log(error);
       })
   })
+}
+
+//To change status
+function changeStatus(status) {
+  btn.checked = status;
+}
+
+//Form data to server
+var formData = new FormData();
+var formData = {
+  "registration_id": 123,
+  "data" : {
+    data: {
+    }
+  }
+};
+
+//Form data with info to send to server
+function dataToServer() {
+
+}
+
+//To send push notification
+function sendNotification() {
+
 }

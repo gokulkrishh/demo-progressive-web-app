@@ -4,7 +4,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-
 a {
   text-decoration: none;
 }
@@ -28,7 +27,7 @@ ul, li {
 
 .header-section {
   width: 100%;
-  height: 180px;
+  height: 200px;
   background: #343539;
   margin-top: 55px;
   margin-bottom: 0;
@@ -45,7 +44,7 @@ ul, li {
   color: #fff;
   text-align: left;
   padding-left: 20px;
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 .header-container p {
@@ -232,6 +231,10 @@ p {
   margin-bottom: 20px;
 }
 
+.header-container p {
+  margin: 0;
+}
+
 .container p .author {
   color: #FF6600;
   font-weight: normal;
@@ -267,7 +270,7 @@ p {
   width: 45px;
   height: 16px;
   border-radius: 8px;
-  background: rgba(0,0,0,.26);
+  background: rgb(255, 255, 255);
   -webkit-transition: background 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   -moz-transition: background 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   -ms-transition: background 0.28s cubic-bezier(0.4, 0, 0.2, 1);
@@ -287,14 +290,13 @@ p {
 
 .custom-button {
   padding: 10px 15px;
-  border-bottom: 1px solid #C8C8C8;
 }
 
 input:checked + .custom-checkbox {
-  background: rgba(46, 47, 51, 0.58);
+  background: rgb(255, 255, 255);
 }
 
 input:checked + .custom-checkbox::before {
   left: 25px;
-  background: #2e2f33;
+  background: #FF6600;
 }
