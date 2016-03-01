@@ -121,7 +121,7 @@ self.addEventListener("push", function(event) {
   var title = "Push notification demo";
   var body = "You have received a notification";
   var tag = "demo";
-  var icon = "/images/icons/G-Logo-192.png";
+  var icon = "/images/icons/G-Logo-152.png";
 
   event.waitUntil(
     self.registration.showNotification(title, {
@@ -130,6 +130,12 @@ self.addEventListener("push", function(event) {
       icon: icon
     })
   );
+});
+
+//On click event for notification to close
+self.addEventListener("notificationclick", function(event) {
+  console.log("Notification received ", event);
+  event.notification.close();
 });
 
 

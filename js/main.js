@@ -20,7 +20,9 @@ var btn = document.getElementById("turn-on-notification");
 
 //Tokens
 var apiKey = "AIzaSyCjrU5SqotSg2ybDLK_7rMMt9Rv0dMusvY";
-var payloadUrl = "https://android.googleapis.com/gcm/send";
+var pushManager;
+var gcmURL = "https://android.googleapis.com/gcm/send";
+
 
 //To check push notification support
 function isPushNotification(serviceWorkerRegistration) {
@@ -46,41 +48,109 @@ function isPushNotification(serviceWorkerRegistration) {
   });
 }
 
-//To request push notification
-function requestPushNotification() {
+//To subscript push notification
+function subscribeNotification() {
   navigator.serviceWorker.ready
   .then(function(serviceWorkerRegistration) {
-    serviceWorkerRegistration.pushManager.subscribe()
-      .then(function (subscription) {
-        console.log("Subscription: ", subscription);
-        changeStatus(true);
+    pushManager = serviceWorkerRegistration.pushManager;
 
-        //Send notification
-        return dataToServer(subscription);
+    pushManager.subscribe({
+      userVisibleOnly: true //To always show notification when received
+    })
+    .then(function (subscription) {
+      console.log("Successfully subscribed: ", subscription);
+      console.log("Endpoint: ", subscription.endpoint);
+      logCurlCommand(subscription.endpoint.split(gcmURL)[1]);
+      changeStatus(true);
+
+      //Send notification
+      return dataToServer(subscription);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+  })
+}
+
+//To unsubscribe push notification
+function unsubscribeNotification() {
+  navigator.serviceWorker.ready
+  .then(function(serviceWorkerRegistration) {
+    serviceWorkerRegistration.pushManager.getSubscription()
+    .then(function (pushSubscription) {
+      //If not push subscription, then return
+      if(!pushSubscription) {
+        console.error('Unable to unregister from push notification');
+        return;
+      }
+
+      pushSubscription.unsubscribe()
+      .then(function () {
+        console.log("Successfully unsubscribed");
+        endPoint = null;
+        changeStatus(false);
       })
       .catch(function (error) {
         console.log(error);
-      })
+      });
+    })
+    .catch(function (error) {
+      console.log("Failed to unsubscribe push notification");
+    });
   })
 }
 
 //To change status
 function changeStatus(status) {
+  btn.dataset.checked = status;
   btn.checked = status;
 }
+
+//Click event for subscribe btn
+btn.addEventListener("click", function () {
+  var isBtnChecked = (btn.dataset.checked === "true");
+  if (isBtnChecked) {
+    unsubscribeNotification();
+  }
+  else {
+    subscribeNotification();
+  }
+});
 
 //Form data to server
 var formData = new FormData();
 var formData = {
-  "registration_id": 123,
-  "data" : {
-    data: {
-    }
+  "registration_id": apiKey,
+  "data.data" : {
+
   }
 };
 
+function logCurlCommand(endPoint) {
+  var curlCommand = 'curl --header "Authorization: key=' + apiKey + '" --header Content-Type:"application/json" ' + gcmURL + ' -d "{\\"registration_ids\\":[\\"' + endPoint + '\\"]}"';
+  console.log("%ccurl command --> ", "background: #000; color: #fff; font-size: 16px;");
+  console.log(curlCommand);
+}
+
 //Form data with info to send to server
-function dataToServer() {
+function dataToServer(subscription) {
+  var headers = new Headers();
+  headers.append("Content-Type", "application/json");
+
+  //Fetch api to send push notification
+  fetch("https://gokulkrishh.github.io/demo/sw/", {
+    method: 'post',
+    headers: headers,
+    body: JSON.stringify(subscription)
+  }).then(function(response) {
+    return response.json();
+  })
+  .then(function (response) {
+    console.log("response -->", response);
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
 
 }
 
