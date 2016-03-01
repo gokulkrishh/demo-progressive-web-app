@@ -17,11 +17,11 @@
   <img alt="Chrome Homescreen" src="https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot1.png" width="300" height="100%">
 
   2. Add to home screen in chrome browser
-  
+
   <img alt="Chrome browser add to home screen" src="https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot2.png" width="300" height="100%">
 
   3. Standalone app home screen
-  
+
   <img alt="Standalone Homescreen" src="https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot3.png" width="300" height="100%">
 
   4. Standalone app menu
@@ -61,9 +61,9 @@
         $ npm install --global manifest-json
       ```
 
-  - [ ] - Cache API response to show when offline - In progress
+  - [x] - Push notification
 
-  - [ ] - Push notification - In progress
+  - [ ] - Fallback when offline - In progress
 
 
 ## Reference
