@@ -32,6 +32,14 @@
 
   <img alt="Standalone app on scroll" src="https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot5.png" width="300" height="100%">
 
+  6. Push notification permission
+
+  <img alt="Push notification permission" src="https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot6.png" width="300" height="100%">
+
+  7. Push notification
+
+  <img alt="Push notification" src="https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot7.png" width="300" height="100%">
+
 ## Install
 
   1. git clone https://github.com/gokulkrishh/simple-progressive-web-app
