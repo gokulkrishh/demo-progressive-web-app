@@ -22,7 +22,7 @@ var btn = document.getElementById("turn-on-notification");
 var apiKey = "AIzaSyCjrU5SqotSg2ybDLK_7rMMt9Rv0dMusvY";
 var pushManager;
 var gcmURL = "https://android.googleapis.com/gcm/send";
-
+var endpoint;
 
 //To check push notification support
 function isPushNotification(serviceWorkerRegistration) {
@@ -36,7 +36,6 @@ function isPushNotification(serviceWorkerRegistration) {
     console.log("Push Notification Status: ", subscription);
     //If already access granted, change status and send subscription
     if (subscription) {
-      dataToServer(subscription);
       changeStatus(true);
     }
     else {
@@ -60,11 +59,12 @@ function subscribeNotification() {
     .then(function (subscription) {
       console.log("Successfully subscribed: ", subscription);
       console.log("Endpoint: ", subscription.endpoint);
-      logCurlCommand(subscription.endpoint.split(gcmURL)[1]);
-      changeStatus(true);
 
-      //Send notification
-      return dataToServer(subscription);
+      var endpointTemp = subscription.endpoint.split("/");
+      endpoint = endpointTemp[endpointTemp.length - 1];
+      localStorage.setItem("endpoint", JSON.stringify(endpoint));
+      logCurlCommand(endpoint);
+      changeStatus(true);
     })
     .catch(function (error) {
       console.log(error);
@@ -87,7 +87,8 @@ function unsubscribeNotification() {
       pushSubscription.unsubscribe()
       .then(function () {
         console.log("Successfully unsubscribed");
-        endPoint = null;
+        endpoint = null;
+        localStorage.removeItem("endpoint");
         changeStatus(false);
       })
       .catch(function (error) {
@@ -104,6 +105,12 @@ function unsubscribeNotification() {
 function changeStatus(status) {
   btn.dataset.checked = status;
   btn.checked = status;
+  if (status) {
+    $(".btn-notification").removeClass("hide");
+  }
+  else {
+    $(".btn-notification").addClass("hide");
+  }
 }
 
 //Click event for subscribe btn
@@ -117,15 +124,7 @@ btn.addEventListener("click", function () {
   }
 });
 
-//Form data to server
-var formData = new FormData();
-var formData = {
-  "registration_id": apiKey,
-  "data.data" : {
-
-  }
-};
-
+//To generate curl command to send push notification
 function logCurlCommand(endPoint) {
   var curlCommand = 'curl --header "Authorization: key=' + apiKey + '" --header Content-Type:"application/json" ' + gcmURL + ' -d "{\\"registration_ids\\":[\\"' + endPoint + '\\"]}"';
   console.log("%ccurl command --> ", "background: #000; color: #fff; font-size: 16px;");
@@ -137,24 +136,38 @@ function dataToServer(subscription) {
   var headers = new Headers();
   headers.append("Content-Type", "application/json");
 
-  //Fetch api to send push notification
-  fetch("https://gokulkrishh.github.io/demo/sw/", {
-    method: 'post',
-    headers: headers,
-    body: JSON.stringify(subscription)
-  }).then(function(response) {
-    return response.json();
-  })
-  .then(function (response) {
-    console.log("response -->", response);
-  })
-  .catch(function(error) {
-    console.log(error);
+   $.ajax({
+     url: "/send_notification.php?sid=" + endpoint + "&call=true"
+   })
+  .done(function(data) {
+    console.log(data);
   });
+
+
+  // //Fetch api to send push notification
+  // fetch("" + "/send_notification.php?sid=" + endpoint, {
+  //   headers: headers
+  // })
+  // .then(function(response) {
+  //   return response.json();
+  // })
+  // .then(function (response) {
+  //   console.log("push notification response -->", response);
+  // })
+  // .catch(function(error) {
+  //   console.log(error);
+  // });
 
 }
 
 //To send push notification
-function sendNotification() {
-
-}
+var pushBtn = document.getElementById("send-push");
+pushBtn.addEventListener("click", function () {
+  if (!endpoint) {
+    endpoint = JSON.parse(localStorage.getItem("endpoint"));
+    dataToServer(endpoint);
+  }
+  else {
+    dataToServer(endpoint);
+  }
+});

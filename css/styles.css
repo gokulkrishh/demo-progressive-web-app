@@ -221,10 +221,31 @@ ul, li {
 }
 
 #main {
-  margin-top: 50px;
- overflow-x: hidden;
- overflow-y: hidden;
- -webkit-overflow-scrolling: touch;
+  margin-top: 40px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.btn-notification {
+  width: 180px;
+  height: 35px;
+  font-size: 14px;
+  border: 0;
+  background: #4F8EFA;
+  color: #fff;
+  border-radius: 2px;
+  margin: 30px auto 0;
+  display: block;
+  cursor: pointer;
+  outline: 0;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.38);
+  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.38);
+  -o-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.38);
+}
+
+.btn-notification:active {
+  box-shadow: none;
 }
 
 p {
