@@ -1,0 +1,14 @@
+{
+  "name": "demo",
+  "description": "Demo - progress web application",
+  "version": "0.0.1",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "node-gcm": "^0.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  }
+}

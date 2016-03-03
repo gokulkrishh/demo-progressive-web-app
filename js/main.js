@@ -2,15 +2,15 @@
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("./serviceWorker.js") //Point to serviceWorker file
-    .then(function (serviceWorkerRegistration) {
-      console.log("serviceWorker is registered");
+    .then(function (registration) {
+      console.log("Service Worker is registered");
       document.getElementById("sw-register-state").textContent = "✓";
 
       //To check support for push notifications
-      isPushNotification(serviceWorkerRegistration);
+      isPushNotification(registration);
     })
     .catch(function (error) {
-      console.log("Failed to register serviceWorker");
+      console.error("Failed to register service worker");
       document.getElementById("sw-register-state").textContent = "✕"; //Failed to register
     });
 }
@@ -20,14 +20,12 @@ var btn = document.getElementById("turn-on-notification");
 
 //Tokens
 var apiKey = "AIzaSyCjrU5SqotSg2ybDLK_7rMMt9Rv0dMusvY";
-var pushManager;
 var gcmURL = "https://android.googleapis.com/gcm/send";
-var endpoint;
 
 //To check push notification support
 function isPushNotification(serviceWorkerRegistration) {
   if (!serviceWorkerRegistration.pushManager) {
-    alert("Update chrome browser to support push notifications");
+    alert("Update your to support push notifications");
     return;
   }
 
@@ -43,60 +41,52 @@ function isPushNotification(serviceWorkerRegistration) {
     }
   })
   .catch(function (error) {
-    console.log(error);
+    console.error(error);
   });
 }
 
 //To subscript push notification
-function subscribeNotification() {
+function subscribe() {
   navigator.serviceWorker.ready
-  .then(function(serviceWorkerRegistration) {
-    pushManager = serviceWorkerRegistration.pushManager;
-
-    pushManager.subscribe({
+  .then(function(registration) {
+    registration.pushManager.subscribe({
       userVisibleOnly: true //To always show notification when received
     })
     .then(function (subscription) {
       console.log("Successfully subscribed: ", subscription);
-      console.log("Endpoint: ", subscription.endpoint);
-
-      var endpointTemp = subscription.endpoint.split("/");
-      endpoint = endpointTemp[endpointTemp.length - 1];
-      localStorage.setItem("endpoint", JSON.stringify(endpoint));
-      logCurlCommand(endpoint);
+      curlCommand(subscription);
       changeStatus(true);
     })
     .catch(function (error) {
-      console.log(error);
+      console.error(error);
     })
   })
 }
 
 //To unsubscribe push notification
-function unsubscribeNotification() {
+function unsubscribe() {
   navigator.serviceWorker.ready
-  .then(function(serviceWorkerRegistration) {
-    serviceWorkerRegistration.pushManager.getSubscription()
-    .then(function (pushSubscription) {
+  .then(function(registration) {
+    registration.pushManager.getSubscription()
+    .then(function (subscription) {
       //If not push subscription, then return
-      if(!pushSubscription) {
-        console.error('Unable to unregister from push notification');
+      if(!subscription) {
+        console.error("Unable to unregister from push notification");
         return;
       }
 
-      pushSubscription.unsubscribe()
-      .then(function () {
-        console.log("Successfully unsubscribed");
-        endpoint = null;
-        localStorage.removeItem("endpoint");
-        changeStatus(false);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      //Unsubscribe
+      subscription.unsubscribe()
+        .then(function () {
+          console.log("Successfully unsubscribed");
+          changeStatus(false);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
     })
     .catch(function (error) {
-      console.log("Failed to unsubscribe push notification");
+      console.error("Failed to unsubscribe push notification");
     });
   })
 }
@@ -117,57 +107,50 @@ function changeStatus(status) {
 btn.addEventListener("click", function () {
   var isBtnChecked = (btn.dataset.checked === "true");
   if (isBtnChecked) {
-    unsubscribeNotification();
+    unsubscribe();
   }
   else {
-    subscribeNotification();
+    subscribe();
   }
 });
 
 //To generate curl command to send push notification
-function logCurlCommand(endPoint) {
-  var curlCommand = 'curl --header "Authorization: key=' + apiKey + '" --header Content-Type:"application/json" ' + gcmURL + ' -d "{\\"registration_ids\\":[\\"' + endPoint + '\\"]}"';
-  console.log("%ccurl command --> ", "background: #000; color: #fff; font-size: 16px;");
+function curlCommand(subscription) {
+  var temp = subscription.endpoint.split("/");
+  var endpoint = temp[temp.length - 1];
+  var curlCommand = 'curl --header "Authorization: key=' + apiKey + '" --header Content-Type:"application/json" ' + gcmURL + ' -d "{\\"registration_ids\\":[\\"' + endpoint + '\\"]}"';
+  console.log("%ccurl command: ", "background: #000; color: #fff; font-size: 16px;");
   console.log(curlCommand);
 }
 
 //Form data with info to send to server
-function dataToServer(subscription) {
-  var headers = new Headers();
-  headers.append("Content-Type", "application/json");
+function sendPushNotification(subscription) {
+  navigator.serviceWorker.ready
+    .then(function(registration) {
+      registration.pushManager.getSubscription()
+      .then(function (subscription) {
+        curlCommand(subscription); //To log curl command in console
 
-   $.ajax({
-     url: "/send_notification.php?sid=" + endpoint + "&call=true"
-   })
-  .done(function(data) {
-    console.log(data);
-  });
-
-
-  // //Fetch api to send push notification
-  // fetch("" + "/send_notification.php?sid=" + endpoint, {
-  //   headers: headers
-  // })
-  // .then(function(response) {
-  //   return response.json();
-  // })
-  // .then(function (response) {
-  //   console.log("push notification response -->", response);
-  // })
-  // .catch(function(error) {
-  //   console.log(error);
-  // });
-
+        fetch("http://127.0.0.1:3000/send_notification", {
+          method: "post",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(subscription)
+        })
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          console.error("data", data);
+        })
+      })
+    })
 }
 
 //To send push notification
 var pushBtn = document.getElementById("send-push");
 pushBtn.addEventListener("click", function () {
-  if (!endpoint) {
-    endpoint = JSON.parse(localStorage.getItem("endpoint"));
-    dataToServer(endpoint);
-  }
-  else {
-    dataToServer(endpoint);
-  }
+  sendPushNotification();
 });

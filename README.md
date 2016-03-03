@@ -49,7 +49,7 @@
   3. In terminal, type
 
   ```
-    $ python -m SimpleHTTPServer 3000
+    $ npm install && npm start
   ```
 
   4. In browser, open [http://localhost:3000](localhost:3000)
@@ -69,7 +69,7 @@
         $ npm install --global manifest-json
       ```
 
-  - [x] - Push notification - Get curl command in console to send notification
+  - [x] - Push notification
 
   - [ ]  - Background Sync - In progress
 

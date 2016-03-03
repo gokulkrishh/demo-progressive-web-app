@@ -1,22 +1,21 @@
 
 //Cache polyfil to support cacheAPI in all browsers
-importScripts('/cache-polyfill.js');
+importScripts("/cache-polyfill.js");
 
-var staticCache = 'initial-static-v1';
+var staticCache = "initial-static-v1";
 
 //My Cache names
 var myCaches = [staticCache];
 
 //Files to cache
 var files = [
-  '/',
-  '/index.html',
-  '/offline.html',
-  '/index.html?page=1', //Query string is treated as new page in serviceWorker
-  '/css/styles.css',
-  '/js/app.js',
-  '/images/icons/G-Logo-128.png',
-  '/js/jquery-2.1.4.js'
+  "/",
+  "/index.html",
+  "/index.html?page=1", //Query string is treated as new page in serviceWorker
+  "/css/styles.css",
+  "/js/app.js",
+  "/images/icons/G-Logo-128.png",
+  "/js/jquery-2.1.4.js"
 ];
 
 //Adding install event listener
@@ -100,7 +99,7 @@ self.addEventListener("fetch", function (event) {
 self.addEventListener("activate", function (event) {
   console.log("Event: Activate");
 
-  var cacheWhitelist = ['initial-cache-v1'];
+  var cacheWhitelist = ["initial-cache-v1"];
 
   //Delete unwanted caches
   event.waitUntil(
@@ -115,7 +114,12 @@ self.addEventListener("activate", function (event) {
   );
 });
 
-//Listen to push Event
+/*
+  PUSH EVENT:
+    will be triggered when a push notification is received
+*/
+
+//To send notification to client
 self.addEventListener("push", function(event) {
   console.log("Push notification received ", event);
 
@@ -133,26 +137,29 @@ self.addEventListener("push", function(event) {
   );
 });
 
+/*
+  NOTIFICATION EVENT:
+    Will be triggered when user click the notification
+*/
+
 //On click event for notification to close
 self.addEventListener("notificationclick", function(event) {
-  console.log("Notification received ", event);
+  console.log("Notification is clicked ", event);
+
   event.notification.close();
+
+  //To open the app after click notification
+  event.waitUntil(
+    clients.matchAll({
+      type: "window"
+    })
+    .then(function(clientList) {
+      for (var i = 0; i < clientList.length; i++) {
+        var client = clientList[i];
+        if (client.url == "/" && "focus" in client) {
+          return client.focus();
+        }
+      }
+    })
+  );
 });
-
-
-//To cache api response
-function apiToCache(request, response) {
-  var cachedRequest = request.clone();
-  var cachedResponse = response.clone();
-
-  //API response not in cache, then add it
-  caches.get(staticCache).then(function(cache) {
-    cache.put(cachedRequest, cachedResponse)
-      .then(function() {
-        console.log('Adding hackernews API response to cache');
-      },
-      function (error) {
-        console.error("Failed to add hackernews API to cache ", error);
-      })
-  });
-}

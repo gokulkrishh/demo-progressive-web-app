@@ -81,8 +81,10 @@ $(function () {
   });
 
 
-  //To find device is online/offline
-  //Online/offline event cb
+  /*
+    To find device is online or offline
+  */
+
   function onLineStatus(event) {
     console.log("Online: ", navigator.onLine);
     if (navigator.onLine) {
@@ -97,6 +99,7 @@ $(function () {
     }
   }
 
+  //Event listener for offline/online events
   window.addEventListener("online", onLineStatus);
   window.addEventListener("offline", onLineStatus);
 });
