@@ -25,6 +25,10 @@ ul, li {
   overflow: hidden;
 }
 
+.loading {
+  text-align: center;
+}
+
 .header-section {
   width: 100%;
   height: 200px;
@@ -313,11 +317,16 @@ p {
   padding: 10px 15px;
 }
 
-input:checked + .custom-checkbox {
+.custom-input:checked + .custom-checkbox {
   background: rgb(255, 255, 255);
 }
 
-input:checked + .custom-checkbox::before {
+.custom-input:checked + .custom-checkbox::before {
   left: 25px;
   background: #FF6600;
+}
+
+.custom-checkbox.offline,
+.custom-checkbox.offline::before {
+  background: rgb(212, 212, 212);
 }

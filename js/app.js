@@ -1,45 +1,45 @@
+//To show/hide loading indicator
+function toggleSpinner() {
+  var $ele = $('.loading');
 
-//To check add to homescreen icon is added or not
-$(window).on("load", function () {
-
-  $(window).on("beforeinstallprompt", function(event) {
-
-    document.getElementById("sw-register-state").textContent = "✕";
-
-    // e.userChoice will return a Promise. For more details read: http://www.html5rocks.com/en/tutorials/es6/promises/
-    event.userChoice.then(function(result) {
-      console.log(result.outcome);
-
-      if(result.outcome == "dismissed") {
-        console.log("Dismissed add to homescreen prompt.");
-        document.getElementById("sw-register-state").textContent = "✕";
-      }
-      else {
-        console.log("Added to homescreen.");
-        document.getElementById("sw-register-state").textContent = "✓";
-      }
-    });
-
-  });
-});
+  if ($ele.hasClass("hide")) {
+    $ele.removeClass("hide");
+  }
+  else {
+    $ele.addClass("hide");
+  }
+}
 
 //To call hackerNews API
 $(function () {
-  var url = "https://hacker-news.firebaseio.com/v0/newstories.json";
+  if (!navigator.onLine) {
+    $("#turn-on-notification").attr("disabled", true);
+    $(".custom-checkbox").addClass("offline");
+    toggleSpinner();
+  }
+  else {
+    getStories();
+  }
 
-  $.ajax({
-    url: url,
-    method: "GET",
-    success: function (response) {
-      var response = response.splice(1, 20);
-      response.map(function (contentId) {
-        return(getContents(contentId));
-      });
-    },
-    error: function (error) {
-      console.error(error);
-    }
-  });
+  function getStories() {
+    var url = "https://hacker-news.firebaseio.com/v0/newstories.json";
+
+    $.ajax({
+      url: url,
+      method: "GET",
+      success: function (response) {
+        var response = response.splice(1, 20);
+        response.map(function (contentId) {
+          return(getContents(contentId));
+        });
+
+        toggleSpinner(); //To hide spinner
+      },
+      error: function (error) {
+        console.error(error);
+      }
+    });
+  }
 
   //To get stories in hackerNews
   function getContents(contentId) {
@@ -84,15 +84,18 @@ $(function () {
   //To find device is online/offline
   //Online/offline event cb
   function onLineStatus(event) {
-    var status = navigator.onLine ? true : false;
-    if (status) {
+    console.log("Online: ", navigator.onLine);
+    if (navigator.onLine) {
+      $("#sw-offline-state").attr("data-offline", false);
       $("#sw-offline-state").html("✕");
+      $("#turn-on-notification").attr("disabled", false);
+      $(".custom-checkbox").removeClass("offline");
     }
     else {
+      $("#sw-offline-state").attr("data-offline", true);
       $("#sw-offline-state").html("✓");
     }
   }
-
 
   window.addEventListener("online", onLineStatus);
   window.addEventListener("offline", onLineStatus);

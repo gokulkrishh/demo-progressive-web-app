@@ -11,6 +11,7 @@ var myCaches = [staticCache];
 var files = [
   '/',
   '/index.html',
+  '/offline.html',
   '/index.html?page=1', //Query string is treated as new page in serviceWorker
   '/css/styles.css',
   '/js/app.js',

@@ -71,6 +71,8 @@
 
   - [x] - Push notification
 
+  - [ ]  - Background Sync - In progress
+
   - [ ] - Fallback when offline - In progress
 
 

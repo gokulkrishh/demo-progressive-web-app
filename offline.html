@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Progressive Web Application</title>
+    <title>Offline</title>
     <meta http-equiv=X-UA-Compatible content="IE=edge">
     <meta name=description content="This web application will work in offline, has a splash screen add to home screen etc,.">
     <meta name=viewport content="width=device-width, initial-scale=1">
@@ -30,7 +30,7 @@
       <h2>Sample Hacker News</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       <p class="custom-button">Enable Push Notifications:
-        <input id="turn-on-notification" type="checkbox" hidden="hidden" class="custom-input" data-checked="">
+        <input id="turn-on-notification" type="checkbox" hidden="hidden" data-checked="">
         <label for="turn-on-notification" class="custom-checkbox"></label>
       </p>
     </div>
@@ -71,10 +71,10 @@
 
   <section id="menu-overlay"></section>
 
-  <button class="btn-notification hide" id="send-push">Send Push Notification</button>
+  <div>
+    <h1>Offline</h1>
 
-  <div id="main">
-    <p class="loading">Loading...</p>
+    <p>Unable to load the page you requested. Please check your internet connection.</p>
   </div>
 
   <!-- JS Files  -->
