@@ -69,7 +69,7 @@
         $ npm install --global manifest-json
       ```
 
-  - [x] - Push notification
+  - [x] - Push notification - Get curl command in console to send notification
 
   - [ ]  - Background Sync - In progress
 
