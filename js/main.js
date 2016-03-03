@@ -3,14 +3,14 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("./serviceWorker.js") //Point to serviceWorker file
     .then(function (registration) {
-      console.log("Service Worker is registered");
+      console.log("Service Worker is registered", registration);
       document.getElementById("sw-register-state").textContent = "✓";
 
       //To check support for push notifications
       isPushNotification(registration);
     })
     .catch(function (error) {
-      console.error("Failed to register service worker");
+      console.error("Failed to register service worker", error);
       document.getElementById("sw-register-state").textContent = "✕"; //Failed to register
     });
 }
@@ -131,7 +131,7 @@ function sendPushNotification(subscription) {
       .then(function (subscription) {
         curlCommand(subscription); //To log curl command in console
 
-        fetch("http://127.0.0.1:3000/send_notification", {
+        fetch("/send_notification", {
           method: "post",
           headers: {
             "Accept": "application/json",

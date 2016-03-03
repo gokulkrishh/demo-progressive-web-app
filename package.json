@@ -1,14 +1,19 @@
 {
   "name": "demo",
   "description": "Demo - progress web application",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "author": "gokulkrishh",
   "dependencies": {
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "node-gcm": "^0.14.0"
   },
+  "engines": {
+    "node": "4.1.1"
+  },
   "devDependencies": {},
   "scripts": {
     "start": "node server.js"
-  }
+  },
+  "license": "MIT"
 }

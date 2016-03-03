@@ -47,6 +47,6 @@ app.post("/send_notification", function (req, res) {
   });
 });
 
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log("Local Server : http://localhost:3000");
 });
