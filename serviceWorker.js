@@ -4,9 +4,6 @@ importScripts("/cache-polyfill.js");
 
 var staticCache = "initial-static-v1";
 
-//My Cache names
-var myCaches = [staticCache];
-
 //Files to cache
 var files = [
   "./",
@@ -66,9 +63,10 @@ self.addEventListener("fetch", function (event) {
           return fetch(request)
           .then(function (response) {
             return caches.open(staticCache).then(function(cache) {
-              cache.put(event.request, response.clone());
-              return response;
+              cache.put(request, response.clone());
             });
+
+            return response;
           });
         }
       })

@@ -54,7 +54,6 @@ function subscribe() {
     })
     .then(function (subscription) {
       console.log("Successfully subscribed: ", subscription);
-      curlCommand(subscription);
       changeStatus(true);
     })
     .catch(function (error) {
@@ -130,7 +129,6 @@ function sendPushNotification(subscription) {
       registration.pushManager.getSubscription()
       .then(function (subscription) {
         curlCommand(subscription); //To log curl command in console
-
         fetch("/send_notification", {
           method: "post",
           headers: {
