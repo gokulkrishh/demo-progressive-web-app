@@ -232,17 +232,18 @@ ul, li {
 }
 
 .btn-notification {
-  width: 180px;
-  height: 35px;
-  font-size: 14px;
+  width: 230px;
+  height: 40px;
+  font-size: 15px;
   border: 0;
   background: #4F8EFA;
   color: #fff;
   border-radius: 2px;
-  margin: 30px auto 0;
+  margin: 30px auto -5px;
   display: block;
   cursor: pointer;
   outline: 0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.38);
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.38);
   -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.38);
   -o-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.38);

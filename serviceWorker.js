@@ -9,13 +9,14 @@ var myCaches = [staticCache];
 
 //Files to cache
 var files = [
-  "/",
+  "./",
   "/index.html",
   "/index.html?page=1", //Query string is treated as new page in serviceWorker
   "/css/styles.css",
   "/js/app.js",
-  "/images/icons/G-Logo-128.png",
-  "/js/jquery-2.1.4.js"
+  "/js/main.js",
+  "/js/jquery-2.1.4.js",
+  "/images/icons/G-Logo-128.png"
 ];
 
 //Adding install event listener
@@ -121,7 +122,7 @@ self.addEventListener("activate", function (event) {
 
 //To send notification to client
 self.addEventListener("push", function(event) {
-  console.log("Push notification received ", event);
+  console.log("Event: Push", event);
 
   var title = "Push notification demo";
   var body = "You have received a notification";

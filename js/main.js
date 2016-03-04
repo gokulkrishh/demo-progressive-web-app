@@ -24,11 +24,6 @@ var gcmURL = "https://android.googleapis.com/gcm/send";
 
 //To check push notification support
 function isPushNotification(serviceWorkerRegistration) {
-  if (!serviceWorkerRegistration.pushManager) {
-    alert("Update your to support push notifications");
-    return;
-  }
-
   serviceWorkerRegistration.pushManager.getSubscription()
   .then(function (subscription) {
     console.log("Push Notification Status: ", subscription);
@@ -49,6 +44,11 @@ function isPushNotification(serviceWorkerRegistration) {
 function subscribe() {
   navigator.serviceWorker.ready
   .then(function(registration) {
+    if (!registration.pushManager) {
+      alert("Your browser doesn't support push notifications");
+      return;
+    }
+
     registration.pushManager.subscribe({
       userVisibleOnly: true //To always show notification when received
     })
