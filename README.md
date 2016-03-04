@@ -2,7 +2,7 @@
 
   *An example for progressive web application*
 
-## [Demo](https://gokulkrishh.github.io/demo/sw/index.html)
+# [Demo](https://progressive-web-application.herokuapp.com)
 
 ## Description
 
