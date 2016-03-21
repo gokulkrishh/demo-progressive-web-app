@@ -53,7 +53,7 @@ self.addEventListener("fetch", function (event) {
 
   //Host name is hackernews, then cache the response
   if (requestURL.hostname === "hacker-news.firebaseio.com") {
-    caches.match(request) //To match current request with cached request, return it
+    event.respondWith(caches.match(request) //To match current request with cached request, return it
       .then(function(response) {
         //If response found return it else fetch again.
         if (response) {
@@ -62,7 +62,7 @@ self.addEventListener("fetch", function (event) {
         else {
           return fetch(request)
           .then(function (response) {
-            return caches.open(staticCache).then(function(cache) {
+            caches.open(staticCache).then(function(cache) {
               cache.put(request, response.clone());
             });
 
@@ -73,6 +73,7 @@ self.addEventListener("fetch", function (event) {
       .catch(function(error) {
         console.error("Error: ", error);
       })
+    );
   }
   else {
     //To tell browser to evaluate the result of event
