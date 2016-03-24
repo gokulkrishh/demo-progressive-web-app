@@ -1,4 +1,4 @@
-# simple progressive web app
+# progressive web app
 
   *An example for progressive web application*
 
