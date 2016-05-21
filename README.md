@@ -6,7 +6,7 @@
 
 ## Description
 
-  This app web application will works in offline, has a splash screen, add to home screen etc,.
+ A progressive web application which works in offline, has a splash screen, add to home screen, push notifications etc,.
 
 ## Screenshots
 
