@@ -1,0 +1,265 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hide {
+  display: none !important;
+}
+
+body {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  background: #ffffff;
+}
+
+ul, li {
+  list-style-type: none;
+}
+
+.hide-overflow {
+  overflow: hidden;
+}
+
+.header-container {
+  height: inherit;
+}
+
+.header-container p { font-weight: lighter; }
+
+.header-container h2,
+.header-container p {
+  color: #fff;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.header-container p {
+  padding-right: 20px;
+}
+
+.header-container h2 {
+  font-weight: 400;
+}
+
+.menu-icon {
+  fill: #fff;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  position: relative;
+  top: 13px;
+  left: 5px;
+  cursor: pointer;
+}
+
+.header {
+  position: fixed;
+  margin: 0 auto;
+  text-align: left;
+  background: #03a9f4;
+  color: #fff;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55px;
+  font-size: 20px;
+  padding-left: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  z-index: 9;
+  will-change: transform;
+}
+
+.header span {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 55px;
+  padding-left: 25px;
+}
+
+#menu {
+  width: 280px;
+  height: 100%;
+  max-height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: #FAFAFA;
+  border-right: 1px solid #e0e0e0;
+  will-change: transform;
+  overflow-y: auto;
+  -webkit-transform: translateX(-290px);
+  -ms-transform: translateX(-290px);
+  transform: translateX(-290px);
+  transition: 200ms all ease-in;
+  z-index: 11;
+  will-change: transform;
+}
+
+#menu.visible {
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+}
+
+#menu-overlay {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.21);
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  visibility: hidden;
+  will-change: transform;
+}
+
+#menu a {
+  display: block;
+  padding: 20px;
+  border-bottom: 1px solid #C8C8C8;
+  text-align: left;
+  padding-left: 25px;
+  cursor: pointer;
+  color: #424242;
+}
+
+#menu .homepage {
+  /*border-bottom: 0;*/
+}
+
+#menu .homepage span {
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
+  position: relative;
+  top: -12px;
+  left: 10px;
+}
+
+#menu .homepage:hover {
+  text-decoration: none;
+}
+
+#menu li:last-of-type {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+#menu .info span {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+#menu .info {
+  padding-top: 25px;
+  padding-left: 25px;
+}
+
+#menu .info-offline {
+  padding-top: 0;
+}
+
+#menu li p {
+  position: absolute;
+  left: 20px;
+}
+
+#menu li p {
+  bottom: 0;
+}
+
+#menu a:hover,
+#menu a:focus {
+  background: #EEEEEF;
+}
+
+#menu-overlay.visible {
+  visibility: visible;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.container {
+  width: 75%;
+  min-height: 80px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  color: #000;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+  border-radius: 2px;
+}
+
+.container a {
+  font-size: 16px;
+  display: inline-block;
+  color: #4F8EFA;
+}
+
+.container a:hover {
+  text-decoration: underline;
+}
+
+#main {
+  margin-top: 40px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.btn-notification {
+  width: 230px;
+  height: 40px;
+  font-size: 15px;
+  border: 0;
+  background: #4F8EFA;
+  color: #fff;
+  border-radius: 2px;
+  margin: 30px auto -5px;
+  display: block;
+  cursor: pointer;
+  outline: 0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.38);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.38);
+  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.38);
+  -o-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.38);
+}
+
+.btn-notification:active {
+  box-shadow: none;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+.header-container p {
+  margin: 0;
+}
+
+.container p .author {
+  color: #0288d1;
+  font-weight: normal;
+}
+
+.container:first-of-type {
+  margin-top: 0;
+}
+
+
+.custom-checkbox.offline,
+.custom-checkbox.offline::before {
+  background: rgb(212, 212, 212);
+}

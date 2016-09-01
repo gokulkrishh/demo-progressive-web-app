@@ -1,105 +1,67 @@
+'use strict';
+
+var apiKey = '428a20d6f31803d62bc3d29c0eff0937';
+var spinnerElement = document.querySelector('.spinner');
+var spinnerClassList = spinnerElement.classList;
+var headerElement = document.querySelector('header');
+var menuIconElement = document.querySelector('.header-icon');
+var menuElement = document.querySelector('.menu');
+var menuOverlayElement = document.querySelector('.menu-overlay');
+
 //To show/hide loading indicator
 function toggleSpinner() {
-  var $ele = $('.loading');
-
-  if ($ele.hasClass("hide")) {
-    $ele.removeClass("hide");
+  if (spinnerClassList.contains('hide')) {
+    spinnerClassList.remove('hide');
   }
   else {
-    $ele.addClass("hide");
+    spinnerClassList.add('hide');
   }
 }
 
-//To call hackerNews API
-$(function () {
-  if (!navigator.onLine) {
-    $("#turn-on-notification").attr("disabled", true);
-    $(".custom-checkbox").addClass("offline");
-    toggleSpinner();
+//To update network status
+function updateNetworkStatus() {
+  if (navigator.onLine) {
+    headerElement.classList.remove('offline');
   }
   else {
-    getStories();
+    headerElement.classList.add('offline');
+    showSnackBar('offline');
   }
+}
 
-  function getStories() {
-    var url = "https://hacker-news.firebaseio.com/v0/newstories.json";
+//To show menu
+function showMenu() {
+  menuElement.classList.add("show");
+  menuOverlayElement.classList.add("show");
+}
 
-    $.ajax({
-      url: url,
-      method: "GET",
-      success: function (response) {
-        var response = response.splice(1, 20);
-        response.map(function (contentId) {
-          return(getContents(contentId));
-        });
+//To hide menu
+function hideMenu() {
+  menuElement.classList.remove("show");
+  menuOverlayElement.classList.remove("show");
+}
 
-        toggleSpinner(); //To hide spinner
-      },
-      error: function (error) {
+menuIconElement.addEventListener("click", showMenu, false);
+menuOverlayElement.addEventListener("click", hideMenu, false);
+
+(function () {
+  //Check network status
+  window.addEventListener('online', updateNetworkStatus, false);
+  window.addEventListener('offline', updateNetworkStatus, false);
+
+  //Get weather info via `Fetch API`
+  function fetchWeatherInfo() {
+    var url = 'http://api.openweathermap.org/data/2.5/weather?q=Bangalore,India&appid=' + apiKey;
+
+    fetch(url, { method: 'GET' })
+    .then(resp => resp.json())
+      .then(res => {
+        console.log('response -->', res);
+      })
+      .catch(function (error) {
         console.error(error);
-      }
-    });
+      });
   }
 
-  //To get stories in hackerNews
-  function getContents(contentId) {
-    var contentUrl = "https://hacker-news.firebaseio.com/v0/item/" + contentId + ".json";
-
-    $.ajax({
-      url: contentUrl,
-      method: "GET",
-      success: function (response) {
-        $("#main").append(
-          "<div class='container'>" +
-          "<p><a href='#'>" + response.title + "</a></p>" +
-          "<p> <span>" + response.score + "</span> point by <span class='author'>" + response.by + "</span></p>" +
-          "<a href='https://www.google.co.in/search?q=" + response.title + "' target='_blank' class='search-web'> search  web</a>" +
-          "</div>"
-        );
-      },
-      error: function (error) {
-        console.error(error);
-      }
-    });
-  }
-
-  //Hamburger menu function
-  $("#menu-overlay, .menu-icon, #menu a").on("click", function (event) {
-    event.stopPropagation();
-
-    var $menuEle = $('#menu');
-
-    if ($menuEle.hasClass("visible")) {
-      $menuEle.removeClass("visible");
-      $("#menu-overlay").removeClass("visible");
-    }
-    else {
-      $menuEle.addClass("visible");
-      $("#menu-overlay").addClass("visible");
-    }
-
-  });
-
-
-  /*
-    To find device is online or offline
-  */
-
-  function onLineStatus(event) {
-    console.log("Online: ", navigator.onLine);
-    if (navigator.onLine) {
-      $("#sw-offline-state").attr("data-offline", false);
-      $("#sw-offline-state").html("✕");
-      $("#turn-on-notification").attr("disabled", false);
-      $(".custom-checkbox").removeClass("offline");
-    }
-    else {
-      $("#sw-offline-state").attr("data-offline", true);
-      $("#sw-offline-state").html("✓");
-    }
-  }
-
-  //Event listener for offline/online events
-  window.addEventListener("online", onLineStatus);
-  window.addEventListener("offline", onLineStatus);
-});
+  fetchWeatherInfo();
+})();

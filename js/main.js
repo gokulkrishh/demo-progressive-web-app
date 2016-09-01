@@ -1,25 +1,8 @@
-//If serviceWorker supports, then register it.
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker
-    .register("./serviceWorker.js") //Point to serviceWorker file
-    .then(function (registration) {
-      console.log("Service Worker is registered", registration);
-      document.getElementById("sw-register-state").textContent = "✓";
-
-      //To check support for push notifications
-      isPushNotification(registration);
-    })
-    .catch(function (error) {
-      console.error("Failed to register service worker", error);
-      document.getElementById("sw-register-state").textContent = "✕"; //Failed to register
-    });
-}
-
 //Push notification button
 var btn = document.getElementById("turn-on-notification");
 
 //Tokens
-var apiKey = "AIzaSyCjrU5SqotSg2ybDLK_7rMMt9Rv0dMusvY";
+var apiKey = "AIzaSyCjrU5SqotSg2ybDLK_7rMMt9Rv0dMusvY"; //replace with your own key
 var gcmURL = "https://android.googleapis.com/gcm/send";
 
 //To check push notification support
@@ -90,15 +73,17 @@ function unsubscribe() {
   })
 }
 
+var notificationBtn = document.querySelector(".btn-notification");
+
 //To change status
 function changeStatus(status) {
   btn.dataset.checked = status;
   btn.checked = status;
   if (status) {
-    $(".btn-notification").removeClass("hide");
+    notificationBtn.classList.remove("hide");
   }
   else {
-    $(".btn-notification").addClass("hide");
+    notificationBtn.classList.add("hide");
   }
 }
 

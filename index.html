@@ -6,79 +6,80 @@
     <meta http-equiv=X-UA-Compatible content="IE=edge">
     <meta name=description content="This web application will work in offline, has a splash screen add to home screen etc,.">
     <meta name=viewport content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#212225">
-    <meta name="msapplication-TileColor" content="#212225">
-    <meta name="msapplication-TileImage" content="/images/icons/G-Logo-144.png">
-    <link rel=icon sizes="192x192" href="/images/icons/G-Logo-192.png">
-    <link rel="apple-touch-icon" href="/images/icons/G-Logo-192.png">
+    <meta name="theme-color" content="#0288d1">
+    <meta name="msapplication-TileColor" content="#0288d1">
+    <meta name="msapplication-TileImage" content="/images/icons/mstile-150x150.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Progressive Web Application">
+    <meta name="application-name" content="Progressive Web Application">
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/images/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/icons/favicon-16x16.png" sizes="16x16">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700">
     <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
+  <div class="app-layout">
+    <header>
+      <span class="header-icon">
+        <svg class="menu-icon" width="24px" height="24px" viewBox="0 0 48 48" fill="#fff">
+          <path d="M6 36h36v-4H6v4zm0-10h36v-4H6v4zm0-14v4h36v-4H6z"></path>
+        </svg>
+      </span>
 
-  <header class="header">
-    <svg class="menu-icon" width="24px" height="24px" viewBox="0 0 48 48">
-      <path d="M6 36h36v-4H6v4zm0-10h36v-4H6v4zm0-14v4h36v-4H6z"></path>
-    </svg>
+      <span class="header-title">Progressive Web App</span>
+    </header>
 
-    <span>Hacker News</span>
-  </header>
+    <div class="menu">
+      <div class="menu-header"></div>
+      <ul class="menu-list">
+        <li><a target="_blank" rel="noopener" href="https://github.com/gokulkrishh">Author</a></li>
+        <li><a target="_blank" rel="noopener" href="https://github.com/gokulkrishh/demo-progressive-web-app">Source</a></li>
+    </div>
+    <div class="menu-overlay"></div>
 
-  <div class="header-section">
-    <div class="header-container">
-      <h2>Sample Hacker News</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <p class="custom-button">Enable Push Notifications:
+    <div class="app-content">
+      <p class="custom-button">
         <input id="turn-on-notification" type="checkbox" hidden="hidden" class="custom-input" data-checked="">
         <label for="turn-on-notification" class="custom-checkbox"></label>
+        Enable Push Notification
       </p>
+
+      <button class="btn-notification hide" id="send-push">Send Push Notification</button>
+
+      <div class="card-container">
+        <div class="card">
+          <p class="card-title">Bangalore, In</p>
+          <p><b>Wind: </b><span>8 KM/H</span></p>
+          <p><b>Humidity: </b><span>83%</span></p>
+          <p><b>Max Temperture: </b><span>297.15</span></p>
+          <p><b>Min Temperture: </b><span>297.15</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="snack-bar">
+      <p class="snack-bar-msg">App is offline!</p>
+      <div class="snack-bar-action">hide</div>
     </div>
   </div>
 
-  <section id="menu">
-    <ul>
-      <li>
-        <a href="/" class="homepage">
-          <img class="logo" src="/images/icons/G-Logo-128.png" alt="Logo">
-          <span>Hacker News</span>
-        </a>
-      </li>
-      <li><a target="_blank" href="https://github.com/gokulkrishh">Author</a></li>
-      <li><a target="_blank" href="https://gokulkrishh.github.io">Blog</a></li>
-      <li><a target="_blank" href="https://github.com/gokulkrishh/simple-progressive-web-app">Source</a></li>
-      <li class="info">
-        <span>SW Registration:
-          <b>
-            <span id="sw-register-state">✕</span>
-          </b>
-        </span>
-      </li>
-      <li class="info info-offline">
-        <span>Offline:
-          <b>
-            <span id="sw-offline-state">✕</span>
-          </b>
-        </span>
-      </li>
-      <li>
-        <iframe src="https://ghbtns.com/github-btn.html?user=gokulkrishh&repo=simple-progressive-web-app&type=star&count=true&size=large" frameborder="0" scrolling="0" width="130px" height="30px"></iframe>
-        <iframe src="https://ghbtns.com/github-btn.html?user=gokulkrishh&repo=simple-progressive-web-app&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="130px" height="30px"></iframe>
-      </li>
-
-    </ul>
-  </section>
-
-  <section id="menu-overlay"></section>
-
-  <button class="btn-notification hide" id="send-push">Send Push Notification</button>
-
-  <div id="main">
-    <p class="loading">Loading...</p>
-  </div>
-
   <!-- JS Files  -->
-  <script src="js/jquery-2.1.4.js"></script>
+  <script type="text/javascript">
+  //If serviceWorker supports, then register it.
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./serviceWorker.js")
+    .then(function (registration) {
+      console.log("SW registered");
+    })
+    .catch(function (error) {
+      console.error("SW failed", error);
+    });
+  }
+  </script>
+  <script src="js/snackbar.js"></script>
   <script src="js/main.js"></script>
   <script src="js/app.js"></script>
   </body>

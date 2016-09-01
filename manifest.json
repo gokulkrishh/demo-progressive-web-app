@@ -1,46 +1,27 @@
 {
   "name": "Progressive Web App",
   "short_name": "PWA",
-  "version": "1.0.0",
-  "description": "A simple demo for progressive web app with push notification",
-  "start_url": "/?page=1",
-  "launch_path": "/index.html",
+  "description": "Demo for progressive web app with push notifications, background sync etc.",
+  "start_url": "/?utm=homescreen",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#f5f5f5",
   "theme_color": "#212225",
   "icons": [{
-      "src": "images/icons/G-Logo-128.png",
-      "type": "image/png",
-      "sizes": "128x128"
-    }, {
-      "src": "images/icons/G-Logo-152.png",
-      "type": "image/png",
-      "sizes": "152x152"
-    }, {
-      "src": "images/icons/G-Logo-144.png",
-      "type": "image/png",
-      "sizes": "144x144"
-    }, {
-      "src": "images/icons/G-Logo-192.png",
+      "src": "images/icons/android-chrome-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "images/icons/G-Logo-256.png",
-      "type": "image/png",
-      "sizes": "256x256"
-    },
-    {
-      "src": "images/icons/G-Logo-512.png",
+      "src": "images/icons/android-chrome-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
   }],
   "author": {
-    "name": "Gokulakrishnan",
+    "name": "Gokulakrishnan Kalaikovan",
     "website": "https://gokulkrishh.github.io",
     "github": "https://github.com/gokulkrishh",
-    "source-repo": "https://github.com/gokulkrishh/simple-progressive-web-app"
+    "source-repo": "https://github.com/gokulkrishh/demo-progressive-web-app"
   },
   "gcm_sender_id": "847244712742",
   "gcm_user_visible_only": true
