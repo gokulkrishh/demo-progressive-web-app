@@ -8,12 +8,12 @@
   "background_color": "#f5f5f5",
   "theme_color": "#212225",
   "icons": [{
-      "src": "images/icons/android-chrome-192x192.png",
+      "src": "./images/icons/android-chrome-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "images/icons/android-chrome-512x512.png",
+      "src": "./images/icons/android-chrome-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
   }],

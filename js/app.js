@@ -61,8 +61,8 @@ menuOverlayElement.addEventListener("click", hideMenu, false);
     var url = 'http://api.openweathermap.org/data/2.5/weather?q=Bangalore,India&appid=' + apiKey;
 
     fetch(url, { method: 'GET' })
-    .then(resp => resp.json())
-      .then(res => {
+    .then(function(resp){ return resp.json() })
+      .then(function(res) {
         console.log(res);
         cardElement.querySelector('.card-title span').textContent = res.name + ', ' + res.sys.country;
         cardElement.querySelector('.card-wind-info span').textContent = res.wind.speed + 'KM/H';

@@ -8,15 +8,13 @@ var cacheName = 'initial-cache-v1';
 //Files to save in cache
 var files = [
   './',
-  '/index.html',
-  '/index.html?utm=homescreen', //SW treats query string as new page
-  '/css/styles.css',
+  './index.html',
+  './index.html?utm=homescreen', //SW treats query string as new page
+  './css/styles.css',
   'https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700', //caching 3rd party content
-  '/images/icons/android-chrome-192x192.png',
-  '/js/app.js',
-  '/js/main.js',
-  '/js/snackbar.js',
-  '/manifest.json'
+  './images/icons/android-chrome-192x192.png',
+  './js/all.js',
+  './manifest.json'
 ];
 
 //Adding `install` event listener

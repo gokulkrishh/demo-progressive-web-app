@@ -27,6 +27,7 @@ li {
 .no-select {
   -moz-user-select: none;
   -ms-user-select: none;
+  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -68,7 +69,10 @@ header {
   overflow: hidden;
   z-index: 1;
   color: #fff;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-transition: background-color 250ms linear;
   transition: background-color 250ms linear;
 }
@@ -227,7 +231,6 @@ header.offline {
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  user-select: none;
   margin-right: 15px;
 }
 
