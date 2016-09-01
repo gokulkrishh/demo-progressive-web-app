@@ -207,7 +207,7 @@ button {
   color: #fff;
   border-radius: 2px;
   margin: 0 auto -5px;
-  display: block;
+  display: inline-block;
   cursor: pointer;
   outline: 0;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.38);
@@ -218,6 +218,12 @@ button {
 
 button:active {
   box-shadow: none;
+}
+
+button:disabled {
+  background: #ccc;
+  color: #000;
+  cursor: not-allowed;
 }
 
 .custom-checkbox {
@@ -301,4 +307,10 @@ button:active {
 .card p {
   padding-left: 15px;
   padding-bottom: 15px;
+}
+
+.disable-log {
+  margin-left: 20px;
+  user-select: none;
+  -webkit-user-select: none;
 }

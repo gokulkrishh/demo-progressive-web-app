@@ -1,20 +1,37 @@
 'use strict';
 
 var apiKey = '428a20d6f31803d62bc3d29c0eff0937';
-var spinnerElement = document.querySelector('.spinner');
-var spinnerClassList = spinnerElement.classList;
+// var spinnerElement = document.querySelector('.spinner');
 var headerElement = document.querySelector('header');
 var menuIconElement = document.querySelector('.header-icon');
 var menuElement = document.querySelector('.menu');
 var menuOverlayElement = document.querySelector('.menu-overlay');
+var disableLogElement = document.querySelector('.disable-console-log');
+
+//Listen to disable log checkbox
+disableLogElement.addEventListener("change", function (event) {
+  if (event.target.checked) {
+    localStorage.setItem("disable-log", true);
+    disableLog();
+  }
+  else {
+    localStorage.removeItem("disable-log");
+    console = window.console;
+  }
+}, false);
+
+//To disable console log
+function disableLog() {
+  console.log = function() {};
+}
 
 //To show/hide loading indicator
 function toggleSpinner() {
-  if (spinnerClassList.contains('hide')) {
-    spinnerClassList.remove('hide');
+  if (spinnerElement.classList.contains('hide')) {
+    spinnerElement.classList.remove('hide');
   }
   else {
-    spinnerClassList.add('hide');
+    spinnerElement.classList.add('hide');
   }
 }
 
@@ -45,6 +62,18 @@ menuIconElement.addEventListener("click", showMenu, false);
 menuOverlayElement.addEventListener("click", hideMenu, false);
 
 (function () {
+
+  if (localStorage.getItem("disable-log")) {
+    console.log = function() {};
+    disableLogElement.checked = true;
+  }
+
+  //If `serviceWorker` is registered and ready
+  navigator.serviceWorker.ready
+    .then(function (registration) {
+      isPushSupported(registration); //To check push is supported and enabled
+    })
+
   //Check network status
   window.addEventListener('online', updateNetworkStatus, false);
   window.addEventListener('offline', updateNetworkStatus, false);

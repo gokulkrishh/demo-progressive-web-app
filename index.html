@@ -44,10 +44,12 @@
       <p class="custom-button">
         <input id="turn-on-notification" type="checkbox" hidden="hidden" class="custom-input" data-checked="">
         <label for="turn-on-notification" class="custom-checkbox"></label>
-        Enable Push Notification
+        <button class="btn-notification" id="send-push" disabled>Send Push Notification</button>
+        <label class="disable-log" for="disable-log">
+          <input type="checkbox" id="disable-log" class="disable-console-log">
+          Disable console log
+        </label>
       </p>
-
-      <button class="btn-notification hide" id="send-push">Send Push Notification</button>
 
       <div class="card-container">
         <div class="card">
@@ -70,12 +72,12 @@
   <script type="text/javascript">
   //If serviceWorker supports, then register it.
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./serviceWorker.js")
+    navigator.serviceWorker.register('./serviceWorker.js', { scope: "./" }) //setting scope of sw
     .then(function (registration) {
-      console.log("SW registered");
+      console.log('%c service worker is registered ', 'background: #DFF2BF; color: #4F8A10; font-size: 13px;');
     })
     .catch(function (error) {
-      console.error("SW failed", error);
+      console.error('service worker failed ', 'background: #FFBABA; color: #D8000C; font-size: 13px;', error);
     });
   }
   </script>

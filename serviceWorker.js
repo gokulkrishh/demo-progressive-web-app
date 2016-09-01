@@ -21,7 +21,7 @@ var files = [
 
 //Adding `install` event listener
 self.addEventListener('install', function (event) {
-  console.log('Event: Install');
+  console.log('%c Event: Install ', 'background: #FEEFB3; color: #9F6000; font-size: 13px;');
 
   event.waitUntil(
     caches.open(cacheName)
@@ -47,7 +47,7 @@ self.addEventListener('install', function (event) {
 self.addEventListener('fetch', function (event) {
   var request = event.request;
 
-  console.log('Event: Fetch');
+  console.log('%c Event: Fetch ', 'background: #FEEFB3; color: #9F6000; font-size: 13px;');
 
   //Tell the browser to wait for network request and respond with below
   event.respondWith(
@@ -79,7 +79,7 @@ self.addEventListener('fetch', function (event) {
 
 //Adding `activate` event listener
 self.addEventListener('activate', function (event) {
-  console.log('Event: Activate');
+  console.log('%c Event: Activate ', 'background: #FEEFB3; color: #9F6000; font-size: 13px;');
 
   //Active Service Worker to set itself as the active on current client and all other active clients.
   return self.clients.claim();
@@ -91,13 +91,18 @@ self.addEventListener('activate', function (event) {
 
 //Adding `push` event listener
 self.addEventListener('push', function(event) {
-  console.log('Event: Push', event);
+  console.log('%c Event: Push ', 'background: #FEEFB3; color: #9F6000; font-size: 13px;');
 
   var title = 'Push notification demo';
   var body = {
-    'body': 'You have received a notification',
+    'body': 'click to return to application',
     'tag': 'demo',
-    'icon': '/images/icons/apple-touch-icon.png'
+    'icon': '/images/icons/apple-touch-icon.png',
+    //Custom actions buttons
+    'actions': [
+      { "action": "yes", "title": "I ♥ this app!"},
+      { "action": "no", "title": "I don\'t like this app"}
+    ]
   };
 
   event.waitUntil(self.registration.showNotification(title, body));
@@ -109,24 +114,37 @@ self.addEventListener('push', function(event) {
 
 //Adding `notification` click event listener
 self.addEventListener('notificationclick', function(event) {
-  console.log('Notification clicked ', event);
+  //Listen to custom actions buttons
+  if (event.action === 'yes') {
+    console.log('%c I ♥ this app! ', 'background: #000; color: #fff');
+  }
+  else if (event.action === 'no') {
+    console.log('%c I don\'t like this app ', 'background: #000; color: #fff');
+  }
 
   //To open the app after clicking notification
   event.waitUntil(
     clients.matchAll({
       type: 'window'
     })
-    .then(function(clientList) {
-      console.log("clientList -->", clientList);
-      for (var i = 0; i < clientList.length; i++) {
-        var client = clientList[i];
-        console.log("client", client);
-        if (client.url == '/' && 'focus' in client) {
+    .then(function(clients) {
+      for (var i = 0; i < clients.length; i++) {
+        var client = clients[i];
+        //If site is opened, focus to the site
+        if ('focus' in client && !client.focused) {
+          event.notification.close();
           return client.focus();
         }
+        //If site is not opened, open in new tab
+        if (clients.openWindow) {
+          return clients.openWindow('/');
+        }
       }
-    })
 
-    event.notification.close();
+      event.notification.close(); //Close the notification
+    })
+    .catch(function (err) {
+      console.log(err);
+    })
   );
 });
