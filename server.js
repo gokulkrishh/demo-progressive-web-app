@@ -1,5 +1,6 @@
-var express = require("express");
-var bodyParser = require("body-parser");
+'use strict';
+var express = require('express');
+var bodyParser = require('body-parser');
 var gcm = require('node-gcm');
 var app = express();
 
@@ -12,27 +13,27 @@ app.use(express.static(__dirname));
 
 //To allow cross origin request
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 
 //To server index.html page
-app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index.html");
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/index.html');
 });
 
 //To receive push request from client
-app.post("/send_notification", function (req, res) {
+app.post('/send_notification', function (req, res) {
   if (!req.body) {
     res.status(400);
   }
 
   var message = new gcm.Message();
-  var temp = req.body.endpoint.split("/");
+  var temp = req.body.endpoint.split('/');
   var regTokens = [temp[temp.length - 1]];
 
-  var sender = new gcm.Sender('AIzaSyCjrU5SqotSg2ybDLK_7rMMt9Rv0dMusvY'); //API Key
+  var sender = new gcm.Sender('AIzaSyCjrU5SqotSg2ybDLK_7rMMt9Rv0dMusvY'); //Replace with your GCM API key
 
   // Now the sender can be used to send messages
   sender.send(message, { registrationTokens: regTokens }, function (error, response) {
@@ -48,5 +49,5 @@ app.post("/send_notification", function (req, res) {
 });
 
 app.listen(process.env.PORT || 3000, function() {
-  console.log("Local Server : http://localhost:3000");
+  console.log('Local Server : http://localhost:3000');
 });

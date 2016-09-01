@@ -17,7 +17,7 @@ function isPushSupported(swRegistration) {
 
   //Check `push notification` is supported or not
   if (!('PushManager' in window)) {
-    console.warn('Push notification isn\'t supported in your browser.');
+    console.error('Push notification isn\'t supported in your browser.');
     return;
   }
 
@@ -50,7 +50,7 @@ function subscribePush() {
       userVisibleOnly: true //Always show notification when received
     })
     .then(function (subscription) {
-      console.log('%c Push notification subscribed ', 'background: #DFF2BF; color: #4F8A10; font-size: 13px;');
+      console.info('Push notification subscribed.');
       changePushStatus(true);
     })
     .catch(function (error) {
@@ -74,7 +74,7 @@ function unsubscribePush() {
       //Unsubscribe `push notification`
       subscription.unsubscribe()
         .then(function () {
-          console.log('%c Push notification unsubscribed ', 'background: #FEEFB3; color: #9F6000; font-size: 13px');
+          console.info('Push notification unsubscribed.');
           changePushStatus(false);
         })
         .catch(function (error) {
@@ -115,7 +115,7 @@ function curlCommand(subscription) {
   var temp = subscription.endpoint.split('/');
   var endpoint = temp[temp.length - 1];
   var curlCommand = 'curl --header "Authorization: key=' + apiKey + '" --header Content-Type:"application/json" ' + gcmURL + ' -d "{\\"registration_ids\\":[\\"' + endpoint + '\\"]}"';
-  console.log("%c Use curl command to send push notification: ", "background: #000; color: #fff; font-size: 13px;");
+  console.log("%c curl command to send push notification ", "background: #000; color: #fff; font-size: 13px;");
   console.log(curlCommand);
 }
 
@@ -126,19 +126,16 @@ function sendPushNotification(subscription) {
       registration.pushManager.getSubscription()
       .then(function (subscription) {
         curlCommand(subscription); //To log curl command in console
-        fetch("/send_notification", {
-          method: "post",
+        fetch('/send_notification', {
+          method: 'post',
           headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify(subscription)
         })
         .then(function(response) {
           return response.json();
-        })
-        .then(function(data) {
-          console.error("data", data);
         })
       })
     })

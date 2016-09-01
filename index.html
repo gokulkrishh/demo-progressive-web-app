@@ -45,21 +45,19 @@
         <input id="turn-on-notification" type="checkbox" hidden="hidden" class="custom-input" data-checked="">
         <label for="turn-on-notification" class="custom-checkbox"></label>
         <button class="btn-notification" id="send-push" disabled>Send Push Notification</button>
-        <label class="disable-log" for="disable-log">
-          <input type="checkbox" id="disable-log" class="disable-console-log">
-          Disable console log
-        </label>
       </p>
 
       <div class="card-container">
         <div class="card">
-          <p class="card-title">Bangalore, In</p>
-          <p><b>Wind: </b><span>8 KM/H</span></p>
-          <p><b>Humidity: </b><span>83%</span></p>
-          <p><b>Max Temperture: </b><span>297.15</span></p>
-          <p><b>Min Temperture: </b><span>297.15</span></p>
+          <p class="card-title"><b>City: </b><span>Bangalore, In</span></p>
+          <p class="card-wind-info"><b>Wind: </b><span>8 KM/H</span></p>
+          <p class="card-humidity-info"><b>Humidity: </b><span>83%</span></p>
+          <p class="card-max-temp"><b>Max Temperture: </b><span>297.15</span></p>
+          <p class="card-min-temp"><b>Min Temperture: </b><span>297.15</span></p>
         </div>
       </div>
+
+      <button class="fab">+</button>
     </div>
 
     <div class="snack-bar">
@@ -74,10 +72,10 @@
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register('./serviceWorker.js', { scope: "./" }) //setting scope of sw
     .then(function (registration) {
-      console.log('%c service worker is registered ', 'background: #DFF2BF; color: #4F8A10; font-size: 13px;');
+      console.info('service worker is registered');
     })
     .catch(function (error) {
-      console.error('service worker failed ', 'background: #FFBABA; color: #D8000C; font-size: 13px;', error);
+      console.error('service worker failed ', error);
     });
   }
   </script>

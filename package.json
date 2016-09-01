@@ -1,6 +1,6 @@
 {
-  "name": "demo",
-  "description": "Demo - progress web application",
+  "name": "demo-progressive-web-app",
+  "description": "Demo progressive web application",
   "version": "1.0.0",
   "author": "gokulkrishh",
   "dependencies": {
@@ -11,7 +11,6 @@
   "engines": {
     "node": "4.1.1"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "node server.js"
   },

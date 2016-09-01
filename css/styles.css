@@ -54,17 +54,19 @@ header {
   width: 100%;
   height: 56px;
   top: 0;
-  background: #1E88E5;
+  background-color: #1E88E5;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.19);
   display: flex;
   overflow: hidden;
   z-index: 1;
   color: #fff;
   user-select: none;
+  -webkit-transition: background-color 250ms linear;
+  transition: background-color 250ms linear;
 }
 
 header.offline {
-  background: #6b6b6b;
+  background-color: #6b6b6b;
 }
 
 .header-icon {
@@ -166,7 +168,7 @@ header.offline {
   bottom: -50px;
   left: 0;
   right: 0;
-  width: 260px;
+  width: 280px;
   min-height: 50px;
   background: #323232;
   color: #fff;
@@ -176,6 +178,9 @@ header.offline {
   justify-content: space-between;
   transition: bottom 0.33s cubic-bezier(0, 0, 0.30, 1);
   will-change: transform;
+  font-weight: 500;
+  text-transform: capitalize;
+  border-radius: 2px;
 }
 
 .snack-bar.show {
@@ -214,6 +219,8 @@ button {
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.38);
   -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.38);
   -o-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.38);
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 button:active {
@@ -299,9 +306,12 @@ button:disabled {
 }
 
 .card-title {
-  font-weight: 500;
   font-size: 18px;
   padding-top: 15px;
+}
+
+.card p > span {
+  font-style: italic;
 }
 
 .card p {
@@ -309,8 +319,20 @@ button:disabled {
   padding-bottom: 15px;
 }
 
-.disable-log {
-  margin-left: 20px;
-  user-select: none;
-  -webkit-user-select: none;
+.fab {
+  position: fixed;
+  right: 25px;
+  width: 56px;
+  height: 56px;
+  background: #0288d1;
+  cursor: pointer;
+  bottom: 25px;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  display: block;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.12),0 1px 1px 0 rgba(0,0,0,.24);
+  font-size:1.5em;
+  min-width: initial;
+  -webkit-tap-highlight-color: transparent;
 }

@@ -21,7 +21,7 @@ var files = [
 
 //Adding `install` event listener
 self.addEventListener('install', function (event) {
-  console.log('%c Event: Install ', 'background: #FEEFB3; color: #9F6000; font-size: 13px;');
+  console.info('Event: Install');
 
   event.waitUntil(
     caches.open(cacheName)
@@ -29,7 +29,7 @@ self.addEventListener('install', function (event) {
       //[] of files to cache & if any of the file not present `addAll` will fail
       return cache.addAll(files)
       .then(function () {
-        console.log('All files are cached');
+        console.info('All files are cached');
         return self.skipWaiting(); //To forces the waiting service worker to become the active service worker
       })
       .catch(function (error) {
@@ -45,9 +45,9 @@ self.addEventListener('install', function (event) {
 
 //Adding `fetch` event listener
 self.addEventListener('fetch', function (event) {
-  var request = event.request;
+  console.info('Event: Fetch');
 
-  console.log('%c Event: Fetch ', 'background: #FEEFB3; color: #9F6000; font-size: 13px;');
+  var request = event.request;
 
   //Tell the browser to wait for network request and respond with below
   event.respondWith(
@@ -79,7 +79,7 @@ self.addEventListener('fetch', function (event) {
 
 //Adding `activate` event listener
 self.addEventListener('activate', function (event) {
-  console.log('%c Event: Activate ', 'background: #FEEFB3; color: #9F6000; font-size: 13px;');
+  console.info('Event: Activate');
 
   //Active Service Worker to set itself as the active on current client and all other active clients.
   return self.clients.claim();
@@ -91,7 +91,7 @@ self.addEventListener('activate', function (event) {
 
 //Adding `push` event listener
 self.addEventListener('push', function(event) {
-  console.log('%c Event: Push ', 'background: #FEEFB3; color: #9F6000; font-size: 13px;');
+  console.info('Event: Push');
 
   var title = 'Push notification demo';
   var body = {
@@ -116,10 +116,10 @@ self.addEventListener('push', function(event) {
 self.addEventListener('notificationclick', function(event) {
   //Listen to custom actions buttons
   if (event.action === 'yes') {
-    console.log('%c I ♥ this app! ', 'background: #000; color: #fff');
+    console.log('I ♥ this app!');
   }
   else if (event.action === 'no') {
-    console.log('%c I don\'t like this app ', 'background: #000; color: #fff');
+    console.warn('I don\'t like this app');
   }
 
   //To open the app after clicking notification
@@ -144,7 +144,7 @@ self.addEventListener('notificationclick', function(event) {
       event.notification.close(); //Close the notification
     })
     .catch(function (err) {
-      console.log(err);
+      console.error(err);
     })
   );
 });
