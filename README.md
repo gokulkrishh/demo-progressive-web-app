@@ -1,50 +1,18 @@
-# progressive web app
+# Progressive Web Application
 
-  *An example for progressive web application*
+*Demo for progressive web application*
 
-# [Demo](https://progressive-web-application.herokuapp.com/)
+# [Live](https://gokulkrishh.github.io/demo-progressive-web-app)
 
 ## Description
 
- A progressive web application which works in offline, has a splash screen, add to home screen, push notifications etc,.
-
-## Screenshots
-
-  *From moto x 2014 - OS Android Marshmallow*
-
-  1. Home screen in chrome browser
-
-  <img alt="Chrome Homescreen" src="https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot1.png" width="300" height="100%">
-
-  2. Add to home screen in chrome browser
-
-  <img alt="Chrome browser add to home screen" src="https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot2.png" width="300" height="100%">
-
-  3. Standalone app home screen
-
-  <img alt="Standalone Homescreen" src="https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot3.png" width="300" height="100%">
-
-  4. Standalone app menu
-
-  <img alt="Standalone app menu" src="https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot4.png" width="300" height="100%">
-
-  5. Standalone app on scroll
-
-  <img alt="Standalone app on scroll" src="https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot5.png" width="300" height="100%">
-
-  6. Push notification permission
-
-  <img alt="Push notification permission" src="https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot6.png" width="300" height="100%">
-
-  7. Push notification
-
-  <img alt="Push notification" src="https://raw.githubusercontent.com/gokulkrishh/simple-progressive-web-app/master/images/screenshots/screenshot7.png" width="300" height="100%">
+ A progressive web application which works in offline, has a splash screen, add to home screen, push notifications, background sync, fetch api etc,.
 
 ## Install
 
-  1. git clone https://github.com/gokulkrishh/simple-progressive-web-app
+  1. git clone https://github.com/gokulkrishh/demo-progressive-web-app
 
-  2. cd into simple-progressive-web-app
+  2. cd into demo-progressive-web-app
 
   3. In terminal, type
 
@@ -59,21 +27,17 @@
 
 ## Todo's
 
-  - [x] - Added service worker file.
+  - [x] - Service Worker
 
-  - [x] - Add web manifest.json file for splash screen, add to home screen etc.
-
-      *To generate manifest.json file, use this npm module [manifest-json](https://github.com/hemanth/manifest-json)*
-
-      ```
-        $ npm install --global manifest-json
-      ```
+  - [x] - Splash screen, Add to home screen,.
 
   - [x] - Push notification
 
-  - [ ]  - Background Sync - In progress
+  - [x] - Fetch API
 
-  - [ ] - Fallback when offline - In progress
+  - [x] - Background Sync
+
+  - [x] - Fallback when offline
 
 
 ## Reference
