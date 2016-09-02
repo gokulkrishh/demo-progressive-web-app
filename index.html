@@ -41,11 +41,14 @@
     <div class="menu__overlay"></div>
 
     <div class="app__content">
+      <h3>Push Notification: </h3>
       <p class="custom__button">
         <input id="turn-on-notification" type="checkbox" hidden="hidden" class="custom__input" data-checked="">
         <label for="turn-on-notification" class="custom__checkbox"></label>
         <button class="no--select send-push" disabled>Send Push Notification</button>
       </p>
+
+      <h3>Fetch API: </h3>
 
       <div class="card">
         <div class="card__container">
@@ -57,25 +60,27 @@
           </p>
           <p class="card__following"><b>Following: </b><span></span></p>
           <p class="card__followers"><b>Followers: </b><span></span></p>
+          <div class="add__to-card">
+            <input type="text" class="add__input" placeholder="Enter a github username" />
+            <button class="add__btn">Add</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="add__card">
-      <input type="text" class="add__input" placeholder="Enter a github username" />
-      <button class="add__btn">Add</button>
-      <p>Emulate Background Sync</p>
-      <ul>
-        <li>Go offline, try to add a city and click add.</li>
-        <li>Go to application tab in chrome devTools, navigate to serviceWorker tab.</p></li>
-        <li>Click `sync` button to emulate sync.</li>
-        <li>Above card will be updated as per your input.</li>
-      </ul>
-    </div>
+      <div class="add__card">
+        <h3>Emulate Background Sync:</h3>
+        <ul>
+          <li>Go offline, try to add a city and click add.</li>
+          <li>Go to application tab in chrome devTools, navigate to serviceWorker tab.</li>
+          <li>Click `sync` button to emulate sync.</li>
+          <li>Above card will be updated as per your input.</li>
+        </ul>
+      </div>
 
-    <div class="snackbar">
-      <p class="snackbar__msg no--select">App is offline!</p>
-      <div class="snackbar__action no--select">hide</div>
+      <div class="snackbar">
+        <p class="snackbar__msg no--select">App is offline!</p>
+        <div class="snackbar__action no--select">hide</div>
+      </div>
     </div>
   </div>
 

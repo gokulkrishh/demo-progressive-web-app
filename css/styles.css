@@ -52,6 +52,12 @@ li {
   user-select: none;
 }
 
+h3 {
+  text-align: left;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
 /* MAIN styles */
 
 body {
@@ -203,8 +209,9 @@ header {
 }
 
 .app__content {
-  width: 100%;
+  width: 320px;
   height: 100%;
+  margin: 0 auto;
   margin-top: 56px;
   padding-top: 10px;
 }
@@ -323,7 +330,7 @@ button:disabled {
 .custom__button {
   padding: 10px 15px;
   font-family: 'Roboto', arial, sans-serif;
-  text-align: center;
+  text-align: left;
 }
 
 .custom__input:checked + .custom__checkbox {
@@ -337,8 +344,13 @@ button:disabled {
 
 .card__container {
   margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .card {
@@ -394,8 +406,13 @@ button:disabled {
 .card__temp,
 .card__followers,
 .card__following {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   margin-bottom: 5px;
 }
 
@@ -426,25 +443,27 @@ button:disabled {
 }
 
 .add__card {
-  margin: 10px auto;
+  margin: 40px auto;
   text-align: center;
   margin-bottom: 100px;
 }
 
 .add__input {
-  width: 230px;
+  width: 170px;
   height: 35px;
   border: 1px solid #ccc;
   padding-left: 10px;
   font-size: 13px;
-  margin-right: 10px;
-  margin-top: 30px;
+  display: block;
+  margin: 10px auto;
 }
 
 .add__btn {
   height: 34px;
   min-width: 70px;
-  margin-top: 30px;
+  margin-top: 10px;
+  display: block;
+  margin-left: 0;
 }
 
 .add__card ul,
@@ -463,4 +482,10 @@ button:disabled {
 
 .card span {
   display: block;
+}
+
+.add__to-card {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
 }
