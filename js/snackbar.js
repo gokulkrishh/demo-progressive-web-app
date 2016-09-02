@@ -2,19 +2,19 @@
 (function (exports) {
   'use strict';
 
-  var snakBarElement = document.querySelector('.snack-bar');
-  var snakBarMsg = document.querySelector('.snack-bar-msg');
-  var snakBarAction = document.querySelector('.snack-bar-action');
+  var snakBarElement = document.querySelector('.snackbar');
+  var snakBarMsg = document.querySelector('.snackbar__msg');
+  var snakBarAction = document.querySelector('.snackbar__action');
 
   //To show notification
   function showSnackBar(msg) {
     if (!msg) return;
 
-    if (snakBarElement.classList.contains('show')) {
+    if (snakBarElement.classList.contains('snackbar--show')) {
       hideSnackBar();
     }
 
-    snakBarElement.classList.add('show');
+    snakBarElement.classList.add('snackbar--show');
     snakBarMsg.textContent = msg;
 
     setTimeout(function () {
@@ -23,7 +23,7 @@
   }
 
   function hideSnackBar() {
-    snakBarElement.classList.remove('show');
+    snakBarElement.classList.remove('snackbar--show');
   }
 
   //To hide notification

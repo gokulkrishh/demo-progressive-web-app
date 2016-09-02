@@ -1,4 +1,25 @@
+/*
+
+# BEM (BLOCK, ELEMENT, MODIFIER) METHEDOLOGY
+
+<div class="card card--show">
+  <div class="card__title"></div>
+  <div class="card__container">
+
+  </div>
+</div>
+
+.card - BLOCK
+
+.card__title - ELEMENT
+
+.card--show - MODIFIER
+
+*/
+
+
 /* RESET styles */
+
 *,
 *::after,
 *::before {
@@ -24,7 +45,7 @@ li {
   margin: 0;
 }
 
-.no-select {
+.no--select {
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
@@ -77,11 +98,11 @@ header {
   transition: background-color 250ms linear;
 }
 
-header.offline {
+.app__offline {
   background-color: #6b6b6b;
 }
 
-.header-icon {
+.header__icon {
   width: 48px;
   height: 48px;
   margin: 4px;
@@ -97,12 +118,12 @@ header.offline {
   cursor: pointer;
 }
 
-.header-icon:active {
+.header__icon:active {
   opacity: 0.8;
   outline: 1px solid #fff;
 }
 
-.header-title {
+.header__title {
   color: #fff;
   font-size: 20px;
   -ms-flex-item-align: center;
@@ -128,12 +149,12 @@ header.offline {
   z-index: 2;
 }
 
-.menu.show {
+.menu--show {
   -webkit-transform: translateX(0);
   transform: translateX(0);
 }
 
-.menu-overlay {
+.menu__overlay {
   width: 100%;
   height: 100%;
   position: fixed;
@@ -149,19 +170,19 @@ header.offline {
   z-index: 1;
 }
 
-.menu-overlay.show {
+.menu__overlay--show {
   visibility: visible;
   opacity: 1;
 }
 
-.menu-header {
+.menu__header {
   height: 150px;
   background: #1E88E5;
   color: #fff;
   border-bottom: 1px solid #ddd;
 }
 
-.menu-list {
+.menu__list {
   width: inherit;
   height: inherit;
   overflow: auto;
@@ -169,26 +190,26 @@ header.offline {
   -webkit-overflow-scrolling: touch;
 }
 
-.menu-list li a {
+.menu__list li a {
   padding: 20px;
   color: rgba(0,0,0,0.87);
   cursor: pointer;
   display: block;
 }
 
-.menu-list li a:active,
-.menu-list li a:hover {
+.menu__list li a:active,
+.menu__list li a:hover {
   background: #e7e7e7;
 }
 
-.app-content {
+.app__content {
   width: 100%;
   height: 100%;
   margin-top: 56px;
   padding-top: 10px;
 }
 
-.snack-bar {
+.snackbar {
   position: fixed;
   bottom: -50px;
   left: 0;
@@ -215,17 +236,17 @@ header.offline {
   border-radius: 2px;
 }
 
-.snack-bar.show {
+.snackbar--show {
   bottom: 0;
 }
 
-.snack-bar-msg {
+.snackbar__msg {
   margin-left: 15px;
   margin-right: 10px;
   word-break: break-all;
 }
 
-.snack-bar-action {
+.snackbar__action {
   text-transform: uppercase;
   color: #f00;
   font-size: 14px;
@@ -263,7 +284,7 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.custom-checkbox {
+.custom__checkbox {
   display: inline-block;
   position: relative;
   width: 45px;
@@ -277,7 +298,7 @@ button:disabled {
   margin: 10px 14px 13px;
 }
 
-.custom-checkbox::before {
+.custom__checkbox::before {
   content: '';
   position: absolute;
   top: -3px;
@@ -293,28 +314,28 @@ button:disabled {
   -moz-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.51);
 }
 
-.custom-button p {
+.custom__button p {
   position: initial;
   margin: 0;
   padding-left: 10px;
 }
 
-.custom-button {
+.custom__button {
   padding: 10px 15px;
   font-family: 'Roboto', arial, sans-serif;
   text-align: center;
 }
 
-.custom-input:checked + .custom-checkbox {
+.custom__input:checked + .custom__checkbox {
   background: rgb(195, 195, 195);
 }
 
-.custom-input:checked + .custom-checkbox::before {
+.custom__input:checked + .custom__checkbox::before {
   left: 25px;
   background: #0288d1;
 }
 
-.card-container {
+.card__container {
   margin-top: 30px;
 }
 
@@ -323,23 +344,42 @@ button:disabled {
   min-height: 200px;
   background: #fff;
   margin: 20px auto;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.22);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
   border-radius: 2px;
   font-family: 'Roboto', arial, sans-serif;
 }
 
-.card-title {
-  font-size: 18px;
-  padding-top: 15px;
-}
-
-.card p > span {
+.card__title,
+.card__desc {
+  display: inline-block;
   font-style: italic;
+  font-size: 14px;
 }
 
-.card p {
-  padding-left: 15px;
-  padding-bottom: 15px;
+.card__title {
+  margin-left: 10px;
+}
+
+.card__temp {
+  font-size: 30px;
+  padding: 20px;
+  padding-bottom: 10px;
+}
+
+.card__wind,
+.card__humidity {
+  padding: 10px 20px 5px;
+}
+
+.card__desc {
+  padding: 12px 15px;
+  vertical-align: top;
+}
+
+.card__img {
+  width: 40px;
+  height: 40px;
+  margin-left: 15px;
 }
 
 .fab {
@@ -358,4 +398,8 @@ button:disabled {
   font-size:1.5em;
   min-width: initial;
   -webkit-tap-highlight-color: transparent;
+}
+
+.fab:active {
+  background: rgba(2, 136, 209, 0.91);
 }

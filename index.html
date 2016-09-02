@@ -21,48 +21,50 @@
     <link rel="stylesheet" href="./css/styles.css">
   </head>
   <body>
-  <div class="app-layout">
+  <div class="app app__layout">
     <header>
-      <span class="header-icon">
-        <svg class="menu-icon no-select" width="24px" height="24px" viewBox="0 0 48 48" fill="#fff">
+      <span class="header__icon">
+        <svg class="menu__icon no--select" width="24px" height="24px" viewBox="0 0 48 48" fill="#fff">
           <path d="M6 36h36v-4H6v4zm0-10h36v-4H6v4zm0-14v4h36v-4H6z"></path>
         </svg>
       </span>
 
-      <span class="header-title no-select">Progressive Web App</span>
+      <span class="header__title no--select">Progressive Web App</span>
     </header>
 
     <div class="menu">
-      <div class="menu-header"></div>
-      <ul class="menu-list">
+      <div class="menu__header"></div>
+      <ul class="menu__list">
         <li><a target="_blank" rel="noopener" href="https://github.com/gokulkrishh">Author</a></li>
         <li><a target="_blank" rel="noopener" href="https://github.com/gokulkrishh/demo-progressive-web-app">Source</a></li>
     </div>
-    <div class="menu-overlay"></div>
+    <div class="menu__overlay"></div>
 
-    <div class="app-content">
-      <p class="custom-button">
-        <input id="turn-on-notification" type="checkbox" hidden="hidden" class="custom-input" data-checked="">
-        <label for="turn-on-notification" class="custom-checkbox"></label>
-        <button class="btn-notification no-select" id="send-push" disabled>Send Push Notification</button>
+    <div class="app__content">
+      <p class="custom__button">
+        <input id="turn-on-notification" type="checkbox" hidden="hidden" class="custom__input" data-checked="">
+        <label for="turn-on-notification" class="custom__checkbox"></label>
+        <button class="no--select" id="send-push" disabled>Send Push Notification</button>
       </p>
 
-      <div class="card-container">
-        <div class="card">
-          <p class="card-title"><b>City: </b><span>Bangalore, In</span></p>
-          <p class="card-wind-info"><b>Wind: </b><span>8 KM/H</span></p>
-          <p class="card-humidity-info"><b>Humidity: </b><span>83%</span></p>
-          <p class="card-max-temp"><b>Max Temperture: </b><span>297.15</span></p>
-          <p class="card-min-temp"><b>Min Temperture: </b><span>297.15</span></p>
+      <div class="card">
+        <div class="card__container">
+          <p class="card__temp">
+            <span></span>
+            <span class="card__title"></span>
+          </p>
+          <img alt="weather description" class="card__img"><span class="card__desc"></span>
+          <p class="card__wind"><b>Wind: </b><span></span></p>
+          <p class="card__humidity"><b>Humidity: </b><span></span></p>
         </div>
       </div>
 
       <button class="fab">+</button>
     </div>
 
-    <div class="snack-bar">
-      <p class="snack-bar-msg no-select">App is offline!</p>
-      <div class="snack-bar-action no-select">hide</div>
+    <div class="snackbar">
+      <p class="snackbar__msg no--select">App is offline!</p>
+      <div class="snackbar__action no--select">hide</div>
     </div>
   </div>
 
@@ -79,6 +81,8 @@
     });
   }
   </script>
-  <script src="./js/all.js"></script>
+  <script src="./js/snackbar.js"></script>
+  <script src="./js/app.js"></script>
+  <script src="./js/main.js"></script>
   </body>
 </html>

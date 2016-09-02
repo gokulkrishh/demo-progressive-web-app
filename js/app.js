@@ -1,44 +1,33 @@
 'use strict';
 
 var apiKey = '428a20d6f31803d62bc3d29c0eff0937';
-// var spinnerElement = document.querySelector('.spinner');
 var headerElement = document.querySelector('header');
-var menuIconElement = document.querySelector('.header-icon');
+var menuIconElement = document.querySelector('.header__icon');
 var menuElement = document.querySelector('.menu');
-var menuOverlayElement = document.querySelector('.menu-overlay');
+var menuOverlayElement = document.querySelector('.menu__overlay');
 var cardElement = document.querySelector('.card');
-
-//To show/hide loading indicator
-function toggleSpinner() {
-  if (spinnerElement.classList.contains('hide')) {
-    spinnerElement.classList.remove('hide');
-  }
-  else {
-    spinnerElement.classList.add('hide');
-  }
-}
 
 //To update network status
 function updateNetworkStatus() {
   if (navigator.onLine) {
-    headerElement.classList.remove('offline');
+    headerElement.classList.remove('app__offline');
   }
   else {
-    headerElement.classList.add('offline');
+    headerElement.classList.add('app__offline');
     showSnackBar('offline');
   }
 }
 
 //To show menu
 function showMenu() {
-  menuElement.classList.add("show");
-  menuOverlayElement.classList.add("show");
+  menuElement.classList.add("menu--show");
+  menuOverlayElement.classList.add("menu__overlay--show");
 }
 
 //To hide menu
 function hideMenu() {
-  menuElement.classList.remove("show");
-  menuOverlayElement.classList.remove("show");
+  menuElement.classList.remove("menu--show");
+  menuOverlayElement.classList.remove("menu__overlay--show");
 }
 
 menuIconElement.addEventListener("click", showMenu, false);
@@ -58,17 +47,20 @@ menuOverlayElement.addEventListener("click", hideMenu, false);
 
   //Get weather info via `Fetch API`
   function fetchWeatherInfo() {
-    var url = 'http://api.openweathermap.org/data/2.5/weather?q=Bangalore,India&appid=' + apiKey;
+    var url = 'http://api.openweathermap.org/data/2.5/weather?q=Bangalore,India&units=metric&appid=' + apiKey;
 
     fetch(url, { method: 'GET' })
     .then(function(resp){ return resp.json() })
       .then(function(res) {
         console.log(res);
-        cardElement.querySelector('.card-title span').textContent = res.name + ', ' + res.sys.country;
-        cardElement.querySelector('.card-wind-info span').textContent = res.wind.speed + 'KM/H';
-        cardElement.querySelector('.card-humidity-info span').textContent = res.main.humidity + "%";
-        cardElement.querySelector('.card-max-temp span').textContent = res.main.temp_max;
-        cardElement.querySelector('.card-min-temp span').textContent = res.main.temp_min;
+        var weatherIconName = (res.weather && res.weather[0] ? res.weather[0].icon :  "");
+        var weatherImgUrl = 'http://openweathermap.org/img/w/' + weatherIconName + '.png';
+        cardElement.querySelector('.card__title').textContent = res.name + ', ' + res.sys.country;
+        cardElement.querySelector('.card__desc').textContent = res.weather && res.weather[0].main;
+        cardElement.querySelector('.card__img').setAttribute('src', weatherImgUrl);
+        cardElement.querySelector('.card__wind span').textContent = res.wind.speed + 'KM/H';
+        cardElement.querySelector('.card__humidity span').textContent = res.main.humidity + "%";
+        cardElement.querySelector('.card__temp span').textContent = res.main.temp + ' °C';
       })
       .catch(function (error) {
         console.error(error);
