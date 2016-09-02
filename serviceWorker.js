@@ -1,7 +1,7 @@
 'use strict';
 
 //Cache polyfil to support cacheAPI in all browsers
-importScripts('/cache-polyfill.js');
+importScripts('./cache-polyfill.js');
 
 var cacheName = 'initial-cache-v1';
 
@@ -13,7 +13,9 @@ var files = [
   './css/styles.css',
   'https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700', //caching 3rd party content
   './images/icons/android-chrome-192x192.png',
-  './js/all.js',
+  './js/app.js',
+  './js/main.js',
+  './js/snackbar.js',
   './manifest.json'
 ];
 
@@ -120,6 +122,7 @@ self.addEventListener('sync', function(event) {
       //To check all opened tabs and send postMessage to those tabs
       self.clients.matchAll().then(function (all) {
         return all.map(function (client) {
+          self.registration.showNotification("Syncing application in background.");
           return client.postMessage('online'); //To make fetch event for failed request
         })
       })
