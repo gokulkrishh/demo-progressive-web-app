@@ -357,7 +357,7 @@ button:disabled {
 }
 
 .card__title {
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .card__temp {
@@ -402,4 +402,37 @@ button:disabled {
 
 .fab:active {
   background: rgba(2, 136, 209, 0.91);
+}
+
+.add__card {
+  margin: 10px auto;
+  text-align: center;
+  max-resolution: 100px;
+}
+
+.add__input {
+  width: 230px;
+  height: 35px;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+  font-size: 13px;
+  margin-right: 10px;
+}
+
+.add__btn {
+  height: 34px;
+  min-width: 70px;
+}
+
+.add__card ul,
+.add__card li {
+  width: 280px;
+  list-style-type: decimal;
+  text-align: left;
+  margin: 15px auto;
+}
+
+.add__card p {
+  font-weight: 500;
+  font-size: 18px;
 }

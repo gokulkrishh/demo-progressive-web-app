@@ -1,6 +1,6 @@
 //Push notification button
 var notificationBtnElement = document.getElementById('turn-on-notification');
-var pushBtnElement = document.getElementById("send-push");
+var pushBtnElement = document.querySelector('.send-push');
 
 //API key & GCM Token
 var apiKey = 'AIzaSyCjrU5SqotSg2ybDLK_7rMMt9Rv0dMusvY'; //replace with your own key
@@ -8,8 +8,7 @@ var gcmURL = 'https://android.googleapis.com/gcm/send';
 
 //To check `push notification` is supported
 function isPushSupported(swRegistration) {
-
-  //To check if `push notification` is denied by user or not
+  //To check `push notification` permission is denied by user
   if (Notification.permission === 'denied') {
     console.warn('User has blocked push notification.');
     return;
@@ -33,7 +32,7 @@ function isPushSupported(swRegistration) {
     }
   })
   .catch(function (error) {
-    console.error("Error occurred while enable push ", error);
+    console.error('Error occurred while enabling push ', error);
   });
 }
 
@@ -46,6 +45,7 @@ function subscribePush() {
       return;
     }
 
+    //To subscribe `push notification` from push manager
     registration.pushManager.subscribe({
       userVisibleOnly: true //Always show notification when received
     })
@@ -63,6 +63,7 @@ function subscribePush() {
 function unsubscribePush() {
   navigator.serviceWorker.ready
   .then(function(registration) {
+    //Get `push subscription`
     registration.pushManager.getSubscription()
     .then(function (subscription) {
       //If no `push subscription`, then return
@@ -123,10 +124,13 @@ function curlCommand(subscription) {
 function sendPushNotification(subscription) {
   navigator.serviceWorker.ready
     .then(function(registration) {
+      //Get `push subscription`
       registration.pushManager.getSubscription()
       .then(function (subscription) {
-        curlCommand(subscription); //To log curl command in console
-        fetch('/send_notification', {
+        curlCommand(subscription); //To log curl command
+
+        //Send `push notification` - source for below url `server.js`
+        fetch('https://progressive-web-application.herokuapp.com/send_notification', {
           method: 'post',
           headers: {
             'Accept': 'application/json',

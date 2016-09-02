@@ -46,8 +46,9 @@ self.addEventListener('fetch', function (event) {
   console.info('Event: Fetch');
 
   var request = event.request;
+  var requestURL = new URL(request.url);
 
-  //Tell the browser to wait for network request and respond with below
+  //Tell the browser to wait for newtwork request and respond with below
   event.respondWith(
     //If request is already in cache, return it
     caches.match(request).then(function(response) {
@@ -95,7 +96,7 @@ self.addEventListener('push', function(event) {
   var body = {
     'body': 'click to return to application',
     'tag': 'demo',
-    'icon': '/images/icons/apple-touch-icon.png',
+    'icon': './images/icons/apple-touch-icon.png',
     //Custom actions buttons
     'actions': [
       { "action": "yes", "title": "I ♥ this app!"},
@@ -104,6 +105,29 @@ self.addEventListener('push', function(event) {
   };
 
   event.waitUntil(self.registration.showNotification(title, body));
+});
+
+/*
+  BACKGROUND SYNC EVENT: triggers after `background sync` is registration.
+*/
+
+self.addEventListener('sync', function(event) {
+  console.info('Event: Sync');
+
+  //Check if registered sync name or if emulated from devTools
+  if (event.tag === 'weatherCard' || event.tag === 'test-tag-from-devtools') {
+    event.waitUntil(
+      //To check all opened tabs and send postMessage to those tabs
+      self.clients.matchAll().then(function (all) {
+        return all.map(function (client) {
+          return client.postMessage('online'); //To make fetch event for failed request
+        })
+      })
+      .catch(function (err) {
+        console.error(err);
+      })
+    );
+  }
 });
 
 /*

@@ -44,7 +44,7 @@
       <p class="custom__button">
         <input id="turn-on-notification" type="checkbox" hidden="hidden" class="custom__input" data-checked="">
         <label for="turn-on-notification" class="custom__checkbox"></label>
-        <button class="no--select" id="send-push" disabled>Send Push Notification</button>
+        <button class="no--select send-push" disabled>Send Push Notification</button>
       </p>
 
       <div class="card">
@@ -60,6 +60,18 @@
       </div>
 
       <button class="fab">+</button>
+    </div>
+
+    <div class="add__card">
+      <p>Emulate Background Sync</p>
+      <ul>
+        <li>Go offline, try to add a city and click add.</li>
+        <li>Go to application tab in chrome devTools, navigate to serviceWorker tab.</p></li>
+        <li>Click `sync` button to emulate sync.</li>
+        <li>Above card will be updated as per your input.</li>
+      </ul>
+      <input type="text" class="add__input" placeholder="Enter a city to add weather card" />
+      <button class="add__btn">Add</button>
     </div>
 
     <div class="snackbar">
@@ -82,7 +94,7 @@
   }
   </script>
   <script src="./js/snackbar.js"></script>
-  <script src="./js/app.js"></script>
   <script src="./js/main.js"></script>
+  <script src="./js/app.js"></script>
   </body>
 </html>
