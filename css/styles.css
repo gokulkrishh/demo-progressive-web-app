@@ -337,6 +337,8 @@ button:disabled {
 
 .card__container {
   margin-top: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card {
@@ -351,23 +353,24 @@ button:disabled {
 
 .card__title,
 .card__desc {
-  display: inline-block;
+  display: block;
   font-style: italic;
   font-size: 14px;
+  text-align: center;
 }
 
 .card__title {
   margin-left: 5px;
+  font-weight: 500;
 }
 
 .card__temp {
-  font-size: 30px;
   padding: 20px;
   padding-bottom: 10px;
 }
 
-.card__wind,
-.card__humidity {
+.card__following,
+.card__followers {
   padding: 10px 20px 5px;
 }
 
@@ -377,9 +380,27 @@ button:disabled {
 }
 
 .card__img {
-  width: 40px;
-  height: 40px;
-  margin-left: 15px;
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin: 20px auto 10px;
+  border-radius: 50%;
+}
+
+.card b {
+  margin-right: 5px;
+}
+
+.card__temp,
+.card__followers,
+.card__following {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+}
+
+.card__followers {
+  margin-bottom: 20px;
 }
 
 .fab {
@@ -407,7 +428,7 @@ button:disabled {
 .add__card {
   margin: 10px auto;
   text-align: center;
-  max-resolution: 100px;
+  margin-bottom: 100px;
 }
 
 .add__input {
@@ -417,11 +438,13 @@ button:disabled {
   padding-left: 10px;
   font-size: 13px;
   margin-right: 10px;
+  margin-top: 30px;
 }
 
 .add__btn {
   height: 34px;
   min-width: 70px;
+  margin-top: 30px;
 }
 
 .add__card ul,
@@ -435,4 +458,9 @@ button:disabled {
 .add__card p {
   font-weight: 500;
   font-size: 18px;
+  margin-top: 40px;
+}
+
+.card span {
+  display: block;
 }

@@ -49,20 +49,21 @@
 
       <div class="card">
         <div class="card__container">
+          <img alt="avatar" class="card__img">
+          <p class="card__title"></p>
+          <p class="card__desc"></p>
           <p class="card__temp">
-            <span></span>
-            <span class="card__title"></span>
+            <b>Company: </b><span></span>
           </p>
-          <img alt="weather description" class="card__img"><span class="card__desc"></span>
-          <p class="card__wind"><b>Wind: </b><span></span></p>
-          <p class="card__humidity"><b>Humidity: </b><span></span></p>
+          <p class="card__following"><b>Following: </b><span></span></p>
+          <p class="card__followers"><b>Followers: </b><span></span></p>
         </div>
       </div>
-
-      <button class="fab">+</button>
     </div>
 
     <div class="add__card">
+      <input type="text" class="add__input" placeholder="Enter a github username" />
+      <button class="add__btn">Add</button>
       <p>Emulate Background Sync</p>
       <ul>
         <li>Go offline, try to add a city and click add.</li>
@@ -70,8 +71,6 @@
         <li>Click `sync` button to emulate sync.</li>
         <li>Above card will be updated as per your input.</li>
       </ul>
-      <input type="text" class="add__input" placeholder="Enter a city to add weather card" />
-      <button class="add__btn">Add</button>
     </div>
 
     <div class="snackbar">

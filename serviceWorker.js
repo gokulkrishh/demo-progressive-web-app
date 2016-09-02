@@ -122,7 +122,6 @@ self.addEventListener('sync', function(event) {
       //To check all opened tabs and send postMessage to those tabs
       self.clients.matchAll().then(function (all) {
         return all.map(function (client) {
-          self.registration.showNotification("Syncing application in background.");
           return client.postMessage('online'); //To make fetch event for failed request
         })
       })

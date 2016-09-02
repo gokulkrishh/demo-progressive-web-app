@@ -12,7 +12,7 @@
     "node": "4.1.1"
   },
   "scripts": {
-    "start": "npm run build && node server.js",
+    "start": "npm run css && node server.js",
     "css": "postcss -u autoprefixer -r css/*",
     "js": "mkdir -p dist/js && uglifyjs 'js/snackbar.js' 'js/app.js' 'js/main.js' -m -o js/all.js",
     "build": "npm run css && npm run js",

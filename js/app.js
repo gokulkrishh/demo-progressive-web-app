@@ -17,7 +17,6 @@
     }
     else {
       headerElement.classList.add('app__offline');
-      showSnackBar('offline');
     }
   }
 
@@ -81,29 +80,27 @@
   }
 
   //Get weather info via `Fetch API`
-  function fetchWeatherInfo(name) {
-    var place = name || 'Bangalore, India';
+  function fetchWeatherInfo(username) {
+    var name = username || 'gokulkrishh';
 
-    var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + place + '&units=metric&appid=' + apiKey;
+    var url = 'https://api.github.com/users/' + name;
 
     fetch(url, { method: 'GET' })
     .then(function(resp){ return resp.json() })
       .then(function(res) {
-        var weatherIconName = (res.weather && res.weather[0] ? res.weather[0].icon :  "");
-        var weatherImgUrl = 'http://openweathermap.org/img/w/' + weatherIconName + '.png';
-        cardElement.querySelector('.card__title').textContent = res.name + ', ' + res.sys.country;
-        cardElement.querySelector('.card__desc').textContent = res.weather && res.weather[0].main;
-        cardElement.querySelector('.card__img').setAttribute('src', weatherImgUrl);
-        cardElement.querySelector('.card__wind span').textContent = res.wind.speed + 'KM/H';
-        cardElement.querySelector('.card__humidity span').textContent = res.main.humidity + "%";
-        cardElement.querySelector('.card__temp span').textContent = res.main.temp + ' °C';
+        cardElement.querySelector('.card__title').textContent = res.name;
+        cardElement.querySelector('.card__desc').textContent = res.bio;
+        cardElement.querySelector('.card__img').setAttribute('src', res.avatar_url);
+        cardElement.querySelector('.card__following span').textContent = res.following;
+        cardElement.querySelector('.card__followers span').textContent = res.followers;
+        cardElement.querySelector('.card__temp span').textContent = res.company;
         localStorage.removeItem("failed-request"); //Once API is success, remove if failed-request is present
       })
       .catch(function (error) {
         //If user is offline and sent a request, store it in localStorage
         //Once user comes online, trigger bg sync fetch from application tab to make the failed request
         if (!navigator.onLine) {
-          localStorage.setItem("failed-request", place);
+          localStorage.setItem("failed-request", name);
         }
         console.error(error);
       });
