@@ -29,7 +29,7 @@
 
   - [x] - Service Worker
 
-  - [x] - Splash screen, Add to home screen,.
+  - [x] - Splash screen, Add to home screen, standalone mode.
 
   - [x] - Push notification
 
@@ -45,6 +45,8 @@
 1. [Google Developer Site](https://developers.google.com/web/progressive-web-apps)
 
 1. [Offline cookbook](https://jakearchibald.com/2014/offline-cookbook/)
+
+1. [BG Sync](https://ponyfoo.com/articles/backgroundsync)
 
 
 ## Author

@@ -10,6 +10,7 @@
   var cardElement = document.querySelector('.card');
   var addCardBtnElement = document.querySelector('.add__btn');
   var addCardInputElement = document.querySelector('.add__input');
+  var bgSyncElement = document.querySelector('.bg-sync__text');
 
   //To update network status
   function updateNetworkStatus() {
@@ -40,6 +41,7 @@
     var userInput = addCardInputElement.value;
     if (userInput === '') return;
     addCardInputElement.value = '';
+    localStorage.setItem('request', userInput);
     fetchWeatherInfo(userInput);
   }
 
@@ -51,7 +53,7 @@
   addCardBtnElement.addEventListener('click', addWeatherCard, false);
 
   //After DOM Loaded, check for offline/online status
-  document.addEventListener("DOMContentLoaded", function(event) {
+  document.addEventListener('DOMContentLoaded', function(event) {
     //While loading the app or onrefresh to check status
     if (!navigator.onLine) {
       updateNetworkStatus();
@@ -81,7 +83,11 @@
           })
           .then(function () {
             //Registering `background sync` event
-            return registration.sync.register('weatherCard'); //`weatherCard` is sync tag name
+            return registration.sync.register('github') //`github` is sync tag name
+              .then(function () {
+                console.info('Background sync registered!');
+                bgSyncElement.removeAttribute('hidden'); //Show registered text to user
+              });
           })
         }
       })
@@ -109,14 +115,12 @@
       .catch(function (error) {
         //If user is offline and sent a request, store it in localStorage
         //Once user comes online, trigger bg sync fetch from application tab to make the failed request
-        if (!navigator.onLine) {
-          localStorage.setItem('request', name);
-        }
+        localStorage.setItem('request', name);
         console.error(error);
       });
   }
 
-  //Listen postMessage from `background sync`
+  //Listen postMessage when `background sync` is triggered
   navigator.serviceWorker.addEventListener('message', function (event) {
     console.info('From background sync: ', event.data);
     fetchWeatherInfo(localStorage.getItem('request'));

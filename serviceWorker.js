@@ -111,19 +111,21 @@ self.addEventListener('push', function(event) {
 });
 
 /*
-  BACKGROUND SYNC EVENT: triggers after `background sync` is registration.
+  BACKGROUND SYNC EVENT: triggers after `bg sync` registration and page has network connection.
+  It will try and fetch github username, if its fulfills then sync is complete. If it fails,
+  another sync is scheduled to retry (will will also waits for network connection)
 */
 
 self.addEventListener('sync', function(event) {
   console.info('Event: Sync');
 
   //Check registered sync name or emulated sync from devTools
-  if (event.tag === 'weatherCard' || event.tag === 'test-tag-from-devtools') {
+  if (event.tag === 'github' || event.tag === 'test-tag-from-devtools') {
     event.waitUntil(
       //To check all opened tabs and send postMessage to those tabs
       self.clients.matchAll().then(function (all) {
         return all.map(function (client) {
-          return client.postMessage('online'); //To make fetch event for failed request
+          return client.postMessage('online'); //To make fetch request, check app.js - line no: 122
         })
       })
       .catch(function (err) {

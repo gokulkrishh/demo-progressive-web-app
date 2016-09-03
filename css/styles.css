@@ -494,3 +494,19 @@ button:disabled {
           flex-direction: row;
   margin-bottom: 20px;
 }
+
+.bg-sync__text {
+  font-size: 12px;
+  padding-left: 5px;
+  color: #008000;
+}
+
+
+.custom__button-bg {
+  width: 90px;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  float: right;
+  margin-top: -6px;
+}

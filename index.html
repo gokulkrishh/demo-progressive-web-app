@@ -68,7 +68,9 @@
       </div>
 
       <div class="add__card">
-        <h3>Emulate Background Sync:</h3>
+        <h3>Enable Background Sync:
+          <span class="bg-sync__text" hidden>Registered</span>
+        </h3>
         <ul>
           <li>Go offline, enter a git username and click add.</li>
           <li>Go to application tab in chrome devTools, navigate to serviceWorker tab.</li>
@@ -91,10 +93,10 @@
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register('./serviceWorker.js', { scope: "./" }) //setting scope of sw
     .then(function (registration) {
-      console.info('service worker is registered');
+      console.info('Service worker is registered!');
     })
     .catch(function (error) {
-      console.error('service worker failed ', error);
+      console.error('Service worker failed ', error);
     });
   }
   </script>
