@@ -13,6 +13,8 @@ var files = [
   './css/styles.css',
   'https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700', //caching 3rd party content
   './images/icons/android-chrome-192x192.png',
+  './images/icons/favicon-16x16.png',
+  './images/icons/favicon-32x32.png',
   './js/app.js',
   './js/main.js',
   './js/snackbar.js',
@@ -46,9 +48,8 @@ self.addEventListener('install', function (event) {
 //Adding `fetch` event listener
 self.addEventListener('fetch', function (event) {
   console.info('Event: Fetch');
-
+  
   var request = event.request;
-  var requestURL = new URL(request.url);
 
   //Tell the browser to wait for newtwork request and respond with below
   event.respondWith(
@@ -116,7 +117,7 @@ self.addEventListener('push', function(event) {
 self.addEventListener('sync', function(event) {
   console.info('Event: Sync');
 
-  //Check if registered sync name or if emulated from devTools
+  //Check registered sync name or emulated sync from devTools
   if (event.tag === 'weatherCard' || event.tag === 'test-tag-from-devtools') {
     event.waitUntil(
       //To check all opened tabs and send postMessage to those tabs
@@ -138,7 +139,9 @@ self.addEventListener('sync', function(event) {
 
 //Adding `notification` click event listener
 self.addEventListener('notificationclick', function(event) {
-  //Listen to custom actions buttons
+  var appURL = new URL('/', location).href;
+
+  //Listen to custom action buttons in push notification
   if (event.action === 'yes') {
     console.log('I ♥ this app!');
   }
@@ -146,26 +149,24 @@ self.addEventListener('notificationclick', function(event) {
     console.warn('I don\'t like this app');
   }
 
+  event.notification.close(); //Close the notification
+
   //To open the app after clicking notification
   event.waitUntil(
-    clients.matchAll({
-      type: 'window'
-    })
+    clients.matchAll()
     .then(function(clients) {
       for (var i = 0; i < clients.length; i++) {
         var client = clients[i];
         //If site is opened, focus to the site
-        if ('focus' in client && !client.focused) {
-          event.notification.close();
+        if (client.url === appURL) {
           return client.focus();
-        }
-        //If site is not opened, open in new tab
-        if (clients.openWindow) {
-          return clients.openWindow('/');
         }
       }
 
-      event.notification.close(); //Close the notification
+      //If site is cannot be opened, open in new window
+      if (clients.openWindow) {
+        return clients.openWindow('/');
+      }
     })
     .catch(function (err) {
       console.error(err);

@@ -3,7 +3,7 @@
 
   var apiKey = '428a20d6f31803d62bc3d29c0eff0937';
   var headerElement = document.querySelector('header');
-  var metaTagTheme = document.querySelector("meta[name='theme-color']");
+  var metaTagTheme = document.querySelector('meta[name=theme-color]');
   var menuIconElement = document.querySelector('.header__icon');
   var menuElement = document.querySelector('.menu');
   var menuOverlayElement = document.querySelector('.menu__overlay');
@@ -14,41 +14,41 @@
   //To update network status
   function updateNetworkStatus() {
     if (navigator.onLine) {
-      metaTagTheme.setAttribute('theme-color', '#0288d1');
+      metaTagTheme.setAttribute('content', '#0288d1');
       headerElement.classList.remove('app__offline');
     }
     else {
-      metaTagTheme.setAttribute('theme-color', '#6b6b6b');
+      metaTagTheme.setAttribute('content', '#6b6b6b');
       headerElement.classList.add('app__offline');
     }
   }
 
   //To show menu
   function showMenu() {
-    menuElement.classList.add("menu--show");
-    menuOverlayElement.classList.add("menu__overlay--show");
+    menuElement.classList.add('menu--show');
+    menuOverlayElement.classList.add('menu__overlay--show');
   }
 
   //To hide menu
   function hideMenu() {
-    menuElement.classList.remove("menu--show");
-    menuOverlayElement.classList.remove("menu__overlay--show");
+    menuElement.classList.remove('menu--show');
+    menuOverlayElement.classList.remove('menu__overlay--show');
   }
 
   //Add weather card from user
   function addWeatherCard() {
     var userInput = addCardInputElement.value;
-    if (userInput === "") return;
-    addCardInputElement.value = "";
+    if (userInput === '') return;
+    addCardInputElement.value = '';
     fetchWeatherInfo(userInput);
   }
 
   //Menu click event
-  menuIconElement.addEventListener("click", showMenu, false);
-  menuOverlayElement.addEventListener("click", hideMenu, false);
+  menuIconElement.addEventListener('click', showMenu, false);
+  menuOverlayElement.addEventListener('click', hideMenu, false);
 
   //Add card click event
-  addCardBtnElement.addEventListener("click", addWeatherCard, false);
+  addCardBtnElement.addEventListener('click', addWeatherCard, false);
 
   //Check network status
   window.addEventListener('online', updateNetworkStatus, false);
@@ -85,7 +85,6 @@
   //Get weather info via `Fetch API`
   function fetchWeatherInfo(username) {
     var name = username || 'gokulkrishh';
-
     var url = 'https://api.github.com/users/' + name;
 
     fetch(url, { method: 'GET' })
@@ -97,13 +96,13 @@
         cardElement.querySelector('.card__following span').textContent = res.following;
         cardElement.querySelector('.card__followers span').textContent = res.followers;
         cardElement.querySelector('.card__temp span').textContent = res.company;
-        localStorage.removeItem("failed-request"); //Once API is success, remove if failed-request is present
+        localStorage.removeItem('request'); //Once API is success, remove request data from localStorage
       })
       .catch(function (error) {
         //If user is offline and sent a request, store it in localStorage
         //Once user comes online, trigger bg sync fetch from application tab to make the failed request
         if (!navigator.onLine) {
-          localStorage.setItem("failed-request", name);
+          localStorage.setItem('request', name);
         }
         console.error(error);
       });
@@ -112,7 +111,7 @@
   //Listen postMessage from `background sync`
   navigator.serviceWorker.addEventListener('message', function (event) {
     console.info('From background sync: ', event.data);
-    fetchWeatherInfo(localStorage.getItem("failed-request"));
+    fetchWeatherInfo(localStorage.getItem('request'));
   });
 
 
