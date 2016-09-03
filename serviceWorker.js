@@ -48,7 +48,7 @@ self.addEventListener('install', function (event) {
 //Adding `fetch` event listener
 self.addEventListener('fetch', function (event) {
   console.info('Event: Fetch');
-  
+
   var request = event.request;
 
   //Tell the browser to wait for newtwork request and respond with below
@@ -164,9 +164,7 @@ self.addEventListener('notificationclick', function(event) {
       }
 
       //If site is cannot be opened, open in new window
-      if (clients.openWindow) {
-        return clients.openWindow('/');
-      }
+      return clients.openWindow('/');
     })
     .catch(function (err) {
       console.error(err);

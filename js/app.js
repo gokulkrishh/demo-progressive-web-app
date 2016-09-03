@@ -50,9 +50,17 @@
   //Add card click event
   addCardBtnElement.addEventListener('click', addWeatherCard, false);
 
-  //Check network status
-  window.addEventListener('online', updateNetworkStatus, false);
-  window.addEventListener('offline', updateNetworkStatus, false);
+  //After DOM Loaded, check for offline/online status
+  document.addEventListener("DOMContentLoaded", function(event) {
+    //While loading the app or onrefresh to check status
+    if (!navigator.onLine) {
+      updateNetworkStatus();
+    }
+    window.addEventListener('online', updateNetworkStatus, false);
+    window.addEventListener('offline', updateNetworkStatus, false);
+  });
+
+
 
   //To register 'BG Sync' and check 'push notification' support
   function registerBGSync() {
