@@ -145,12 +145,10 @@ header {
   bottom: 0;
   box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.4);
   z-index: 1;
-  -webkit-transition: -webkit-transform 0.33s cubic-bezier(0, 0, 0.30, 1);
-  transition: -webkit-transform 0.33s cubic-bezier(0, 0, 0.30, 1);
-  transition: transform 0.33s cubic-bezier(0, 0, 0.30, 1);
-  transition: transform 0.33s cubic-bezier(0, 0, 0.30, 1), -webkit-transform 0.33s cubic-bezier(0, 0, 0.30, 1);
-  -webkit-transform: translateX(-103%);
-  transform: translateX(-103%);
+  -webkit-transition: all 0.33s ease-in;
+  transition: all 0.33s ease-in;
+  -webkit-transform: translateX(-101%);
+  transform: translateX(-101%);
   will-change: transform;
   z-index: 2;
 }
