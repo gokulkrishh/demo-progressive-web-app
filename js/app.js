@@ -3,6 +3,7 @@
 
   var apiKey = '428a20d6f31803d62bc3d29c0eff0937';
   var headerElement = document.querySelector('header');
+  var metaTagTheme = document.querySelector("meta[name='theme-color']");
   var menuIconElement = document.querySelector('.header__icon');
   var menuElement = document.querySelector('.menu');
   var menuOverlayElement = document.querySelector('.menu__overlay');
@@ -13,9 +14,11 @@
   //To update network status
   function updateNetworkStatus() {
     if (navigator.onLine) {
+      metaTagTheme.setAttribute('theme-color', '#0288d1');
       headerElement.classList.remove('app__offline');
     }
     else {
+      metaTagTheme.setAttribute('theme-color', '#6b6b6b');
       headerElement.classList.add('app__offline');
     }
   }
