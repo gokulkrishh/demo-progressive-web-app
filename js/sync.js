@@ -3,7 +3,7 @@
 
   var bgSyncTextElement = document.querySelector('.bg-sync__text');
   var bgSyncElement = document.querySelector('.custom__button-bg');
-  var bgSyncBtnElement = document.querySelector('#turn-on-bg');
+  var bgSyncBtnElement = document.querySelector('.turn-on-sync');
 
   bgSyncBtnElement.addEventListener('click', function () {
     window.registerBGSync();

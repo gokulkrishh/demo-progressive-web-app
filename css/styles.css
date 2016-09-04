@@ -69,10 +69,6 @@ body {
   margin: 0;
 }
 
-.spinner {
-  text-align: center;
-}
-
 .app-layout {
   position: absolute;
   top: 0;
@@ -357,12 +353,13 @@ button:disabled {
 
 .card {
   width: 280px;
-  min-height: 200px;
+  min-height: 280px;
   background: #fff;
   margin: 20px auto;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
   border-radius: 2px;
   font-family: 'Roboto', arial, sans-serif;
+  position: relative;
 }
 
 .card__title,
@@ -471,7 +468,6 @@ button:disabled {
 .add__card ul,
 .add__card li {
   width: 280px;
-  list-style-type: decimal;
   text-align: left;
   margin: 15px auto;
 }
@@ -520,4 +516,40 @@ b i a {
 
 .add__card ul + p {
   margin-top: 20px;
+}
+
+.card__spinner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.16);
+  display: none;
+}
+
+.card__spinner::after {
+  content: "Loading...";
+  color: #1E88E5;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  text-align: center;
+  line-height: 380px;
+  font-size: 18px;
+}
+
+.card__spinner.show {
+  display: block;
+}
+
+button.turn-on-sync {
+  min-width: 50px;
+  height: 28px;
+  margin-left: 10px;
 }

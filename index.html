@@ -51,6 +51,7 @@
       <h3>Fetch API: </h3>
 
       <div class="card">
+        <div class="card__spinner"></div>
         <div class="card__container">
           <img alt="avatar" class="card__img">
           <p class="card__title"></p>
@@ -72,22 +73,26 @@
         <h3>Enable OneTime BG Sync:
           <span class="bg-sync__text" hidden>Registered</span>
           <p class="custom__button custom__button-bg">
-            <input id="turn-on-bg" type="checkbox" hidden="hidden" class="custom__input">
-            <label for="turn-on-bg" class="custom__checkbox"></label>
+            <button class="turn-on-sync">Register</button>
           </p>
         </h3>
+        <p>In chrome dev channel, Android</p>
         <ul>
-          <li>Go offline, enable BG Sync from above toggle button.</li>
-          <li>Enter a git username and click add.</li>
-          <li>Go online now and sync will be triggered when user is back online and card will be updated.</li>
+          <li><b>Step 1:</b> Go offline.</li>
+          <li><b>Step 2:</b> Register BG Sync from above register button.<li>
+          <li><b>Step 3:</b> Enter a git username and click add.</li>
+          <li><b>Step 4:</b> Go online and sync will be triggered when user is gets connectivity and card will be updated.</li>
         </ul>
           <p>or Emulate via chrome devTools</p>
         <ul>
-          <li>Go to application tab in chrome canary devTools, navigate to serviceWorker tab.</li>
-          <li>Click `sync` button to emulate sync.</li>
-          <li>Above card will be updated as per your input.</li>
+          <li><b>Step 1: </b> Go offline and register BG Sync.</li>
+          <li><b>Step 2: </b>Go to application tab in chrome canary devTools, navigate to serviceWorker tab.</li>
+          <li><b>Step 3: </b>Go online and click `sync` button to emulate sync.</li>
+          <li><b>Step 4: </b>Above card will be updated as per your input.</li>
         </ul>
       </div>
+
+      <div class="card__spinner"></div>
 
       <div class="snackbar">
         <p class="snackbar__msg no--select"></p>

@@ -10,6 +10,9 @@
   var cardElement = document.querySelector('.card');
   var addCardBtnElement = document.querySelector('.add__btn');
   var addCardInputElement = document.querySelector('.add__input');
+  var spinnerElement = document.querySelector('.card__spinner');
+  var bgSyncTextElement = document.querySelector('.bg-sync__text');
+  var bgSyncElement = document.querySelector('.custom__button-bg');
 
   //To update network status
   function updateNetworkStatus() {
@@ -67,6 +70,8 @@
     var name = username || 'gokulkrishh';
     var url = 'https://api.github.com/users/' + name;
 
+    spinnerElement.classList.add('show'); //show spinner
+
     fetch(url, { method: 'GET' })
     .then(function(fetchResponse){ return fetchResponse.json() })
       .then(function(response) {
@@ -79,11 +84,13 @@
         cardElement.querySelector('.card__following span').textContent = response.following;
         cardElement.querySelector('.card__followers span').textContent = response.followers;
         cardElement.querySelector('.card__temp span').textContent = response.company;
+        spinnerElement.classList.remove('show'); //hide spinner
       })
       .catch(function (error) {
         //If user is offline and sent a request, store it in localStorage
         //Once user comes online, trigger bg sync fetch from application tab to make the failed request
         localStorage.setItem('request', name);
+        spinnerElement.classList.remove('show'); //hide spinner
         console.error(error);
       });
   }
@@ -94,5 +101,7 @@
   navigator.serviceWorker.addEventListener('message', function (event) {
     console.info('From background sync: ', event.data);
     fetchGitUserInfo(localStorage.getItem('request'), true);
+    bgSyncElement.classList.remove('hide'); //Once sync event fires, show register toggle button
+    bgSyncTextElement.setAttribute('hidden', true); //Once sync event fires, remove registered label
   });
 })();
