@@ -5,6 +5,8 @@
 
 ### [Live](https://gokulkrishh.github.io/demo-progressive-web-app)
 
+![demo gif](https://github.com/gokulkrishh/demo-progressive-web-app/blob/master/demo.gif)
+
 ### Install
 
   1. git clone https://github.com/gokulkrishh/demo-progressive-web-app
