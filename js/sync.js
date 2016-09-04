@@ -11,8 +11,7 @@
         //Registering `background sync` event
         return registration.sync.register('github') //`github` is sync tag name
           .then(function (rs) {
-            console.info('Background sync registered!');
-            bgSyncBtnElement.classList.add('hide');
+            console.info('Background sync registered!')
             bgSyncTextElement.removeAttribute('hidden'); //Show registered text to user
           }, function () {
             console.error('Background sync registered failed.');

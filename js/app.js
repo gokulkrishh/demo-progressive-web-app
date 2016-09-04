@@ -36,7 +36,7 @@
     menuOverlayElement.classList.remove('menu__overlay--show');
   }
 
-  //Add weather card from user
+  //Add github user data to the card
   function addGitUserCard() {
     var userInput = addCardInputElement.value;
     if (userInput === '') return;
@@ -63,7 +63,7 @@
     window.addEventListener('offline', updateNetworkStatus, false);
   });
 
-  //Get weather info via `Fetch API`
+  //To get github user data via `Fetch API`
   function fetchGitUserInfo(username, requestFromBGSync) {
     var name = username || 'gokulkrishh';
     var url = 'https://api.github.com/users/' + name;
@@ -71,8 +71,8 @@
     fetch(url, { method: 'GET' })
     .then(function(fetchResponse){ return fetchResponse.json() })
       .then(function(response) {
-        if (requestFromBGSync) {
-          
+        if (!requestFromBGSync) {
+          localStorage.removeItem('request'); //Once API is success, remove request data from localStorage
         }
         cardElement.querySelector('.card__title').textContent = response.name;
         cardElement.querySelector('.card__desc').textContent = response.bio;
@@ -80,7 +80,6 @@
         cardElement.querySelector('.card__following span').textContent = response.following;
         cardElement.querySelector('.card__followers span').textContent = response.followers;
         cardElement.querySelector('.card__temp span').textContent = response.company;
-        localStorage.removeItem('request'); //Once API is success, remove request data from localStorage
       })
       .catch(function (error) {
         //If user is offline and sent a request, store it in localStorage
@@ -90,7 +89,7 @@
       });
   }
 
-  fetchGitUserInfo(); //Fetch weather data
+  fetchGitUserInfo(localStorage.getItem('request')); //Fetch github users data
 
   //Listen postMessage when `background sync` is triggered
   navigator.serviceWorker.addEventListener('message', function (event) {
