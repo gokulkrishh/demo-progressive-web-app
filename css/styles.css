@@ -145,8 +145,8 @@ header {
   bottom: 0;
   box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.4);
   z-index: 1;
-  -webkit-transition: all 0.33s ease-in;
-  transition: all 0.33s ease-in;
+  -webkit-transition: all 200ms ease-in;
+  transition: all 200ms ease-in;
   -webkit-transform: translateX(-101%);
   transform: translateX(-101%);
   will-change: transform;
