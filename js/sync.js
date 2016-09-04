@@ -2,12 +2,6 @@
   'use strict';
 
   var bgSyncTextElement = document.querySelector('.bg-sync__text');
-  var bgSyncElement = document.querySelector('#turn-on-sync');
-  var bgSyncBtnElement = document.querySelector('.custom__button-bg');
-
-  bgSyncElement.addEventListener('click', function () {
-    registerBGSync();
-  });
 
   //To register 'BG Sync' and check 'push notification' support
   window.registerBGSync = function() {

@@ -502,13 +502,3 @@ button:disabled {
   padding-left: 5px;
   color: #008000;
 }
-
-.custom__button.custom__button-bg {
-  padding: 0;
-  margin: 0;
-  display: inline-block;
-}
-
-.custom__button-bg.hide {
-  display: none;
-}

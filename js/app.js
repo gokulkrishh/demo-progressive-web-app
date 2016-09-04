@@ -72,7 +72,7 @@
     .then(function(fetchResponse){ return fetchResponse.json() })
       .then(function(response) {
         if (requestFromBGSync) {
-
+          
         }
         cardElement.querySelector('.card__title').textContent = response.name;
         cardElement.querySelector('.card__desc').textContent = response.bio;
