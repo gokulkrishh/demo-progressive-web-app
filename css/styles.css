@@ -215,7 +215,7 @@ header {
   bottom: -50px;
   left: 0;
   right: 0;
-  width: 280px;
+  width: 100%;
   min-height: 50px;
   background: #323232;
   color: #fff;
@@ -552,4 +552,10 @@ button.turn-on-sync {
   min-width: 50px;
   height: 28px;
   margin-left: 10px;
+}
+
+@media all and (min-width: 481px) {
+  .snackbar {
+    width: 320px;
+  }
 }
