@@ -1,4 +1,4 @@
-# Progressive Web Application
+# ![logo](https://gokulkrishh.github.io/demo-progressive-web-app/images/icons/android-chrome-192x192.png)  Progressive Web Application
 
 *Demo for progressive web application*
 
