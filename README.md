@@ -2,13 +2,9 @@
 
 *Demo for progressive web application*
 
-# [Live](https://gokulkrishh.github.io/demo-progressive-web-app)
+## [Live](https://gokulkrishh.github.io/demo-progressive-web-app)
 
-## Description
-
- A progressive web application which works in offline, has a splash screen, add to home screen, push notifications, background sync, fetch api etc,.
-
-## Install
+### Install
 
   1. git clone https://github.com/gokulkrishh/demo-progressive-web-app
 
