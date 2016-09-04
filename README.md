@@ -1,4 +1,4 @@
-# <p align="center"><img width="150px" height="150px" src="https://gokulkrishh.github.io/demo-progressive-web-app/images/icons/android-chrome-192x192.png"></p>
+### <p align="center"><img width="150px" height="150px" src="https://gokulkrishh.github.io/demo-progressive-web-app/images/icons/android-chrome-192x192.png"></p>
 # Progressive Web Application
 
 *A demo for progressive web application with features like offline contents, push notifications, background sync etc,*
