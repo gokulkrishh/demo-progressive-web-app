@@ -19,7 +19,7 @@
 
     setTimeout(function () {
       hideSnackBar();
-    }, 3000);
+    }, 13000);
   }
 
   function hideSnackBar() {

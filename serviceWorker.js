@@ -16,7 +16,8 @@ var files = [
   './images/icons/favicon-16x16.png',
   './images/icons/favicon-32x32.png',
   './js/app.js',
-  './js/main.js',
+  './js/push.js',
+  './js/sync.js',
   './js/snackbar.js',
   './manifest.json'
 ];

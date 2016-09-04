@@ -254,10 +254,14 @@ header {
 .snackbar__action {
   text-transform: uppercase;
   color: #f00;
-  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   margin-right: 15px;
+}
+
+.snackbar__action,
+.snackbar__msg {
+  font-size: 14px;
 }
 
 button {
@@ -499,12 +503,12 @@ button:disabled {
   color: #008000;
 }
 
-
-.custom__button-bg {
-  width: 90px;
-  display: inline-block;
-  margin: 0;
+.custom__button.custom__button-bg {
   padding: 0;
-  float: right;
-  margin-top: -6px;
+  margin: 0;
+  display: inline-block;
+}
+
+.custom__button-bg.hide {
+  display: none;
 }

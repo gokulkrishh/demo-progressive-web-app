@@ -10,7 +10,6 @@
   var cardElement = document.querySelector('.card');
   var addCardBtnElement = document.querySelector('.add__btn');
   var addCardInputElement = document.querySelector('.add__input');
-  var bgSyncElement = document.querySelector('.bg-sync__text');
 
   //To update network status
   function updateNetworkStatus() {
@@ -19,6 +18,7 @@
       headerElement.classList.remove('app__offline');
     }
     else {
+      showSnackBar("App is offline!");
       metaTagTheme.setAttribute('content', '#6b6b6b');
       headerElement.classList.add('app__offline');
     }
@@ -37,12 +37,13 @@
   }
 
   //Add weather card from user
-  function addWeatherCard() {
+  function addGitUserCard() {
     var userInput = addCardInputElement.value;
     if (userInput === '') return;
     addCardInputElement.value = '';
     localStorage.setItem('request', userInput);
-    fetchWeatherInfo(userInput);
+    window.registerBGSync(); //Register sync every time when user send a request
+    fetchGitUserInfo(userInput);
   }
 
   //Menu click event
@@ -50,7 +51,7 @@
   menuOverlayElement.addEventListener('click', hideMenu, false);
 
   //Add card click event
-  addCardBtnElement.addEventListener('click', addWeatherCard, false);
+  addCardBtnElement.addEventListener('click', addGitUserCard, false);
 
   //After DOM Loaded, check for offline/online status
   document.addEventListener('DOMContentLoaded', function(event) {
@@ -62,54 +63,23 @@
     window.addEventListener('offline', updateNetworkStatus, false);
   });
 
-
-
-  //To register 'BG Sync' and check 'push notification' support
-  function registerBGSync() {
-    //If `serviceWorker` is registered and ready
-    navigator.serviceWorker.ready
-      .then(function (registration) {
-        //Since `bg sync` is not supported by other
-        if ('SyncManager' in window) {
-          //To check push is supported and enabled
-          isPushSupported(registration);
-
-          //Request for `notification permission`, if user granted access then register `bg sync`.
-          Notification.requestPermission(function(result) {
-            if (result !== 'granted') {
-              console.error('Denied notification permission');
-              return result;
-            }
-          })
-          .then(function () {
-            //Registering `background sync` event
-            return registration.sync.register('github') //`github` is sync tag name
-              .then(function () {
-                console.info('Background sync registered!');
-                bgSyncElement.removeAttribute('hidden'); //Show registered text to user
-              });
-          })
-        }
-      })
-      .catch(function (err) {
-        console.error(err);
-      });
-  }
-
   //Get weather info via `Fetch API`
-  function fetchWeatherInfo(username) {
+  function fetchGitUserInfo(username, requestFromBGSync) {
     var name = username || 'gokulkrishh';
     var url = 'https://api.github.com/users/' + name;
 
     fetch(url, { method: 'GET' })
-    .then(function(resp){ return resp.json() })
-      .then(function(res) {
-        cardElement.querySelector('.card__title').textContent = res.name;
-        cardElement.querySelector('.card__desc').textContent = res.bio;
-        cardElement.querySelector('.card__img').setAttribute('src', res.avatar_url);
-        cardElement.querySelector('.card__following span').textContent = res.following;
-        cardElement.querySelector('.card__followers span').textContent = res.followers;
-        cardElement.querySelector('.card__temp span').textContent = res.company;
+    .then(function(fetchResponse){ return fetchResponse.json() })
+      .then(function(response) {
+        if (requestFromBGSync) {
+
+        }
+        cardElement.querySelector('.card__title').textContent = response.name;
+        cardElement.querySelector('.card__desc').textContent = response.bio;
+        cardElement.querySelector('.card__img').setAttribute('src', response.avatar_url);
+        cardElement.querySelector('.card__following span').textContent = response.following;
+        cardElement.querySelector('.card__followers span').textContent = response.followers;
+        cardElement.querySelector('.card__temp span').textContent = response.company;
         localStorage.removeItem('request'); //Once API is success, remove request data from localStorage
       })
       .catch(function (error) {
@@ -120,13 +90,11 @@
       });
   }
 
+  fetchGitUserInfo(); //Fetch weather data
+
   //Listen postMessage when `background sync` is triggered
   navigator.serviceWorker.addEventListener('message', function (event) {
     console.info('From background sync: ', event.data);
-    fetchWeatherInfo(localStorage.getItem('request'));
+    fetchGitUserInfo(localStorage.getItem('request'), true);
   });
-
-
-  fetchWeatherInfo(); //Fetch weather data
-  registerBGSync(); //Register BG Sync
 })();
