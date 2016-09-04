@@ -517,3 +517,7 @@ b i a {
   text-decoration: underline;
   color: #1E88E5;
 }
+
+.add__card ul + p {
+  margin-top: 20px;
+}
