@@ -1,14 +1,11 @@
+### <p align="center"><img width="150px" height="150px" src="https://gokulkrishh.github.io/demo-progressive-web-app/images/icons/android-chrome-192x192.png"></p>
 # Progressive Web Application
 
-*Demo for progressive web application*
+*A demo for progressive web application with features like offline contents, push notifications, background sync etc,*
 
-# [Live](https://gokulkrishh.github.io/demo-progressive-web-app)
+### [Live](https://gokulkrishh.github.io/demo-progressive-web-app)
 
-## Description
-
- A progressive web application which works in offline, has a splash screen, add to home screen, push notifications, background sync, fetch api etc,.
-
-## Install
+### Install
 
   1. git clone https://github.com/gokulkrishh/demo-progressive-web-app
 
@@ -20,16 +17,14 @@
     $ npm install && npm start
   ```
 
-  4. In browser, open [http://localhost:3000](localhost:3000)
-
-  5. Load the page, turn on airplane mode or offline network throttling. To see the cached resources offline.
+  4. In browser, open [http://localhost:3000](http://localhost:3000)
 
 
 ## Todo's
 
   - [x] - Service Worker
 
-  - [x] - Splash screen, Add to home screen, standalone mode.
+  - [x] - Splash screen, Add to home screen, Standalone mode.
 
   - [x] - Push notification
 
