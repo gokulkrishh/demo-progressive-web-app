@@ -68,13 +68,18 @@
       </div>
 
       <div class="add__card">
+        <b><i>Try BG Sync in <a href="https://www.google.com/chrome/browser/canary.html" target="_blank" rel="noopener">Chrome Canary</a> or <a href="https://play.google.com/store/apps/details?id=com.chrome.dev&hl=en" target="_blank" rel="noopener">Chrome Dev Channel</a> in Android</i></b>
         <h3>Enable OneTime BG Sync:
           <span class="bg-sync__text" hidden>Registered</span>
+          <p class="custom__button custom__button-bg">
+            <input id="turn-on-bg" type="checkbox" hidden="hidden" class="custom__input">
+            <label for="turn-on-bg" class="custom__checkbox"></label>
+          </p>
         </h3>
         <ul>
-          <li>Go offline</li>
+          <li>Go offline, enable BG Sync from above toggle button.</li>
           <li>Enter a git username and click add.</li>
-          <li>Go online now and sync will be triggered automatically and card will be updated. If not follow the below steps.</li>
+          <li>Go online now and sync will be triggered when user is back online and card will be updated.</li>
           <li>Go to application tab in chrome canary devTools, navigate to serviceWorker tab.</li>
           <li>Click `sync` button to emulate sync.</li>
           <li>Above card will be updated as per your input.</li>

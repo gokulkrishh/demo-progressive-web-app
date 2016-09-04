@@ -42,7 +42,6 @@
     if (userInput === '') return;
     addCardInputElement.value = '';
     localStorage.setItem('request', userInput);
-    window.registerBGSync(); //Register sync every time when user send a request
     fetchGitUserInfo(userInput);
   }
 
