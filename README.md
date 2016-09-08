@@ -5,7 +5,7 @@
 
 ### [Live](https://gokulkrishh.github.io/demo-progressive-web-app)
 
-### Install
+## Install
 
   1. git clone https://github.com/gokulkrishh/demo-progressive-web-app
 
@@ -37,21 +37,21 @@
   - [x] - Online/Offline events
 
 
-## List of PWA Apps
+### List of PWA Apps
 
 - [PWA Rocks](https://pwa.rocks/)
 
 - [Awesome PWA](https://github.com/hemanth/awesome-pwa)
 
 
-## My PWA Apps
+### My PWA Apps
 
 - [Anonymous Chat](https://github.com/gokulkrishh/anonymous-web)
 
 - [Barcode Scanner](https://github.com/code-kotis/barcode-scanner) 
 
 
-## Reference
+### Reference
 
 - [Google Developer Site](https://developers.google.com/web/progressive-web-apps)
 
