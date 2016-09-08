@@ -20,7 +20,7 @@
   4. In browser, open [http://localhost:3000](http://localhost:3000)
 
 
-## Todo's
+## Feature's
 
   - [x] - Service Worker
 
@@ -33,6 +33,8 @@
   - [x] - Background Sync
 
   - [x] - Fallback when offline
+  
+  - [x] - Online/Offline events
 
 
 ## Reference
