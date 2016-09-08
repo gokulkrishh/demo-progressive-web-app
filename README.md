@@ -44,7 +44,7 @@
 - [Awesome PWA](https://github.com/hemanth/awesome-pwa)
 
 
-## My other PWA's
+## My PWA Apps
 
 - [Anonymous Chat](https://github.com/gokulkrishh/anonymous-web)
 
