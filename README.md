@@ -20,7 +20,7 @@
   4. In browser, open [http://localhost:3000](http://localhost:3000)
 
 
-## Feature's
+## Features
 
   - [x] - Service Worker
 
@@ -37,30 +37,25 @@
   - [x] - Online/Offline events
 
 
+## List of PWA Apps
+
+- [PWA Rocks](https://pwa.rocks/)
+
+- [Awesome PWA](https://github.com/hemanth/awesome-pwa)
+
+
+## My other PWA's
+
+- [Anonymous Chat](https://github.com/gokulkrishh/anonymous-web)
+
+- [Barcode Scanner](https://github.com/code-kotis/barcode-scanner) 
+
+
 ## Reference
 
-1. [Google Developer Site](https://developers.google.com/web/progressive-web-apps)
+- [Google Developer Site](https://developers.google.com/web/progressive-web-apps)
 
-1. [Offline cookbook](https://jakearchibald.com/2014/offline-cookbook/)
-
-1. [BG Sync](https://ponyfoo.com/articles/backgroundsync)
+- [Offline cookbook](https://jakearchibald.com/2014/offline-cookbook/) 
 
 
-## Author
-
-[![Gokulakrishnan](https://avatars0.githubusercontent.com/u/2944237?v=3&s=72)](https://github.com/gokulkrishh)
-
-
-## Follow me
-
-[1.1]: http://i.imgur.com/tXSoThF.png (twitter icon with padding)
-[2.1]: http://i.imgur.com/P3YfQoD.png (facebook icon with padding)
-[3.1]: http://i.imgur.com/yCsTjba.png (google plus icon with padding)
-[4.1]: http://i.imgur.com/0o48UoR.png (github icon with padding)
-
-[1]: http://www.twitter.com/gokul_i
-[2]: http://www.facebook.com/gokulkrishh
-[3]: https://plus.google.com/+GokulKalaikoven
-[4]: http://www.github.com/gokulkrishh
-
-[![alt text][1.1]][1] [![alt text][2.1]][2] [![alt text][3.1]][3] [![alt text][4.1]][4]
+### MIT Licenced 
