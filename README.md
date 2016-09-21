@@ -59,4 +59,4 @@
 - [Offline cookbook](https://jakearchibald.com/2014/offline-cookbook/) 
 
 
-#### MIT Licenced 
+#### MIT Licensed 
