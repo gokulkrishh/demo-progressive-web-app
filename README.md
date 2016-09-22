@@ -14,7 +14,7 @@
 
   3. In terminal, type
 
-  ```
+  ```bash
     $ npm install && npm start
   ```
 
