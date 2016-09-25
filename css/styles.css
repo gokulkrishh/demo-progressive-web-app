@@ -141,8 +141,8 @@ header {
   bottom: 0;
   box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.4);
   z-index: 1;
-  -webkit-transition: all 200ms ease-in;
-  transition: all 200ms ease-in;
+  -webkit-transition: all 200ms cubic-bezier(0, 0, 0.30, 1);
+  transition: all 200ms cubic-bezier(0, 0, 0.30, 1);
   -webkit-transform: translateX(-101%);
   transform: translateX(-101%);
   will-change: transform;
@@ -229,8 +229,8 @@ header {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-transition: bottom 0.33s cubic-bezier(0, 0, 0.30, 1);
-  transition: bottom 0.33s cubic-bezier(0, 0, 0.30, 1);
+  -webkit-transition: bottom 0.30s cubic-bezier(0, 0, 0.30, 1);
+  transition: bottom 0.30s cubic-bezier(0, 0, 0.30, 1);
   will-change: transform;
   font-weight: 500;
   text-transform: capitalize;
@@ -432,7 +432,7 @@ button:disabled {
   text-align: center;
   display: block;
   box-shadow: 0 1px 2px 0 rgba(0,0,0,.12),0 1px 1px 0 rgba(0,0,0,.24);
-  font-size:1.5em;
+  font-size: 1.5em;
   min-width: initial;
   -webkit-tap-highlight-color: transparent;
 }
@@ -444,7 +444,6 @@ button:disabled {
 .add__card {
   margin: 40px auto;
   text-align: center;
-  margin-bottom: 100px;
 }
 
 .add__input {
@@ -466,7 +465,8 @@ button:disabled {
 }
 
 .add__card ul,
-.add__card li {
+.add__card li,
+.share__container li {
   width: 280px;
   text-align: left;
   margin: 15px auto;
@@ -558,4 +558,19 @@ button.turn-on-sync {
   .snackbar {
     width: 320px;
   }
+}
+
+.share__container a {
+  text-decoration: underline;
+  color: #1E88E5;
+}
+
+.share__container {
+  margin-bottom: 50px;
+}
+
+.share {
+  margin: 20px auto;
+  text-align: center;
+  display: block;
 }

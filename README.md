@@ -34,8 +34,10 @@
   - [x] - Background Sync
 
   - [x] - Fallback when offline
-  
+
   - [x] - Online/Offline events
+
+  - [x] - Share API
 
 
 #### List of PWA Apps
@@ -49,14 +51,16 @@
 
 - [Anonymous Chat](https://github.com/gokulkrishh/anonymous-web)
 
-- [Barcode Scanner](https://github.com/code-kotis/barcode-scanner) 
+- [Barcode Scanner](https://github.com/code-kotis/barcode-scanner)
 
 
 #### Reference
 
 - [Google Developer Site](https://developers.google.com/web/progressive-web-apps)
 
-- [Offline cookbook](https://jakearchibald.com/2014/offline-cookbook/) 
+- [Offline cookbook](https://jakearchibald.com/2014/offline-cookbook/)
+
+- [Share API](https://paul.kinlan.me/navigator.share/)
 
 
-#### MIT Licensed 
+##### MIT Licensed

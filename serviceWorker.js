@@ -19,6 +19,7 @@ var files = [
   './js/push.js',
   './js/sync.js',
   './js/snackbar.js',
+  './js/share.js',
   './manifest.json'
 ];
 
