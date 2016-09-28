@@ -4,7 +4,7 @@
 
 *A demo for progressive web application with features like offline contents, push notifications, background sync etc,*
 
-### [Live](https://gokulkrishh.github.io/demo-progressive-web-app)
+### [Live](https://demopwa.in)
 
 ### Install
 
@@ -40,21 +40,21 @@
   - [x] - Share API
 
 
-#### List of PWA Apps
+##### List of PWA Apps
 
 - [PWA Rocks](https://pwa.rocks/)
 
 - [Awesome PWA](https://github.com/hemanth/awesome-pwa)
 
 
-#### My PWA Apps
+##### My PWA Apps
 
 - [Anonymous Chat](https://github.com/gokulkrishh/anonymous-web)
 
 - [Barcode Scanner](https://github.com/code-kotis/barcode-scanner)
 
 
-#### Reference
+##### Reference
 
 - [Google Developer Site](https://developers.google.com/web/progressive-web-apps)
 
