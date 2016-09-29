@@ -4,7 +4,7 @@
 
 *A demo for progressive web application with features like offline contents, push notifications, background sync etc,*
 
-### [Live](https://gokulkrishh.github.io/demo-progressive-web-app)
+### [Live](https://demopwa.in)
 
 ### Install
 
