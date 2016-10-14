@@ -56,12 +56,13 @@ h3 {
   text-align: left;
   margin-top: 20px;
   margin-bottom: 30px;
+  font-weight: 500;
 }
 
 /* MAIN styles */
 
 body {
-  font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 1rem;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
@@ -358,9 +359,8 @@ button:disabled {
   min-height: 280px;
   background: #fff;
   margin: 20px auto;
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   border-radius: 2px;
-  font-family: 'Roboto', arial, sans-serif;
   position: relative;
 }
 
@@ -398,6 +398,11 @@ button:disabled {
   display: block;
   margin: 20px auto 10px;
   border-radius: 50%;
+}
+
+b {
+  font-family: inherit;
+  font-weight: 500;
 }
 
 .card b {
