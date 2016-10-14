@@ -129,7 +129,9 @@ header {
   color: #fff;
   font-size: 20px;
   -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
+  margin-left: 10px;
 }
 
 .menu {

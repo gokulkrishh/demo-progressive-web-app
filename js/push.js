@@ -61,7 +61,8 @@
         changePushStatus(true);
       })
       .catch(function (error) {
-        console.log('Push notification subscription error: ', error);
+        changePushStatus(false);
+        console.error('Push notification subscription error: ', error);
       })
     })
   }

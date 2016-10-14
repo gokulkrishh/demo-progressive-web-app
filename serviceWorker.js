@@ -102,6 +102,7 @@ self.addEventListener('push', function(event) {
     'body': 'click to return to application',
     'tag': 'demo',
     'icon': './images/icons/apple-touch-icon.png',
+    'badge': './images/icons/apple-touch-icon.png',
     //Custom actions buttons
     'actions': [
       { "action": "yes", "title": "I ♥ this app!"},
@@ -130,8 +131,8 @@ self.addEventListener('sync', function(event) {
           return client.postMessage('online'); //To make fetch request, check app.js - line no: 122
         })
       })
-      .catch(function (err) {
-        console.error(err);
+      .catch(function (error) {
+        console.error(error);
       })
     );
   }
@@ -143,7 +144,7 @@ self.addEventListener('sync', function(event) {
 
 //Adding `notification` click event listener
 self.addEventListener('notificationclick', function(event) {
-  var appURL = new URL('/', location).href;
+  var url = 'https://demopwa.in';
 
   //Listen to custom action buttons in push notification
   if (event.action === 'yes') {
@@ -157,21 +158,25 @@ self.addEventListener('notificationclick', function(event) {
 
   //To open the app after clicking notification
   event.waitUntil(
-    clients.matchAll()
+    clients.matchAll({
+      type: 'window'
+    })
     .then(function(clients) {
       for (var i = 0; i < clients.length; i++) {
         var client = clients[i];
         //If site is opened, focus to the site
-        if (client.url === appURL) {
+        if (client.url === url && 'focus' in client) {
           return client.focus();
         }
       }
 
       //If site is cannot be opened, open in new window
-      return clients.openWindow('/');
+      if (clients.openWindow) {
+        return clients.openWindow('/');
+      }
     })
-    .catch(function (err) {
-      console.error(err);
+    .catch(function (error) {
+      console.error(error);
     })
   );
 });
