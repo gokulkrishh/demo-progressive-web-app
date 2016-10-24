@@ -13,9 +13,12 @@ var files = [
   './css/styles.css',
   'https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700', //caching 3rd party content
   './images/icons/android-chrome-192x192.png',
+  './images/push-on.png',
+  './images/push-off.png',
   './images/icons/favicon-16x16.png',
   './images/icons/favicon-32x32.png',
   './js/app.js',
+  './js/offline.js',
   './js/push.js',
   './js/sync.js',
   './js/snackbar.js',
@@ -84,6 +87,22 @@ self.addEventListener('fetch', function (event) {
 //Adding `activate` event listener
 self.addEventListener('activate', function (event) {
   console.info('Event: Activate');
+
+  //Remove old and unwanted caches
+  event.waitUntil( 
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cache) {
+          if (cache !== cacheName) {     //cacheName = 'cache-v1'
+            caches.delete(cache); //Deleting the cache
+          }
+        })
+      )
+    })
+    .catch(function (error) {
+      console.error(error);
+    })
+  );
 
   //Active Service Worker to set itself as the active on current client and all other active clients.
   return self.clients.claim();

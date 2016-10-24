@@ -1,9 +1,6 @@
 (function () {
   'use strict';
 
-  var apiKey = '428a20d6f31803d62bc3d29c0eff0937';
-  var headerElement = document.querySelector('header');
-  var metaTagTheme = document.querySelector('meta[name=theme-color]');
   var menuIconElement = document.querySelector('.header__icon');
   var menuElement = document.querySelector('.menu');
   var menuOverlayElement = document.querySelector('.menu__overlay');
@@ -13,19 +10,6 @@
   var spinnerElement = document.querySelector('.card__spinner');
   var bgSyncTextElement = document.querySelector('.bg-sync__text');
   var bgSyncElement = document.querySelector('.custom__button-bg');
-
-  //To update network status
-  function updateNetworkStatus() {
-    if (navigator.onLine) {
-      metaTagTheme.setAttribute('content', '#0288d1');
-      headerElement.classList.remove('app__offline');
-    }
-    else {
-      showSnackBar("App is offline!");
-      metaTagTheme.setAttribute('content', '#6b6b6b');
-      headerElement.classList.add('app__offline');
-    }
-  }
 
   //To show menu
   function showMenu() {
@@ -54,16 +38,6 @@
 
   //Add card click event
   addCardBtnElement.addEventListener('click', addGitUserCard, false);
-
-  //After DOM Loaded, check for offline/online status
-  document.addEventListener('DOMContentLoaded', function(event) {
-    //While loading the app or onrefresh to check status
-    if (!navigator.onLine) {
-      updateNetworkStatus();
-    }
-    window.addEventListener('online', updateNetworkStatus, false);
-    window.addEventListener('offline', updateNetworkStatus, false);
-  });
 
   //To get github user data via `Fetch API`
   function fetchGitUserInfo(username, requestFromBGSync) {

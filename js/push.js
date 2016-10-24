@@ -2,14 +2,10 @@
   'use strict';
 
   //Push notification button
-  var notificationBtnElement = document.getElementById('turn-on-notification');
-  var pushBtnElement = document.querySelector('.send-push');
-
-  //API key & GCM Token
-  var apiKey = 'AIzaSyCjrU5SqotSg2ybDLK_7rMMt9Rv0dMusvY'; //replace with your own key
-  var gcmURL = 'https://android.googleapis.com/gcm/send';
-
-  //To check `push notification` is supported
+  var fabPushElement = document.querySelector('.fab__push');
+  var fabPushImgElement = document.querySelector('.fab__image');
+  
+  //To check `push notification` is supported or not
   function isPushSupported() {
     //To check `push notification` permission is denied by user
     if (Notification.permission === 'denied') {
@@ -45,11 +41,10 @@
 
   //To subscribe `push notification`
   function subscribePush() {
-    navigator.serviceWorker.ready
-    .then(function(registration) {
+    navigator.serviceWorker.ready.then(function(registration) {
       if (!registration.pushManager) {
         alert('Your browser doesn\'t support push notification.');
-        return;
+        return false;
       }
 
       //To subscribe `push notification` from push manager
@@ -59,11 +54,12 @@
       .then(function (subscription) {
         console.info('Push notification subscribed.');
         changePushStatus(true);
+        sendPushNotification();
       })
       .catch(function (error) {
         changePushStatus(false);
         console.error('Push notification subscription error: ', error);
-      })
+      });
     })
   }
 
@@ -98,20 +94,22 @@
 
   //To change status
   function changePushStatus(status) {
-    notificationBtnElement.dataset.checked = status;
-    notificationBtnElement.checked = status;
+    fabPushElement.dataset.checked = status;
+    fabPushElement.checked = status;
     if (status) {
-      pushBtnElement.removeAttribute("disabled");
+      fabPushElement.classList.add('active');
+      fabPushImgElement.src = '../images/push-on.png';
     }
     else {
-      pushBtnElement.setAttribute("disabled", true);
+     fabPushElement.classList.remove('active');
+     fabPushImgElement.src = '../images/push-off.png';
     }
   }
 
-  //Click event for subscribe notificationBtnElement
-  notificationBtnElement.addEventListener('click', function () {
-    var isBtnChecked = (notificationBtnElement.dataset.checked === 'true');
-    if (isBtnChecked) {
+  //Click event for subscribe push
+  fabPushElement.addEventListener('click', function () {
+    var isSubscribed = (fabPushElement.dataset.checked === 'true');
+    if (isSubscribed) {
       unsubscribePush();
     }
     else {
@@ -119,24 +117,12 @@
     }
   });
 
-  //To generate curl command to send push notification
-  function curlCommand(subscription) {
-    var temp = subscription.endpoint.split('/');
-    var endpoint = temp[temp.length - 1];
-    var curlCommand = 'curl --header "Authorization: key=' + apiKey + '" --header Content-Type:"application/json" ' + gcmURL + ' -d "{\\"registration_ids\\":[\\"' + endpoint + '\\"]}"';
-    console.log("%c curl command to send push notification ", "background: #000; color: #fff; font-size: 13px;");
-    console.log(curlCommand);
-  }
-
   //Form data with info to send to server
-  function sendPushNotification(subscription) {
+  function sendPushNotification() {
     navigator.serviceWorker.ready
       .then(function(registration) {
         //Get `push subscription`
-        registration.pushManager.getSubscription()
-        .then(function (subscription) {
-          curlCommand(subscription); //To log curl command
-
+        registration.pushManager.getSubscription().then(function (subscription) {
           //Send `push notification` - source for below url `server.js`
           fetch('https://progressive-web-application.herokuapp.com/send_notification', {
             method: 'post',
@@ -152,11 +138,6 @@
         })
       })
   }
-
-  //To send `push notification`
-  pushBtnElement.addEventListener("click", function () {
-    sendPushNotification();
-  }, false);
 
   isPushSupported(); //Check for push notification support
 })(window);

@@ -237,7 +237,6 @@ header {
   will-change: transform;
   font-weight: 500;
   text-transform: capitalize;
-  border-radius: 2px;
 }
 
 .snackbar--show {
@@ -250,15 +249,6 @@ header {
   word-break: break-all;
 }
 
-.snackbar__action {
-  text-transform: uppercase;
-  color: #f00;
-  font-weight: 500;
-  cursor: pointer;
-  margin-right: 15px;
-}
-
-.snackbar__action,
 .snackbar__msg {
   font-size: 14px;
 }
@@ -427,25 +417,35 @@ b {
 }
 
 .fab {
-  position: fixed;
-  right: 25px;
   width: 56px;
   height: 56px;
-  background: #0288d1;
-  cursor: pointer;
-  bottom: 25px;
+  background: #6b6b6b;
   border-radius: 50%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
   color: #fff;
-  text-align: center;
-  display: block;
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,.12),0 1px 1px 0 rgba(0,0,0,.24);
-  font-size: 1.5em;
-  min-width: initial;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 25px;
   -webkit-tap-highlight-color: transparent;
 }
 
 .fab:active {
-  background: rgba(2, 136, 209, 0.91);
+  opacity: 0.9;
+}
+
+.fab.active {
+  background: #F44336;
 }
 
 .add__card {

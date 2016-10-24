@@ -29,7 +29,7 @@
         </svg>
       </span>
 
-      <span class="header__title no--select">Progressive Web App</span>
+      <span class="header__title no--select">Progressive Web Application</span>
     </header>
 
     <div class="menu">
@@ -41,12 +41,12 @@
     <div class="menu__overlay"></div>
 
     <div class="app__content">
-      <h3>Push Notification: </h3>
+      <!-- <h3>Push Notification: </h3>
       <p class="custom__button">
         <input id="turn-on-notification" type="checkbox" hidden="hidden" class="custom__input" data-checked="">
         <label for="turn-on-notification" class="custom__checkbox"></label>
         <button class="no--select send-push" disabled>Send Push Notification</button>
-      </p>
+      </p> -->
 
       <h3>Fetch API: </h3>
 
@@ -97,17 +97,20 @@
       <div class="share__container">
         <h3>Share API</h3>
         <ul>
-          <li><b>Step 1: </b>Go to <a href="https://play.google.com/store/apps/details?id=com.chrome.dev&hl=en" target="_blank" rel="noopener">Chrome Dev Channel on Android</a></li>
+          <li><b>Step 1: </b>Go to <a href="https://play.google.com/store/apps/details?id=com.chrome.dev&hl=en" target="_blank" rel="noopener">Chrome Beta on Android</a></li>
           <li><b>Step 2: </b>Toggle <a href="chrome://flags/#enable-experimental-web-platform-features" target="_blank" rel="noopener">chrome://flags/#enable-experimental-web-platform-features</a></li>
-          <li><b>Step 3: </b>Click share button to share.</li>
+          <li><b>Step 3: </b>Click below button to share.</li>
         </ul>
 
         <button class="share">Share</button>
       </div>
 
+      <div class="fab fab__push">
+        <img class="fab__image" src="./images/push-off.png" alt="Push Notification" />
+      </div>
+
       <div class="snackbar">
         <p class="snackbar__msg no--select"></p>
-        <div class="snackbar__action no--select">hide</div>
       </div>
     </div>
   </div>
@@ -126,6 +129,7 @@
   }
   </script>
   <script src="./js/snackbar.js"></script>
+  <script src="./js/offline.js"></script>
   <script src="./js/push.js"></script>
   <script src="./js/sync.js"></script>
   <script src="./js/share.js"></script>
