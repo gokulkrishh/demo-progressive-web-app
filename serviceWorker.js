@@ -93,14 +93,11 @@ self.addEventListener('activate', function (event) {
     caches.keys().then(function(cacheNames) {
       return Promise.all(
         cacheNames.map(function(cache) {
-          if (cache !== cacheName) {
+          if (cache !== cacheName) {     //cacheName = 'cache-v1'
             return caches.delete(cache); //Deleting the cache
           }
         })
-      )
-    })
-    .catch(function (error) {
-      console.error(error);
+      );
     })
   );
 });
