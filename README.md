@@ -23,6 +23,8 @@
 
 ### Features
 
+  - [x] - App Shell Architecture
+  
   - [x] - Service Worker
 
   - [x] - Add to home screen, Splash screen, Browser mode
