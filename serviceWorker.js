@@ -103,9 +103,6 @@ self.addEventListener('activate', function (event) {
       console.error(error);
     })
   );
-
-  //Active Service Worker to set itself as the active on current client and all other active clients.
-  return self.clients.claim();
 });
 
 /*
