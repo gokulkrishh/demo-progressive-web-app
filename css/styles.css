@@ -216,9 +216,8 @@ header {
 .snackbar {
   position: fixed;
   bottom: -50px;
-  left: 0;
-  right: 0;
-  width: 100%;
+  left: 20px;
+  width: 250px;
   min-height: 50px;
   background: #323232;
   color: #fff;
@@ -236,11 +235,11 @@ header {
   transition: bottom 0.30s cubic-bezier(0, 0, 0.30, 1);
   will-change: transform;
   font-weight: 500;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .snackbar--show {
-  bottom: 0;
+  bottom: 20px;
 }
 
 .snackbar__msg {
@@ -561,9 +560,15 @@ button.turn-on-sync {
   margin-left: 10px;
 }
 
-@media all and (min-width: 481px) {
+@media all and (max-width: 481px) {
   .snackbar {
-    width: 320px;
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .snackbar--show {
+    bottom: 0;
   }
 }
 

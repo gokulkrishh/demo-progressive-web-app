@@ -52,6 +52,7 @@
         userVisibleOnly: true //Always show notification when received
       })
       .then(function (subscription) {
+        showSnackBar('Subscribed successfully.');
         console.info('Push notification subscribed.');
         changePushStatus(true);
         sendPushNotification();
@@ -79,6 +80,7 @@
         //Unsubscribe `push notification`
         subscription.unsubscribe()
           .then(function () {
+            showSnackBar('Unsubscribed successfully.');
             console.info('Push notification unsubscribed.');
             changePushStatus(false);
           })
