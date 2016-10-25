@@ -21,7 +21,7 @@ var files = [
   './js/offline.js',
   './js/push.js',
   './js/sync.js',
-  './js/snackbar.js',
+  './js/toast.js',
   './js/share.js',
   './manifest.json'
 ];

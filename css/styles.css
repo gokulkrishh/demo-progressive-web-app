@@ -213,43 +213,33 @@ header {
   padding-top: 10px;
 }
 
-.snackbar {
+.toast__container {
   position: fixed;
-  bottom: -50px;
+  bottom: 20px;
   left: 20px;
+  pointer-events: none;
+}
+
+.toast__msg {
   width: 250px;
   min-height: 50px;
-  background: #323232;
+  background: rgba(0, 0, 0, 0.8);
   color: #fff;
-  margin: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-transition: bottom 0.30s cubic-bezier(0, 0, 0.30, 1);
-  transition: bottom 0.30s cubic-bezier(0, 0, 0.30, 1);
-  will-change: transform;
-  font-weight: 500;
-  text-transform: initial;
-}
-
-.snackbar--show {
-  bottom: 20px;
-}
-
-.snackbar__msg {
-  margin-left: 15px;
-  margin-right: 10px;
-  word-break: break-all;
-}
-
-.snackbar__msg {
   font-size: 14px;
+  font-weight: 500;
+  padding-left: 15px;
+  padding-right: 10px;
+  word-break: break-all;
+  transition: opacity 0.30s cubic-bezier(0, 0, 0.30, 1);
+  text-transform: initial;
+  margin-bottom: 10px;
+}
+
+.toast__msg--hide {
+  opacity: 0;
 }
 
 button {
@@ -279,36 +269,6 @@ button:disabled {
   background: #ccc;
   color: #000;
   cursor: not-allowed;
-}
-
-.custom__checkbox {
-  display: inline-block;
-  position: relative;
-  width: 45px;
-  height: 16px;
-  border-radius: 8px;
-  background: rgb(195, 195, 195);
-  -webkit-transition: background 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: background 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-  vertical-align: middle;
-  cursor: pointer;
-  margin: 10px 14px 13px;
-}
-
-.custom__checkbox::before {
-  content: '';
-  position: absolute;
-  top: -3px;
-  left: -4px;
-  width: 22px;
-  height: 22px;
-  background: #fff;
-  border-radius: 50%;
-  -webkit-transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1), background 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1), background 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.51);
-  -webkit-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.51);
-  -moz-box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.51);
 }
 
 .custom__button p {
@@ -552,24 +512,6 @@ b i a {
 
 .card__spinner.show {
   display: block;
-}
-
-button.turn-on-sync {
-  min-width: 50px;
-  height: 28px;
-  margin-left: 10px;
-}
-
-@media all and (max-width: 481px) {
-  .snackbar {
-    width: 100%;
-    left: 0;
-    right: 0;
-  }
-
-  .snackbar--show {
-    bottom: 0;
-  }
 }
 
 .share__container a {

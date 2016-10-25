@@ -22,7 +22,7 @@
       headerElement.classList.remove('app__offline');
     }
     else {
-      showSnackBar('App is offline');
+      toast('App is offline');
       metaTagTheme.setAttribute('content', '#6b6b6b');
       headerElement.classList.add('app__offline');
     }

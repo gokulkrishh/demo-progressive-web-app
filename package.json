@@ -14,7 +14,7 @@
   "scripts": {
     "start": "npm run css && node server.js",
     "css": "postcss -u autoprefixer -r css/*",
-    "js": "mkdir -p dist/js && uglifyjs 'js/snackbar.js' 'js/app.js' 'js/main.js' -m -o js/all.js",
+    "js": "mkdir -p dist/js && uglifyjs 'js/toast.js' 'js/app.js' 'js/main.js' -m -o js/all.js",
     "build": "npm run css && npm run js",
     "postinstall": "npm run start"
   },
