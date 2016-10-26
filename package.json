@@ -14,14 +14,11 @@
   "scripts": {
     "start": "npm run css && node server.js",
     "css": "postcss -u autoprefixer -r css/*",
-    "js": "mkdir -p dist/js && uglifyjs 'js/toast.js' 'js/app.js' 'js/main.js' -m -o js/all.js",
-    "build": "npm run css && npm run js",
     "postinstall": "npm run start"
   },
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^6.4.0",
-    "postcss-cli": "^2.6.0",
-    "uglify-js": "^2.7.3"
+    "postcss-cli": "^2.6.0"
   }
 }
