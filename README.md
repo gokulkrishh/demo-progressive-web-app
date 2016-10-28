@@ -6,61 +6,67 @@
 
 ### [Live](https://demopwa.in)
 
-### Install
+### Installation
 
-  1. git clone https://github.com/gokulkrishh/demo-progressive-web-app
-
-  2. CD into demo-progressive-web-app
-
-  3. Install dependencies and run server
-
-  ```bash
-  $ npm install && npm start
-  ```
-
-  4. In browser, open [http://localhost:3000](http://localhost:3000)
-
-
-### Features
-
-  - [x] - App Shell Architecture
+#### `Step 1` - clone the repo
   
-  - [x] - Service Worker
+```bash
+$ git clone https://github.com/gokulkrishh/demo-progressive-web-app
+```
 
-  - [x] - Add to home screen, Splash screen, Browser mode
-  
-  - [x] - Fallback when offline
-  
-  - [x] - Online/Offline Events
+#### `Step 2` - cd in the repo
 
-  - [x] - Push notification
+```bash
+$ cd demo-progressive-web-app
+```
 
-  - [x] - Fetch API
+#### `Step 3` - install dependencies
 
-  - [x] - Background Sync
+```bash
+$ npm install
+```
 
-  - [x] - Web Share API
+#### `Step 4` - run application
 
+```bash
+$ npm run start
+```
 
-##### List of PWA Apps
+In browser, open [http://localhost:3000](http://localhost:3000)
+
+## Main features
+
+- [x] - App Shell Architecture
+
+- [x] - Service Worker
+
+- [x] - Add to home screen, Splash screen, Browser mode etc,
+
+- [x] - Fallback when offline
+
+- [x] - Online/Offline events
+
+- [x] - Fetch API
+
+- [x] - Push notification
+
+- [x] - Background sync
+
+- [x] - Web share
+
+### Get started with PWA development
+
+- [Codelabs](https://pwa.tips/codelabs)
+
+### Progressive Web Apps
 
 - [PWA Rocks](https://pwa.rocks)
-- [Awesome PWA](https://github.com/hemanth/awesome-pwa)
 
-##### My Other PWA Apps
-
-- [Barcode Scanner](https://github.com/code-kotis/barcode-scanner)
-- [Anonymous Chat](https://github.com/gokulkrishh/anonymous-web)
-
-##### PWA Codelabs 
-
-- [PWA Codelabs](https://pwa.tips/codelabs)
-
-##### Reference
+### Reference
 
 - [Google Developer Site](https://developers.google.com/web/progressive-web-apps)
-- [Offline cookbook](https://jakearchibald.com/2014/offline-cookbook/)
 - [Web Share API](https://developers.google.com/web/updates/2016/10/navigator-share)
 
+#### License
 
-##### MIT Licensed
+MIT © [Gokulakrishnan](https://github.com/gokulkrishh)
