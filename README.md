@@ -72,5 +72,5 @@ In browser, open [http://localhost:3000](http://localhost:3000)
 MIT © [Gokulakrishnan](https://github.com/gokulkrishh)
 
 <div align="center">
-  <sub>If you a found a bug or some improvments feel free to raise an issue and send a PR!</sub>
+  <sub>If you found a bug or some improvments, feel free to raise an issue and send a PR!</sub>
 </div>
