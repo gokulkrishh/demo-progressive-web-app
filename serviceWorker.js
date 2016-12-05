@@ -23,6 +23,7 @@ var files = [
   './js/sync.js',
   './js/toast.js',
   './js/share.js',
+  './js/menu.js',
   './manifest.json'
 ];
 

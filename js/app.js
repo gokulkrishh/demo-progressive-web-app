@@ -1,27 +1,12 @@
 (function () {
   'use strict';
 
-  var menuIconElement = document.querySelector('.header__icon');
-  var menuElement = document.querySelector('.menu');
-  var menuOverlayElement = document.querySelector('.menu__overlay');
   var cardElement = document.querySelector('.card');
   var addCardBtnElement = document.querySelector('.add__btn');
   var addCardInputElement = document.querySelector('.add__input');
   var spinnerElement = document.querySelector('.card__spinner');
   var bgSyncTextElement = document.querySelector('.bg-sync__text');
   var bgSyncElement = document.querySelector('.custom__button-bg');
-
-  //To show menu
-  function showMenu() {
-    menuElement.classList.add('menu--show');
-    menuOverlayElement.classList.add('menu__overlay--show');
-  }
-
-  //To hide menu
-  function hideMenu() {
-    menuElement.classList.remove('menu--show');
-    menuOverlayElement.classList.remove('menu__overlay--show');
-  }
 
   //Add github user data to the card
   function addGitUserCard() {
@@ -31,10 +16,6 @@
     localStorage.setItem('request', userInput);
     fetchGitUserInfo(userInput);
   }
-
-  //Menu click event
-  menuIconElement.addEventListener('click', showMenu, false);
-  menuOverlayElement.addEventListener('click', hideMenu, false);
 
   //Add card click event
   addCardBtnElement.addEventListener('click', addGitUserCard, false);

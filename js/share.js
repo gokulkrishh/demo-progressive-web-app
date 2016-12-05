@@ -1,11 +1,9 @@
 (function () {
   'use strict';
-  
   //Check if share API is supported or not
   if (navigator.share !== undefined) {
     document.addEventListener('DOMContentLoaded', function() {
       var shareBtn = document.querySelector('.share');
-
       //Share button event listener
       shareBtn.addEventListener('click', function(event) {
         //Web share API
