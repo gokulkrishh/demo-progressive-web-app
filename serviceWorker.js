@@ -31,14 +31,14 @@ self.addEventListener('install', (event) => {
 
   event.waitUntil(
     caches.open(cacheName)
-    .then(function (cache) {
+    .then((cache) => {
       //[] of files to cache & if any of the file not present `addAll` will fail
       return cache.addAll(files)
-      .then(function () {
+      .then(() => {
         console.info('All files are cached');
         return self.skipWaiting(); //To forces the waiting service worker to become the active service worker
       })
-      .catch(function (error) {
+      .catch((error) =>  {
         console.error('Failed to cache', error);
       })
     })
