@@ -9,6 +9,7 @@
     <meta name="theme-color" content="#0288d1">
     <meta name="msapplication-TileColor" content="#0288d1">
     <meta name="msapplication-TileImage" content="./images/icons/mstile-150x150.png">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Progressive Web Application">
@@ -41,13 +42,6 @@
     <div class="menu__overlay"></div>
 
     <div class="app__content">
-      <!-- <h3>Push Notification: </h3>
-      <p class="custom__button">
-        <input id="turn-on-notification" type="checkbox" hidden="hidden" class="custom__input" data-checked="">
-        <label for="turn-on-notification" class="custom__checkbox"></label>
-        <button class="no--select send-push" disabled>Send Push Notification</button>
-      </p> -->
-
       <h3>Fetch API: </h3>
 
       <div class="card">
@@ -120,10 +114,10 @@
   //If serviceWorker supports, then register it.
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register('./serviceWorker.js', { scope: "./" }) //setting scope of sw
-    .then(function (registration) {
+    .then(function(registration) {
       console.info('Service worker is registered!');
     })
-    .catch(function (error) {
+    .catch(function(error) {
       console.error('Service worker failed ', error);
     });
   }

@@ -1,5 +1,3 @@
-'use strict';
-
 //Cache polyfil to support cacheAPI in all browsers
 importScripts('./cache-polyfill.js');
 
@@ -9,7 +7,7 @@ var cacheName = 'cache-v1';
 var files = [
   './',
   './index.html',
-  './index.html?utm=homescreen', //SW treats query string as new page
+  './index.html?utm=homescreen', //SW treats query string as new request
   './css/styles.css',
   'https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700', //caching 3rd party content
   './images/icons/android-chrome-192x192.png',
@@ -28,7 +26,7 @@ var files = [
 ];
 
 //Adding `install` event listener
-self.addEventListener('install', function (event) {
+self.addEventListener('install', (event) => {
   console.info('Event: Install');
 
   event.waitUntil(
@@ -52,7 +50,7 @@ self.addEventListener('install', function (event) {
 */
 
 //Adding `fetch` event listener
-self.addEventListener('fetch', function (event) {
+self.addEventListener('fetch', (event) => {
   console.info('Event: Fetch');
 
   var request = event.request;
@@ -60,17 +58,16 @@ self.addEventListener('fetch', function (event) {
   //Tell the browser to wait for newtwork request and respond with below
   event.respondWith(
     //If request is already in cache, return it
-    caches.match(request).then(function(response) {
+    caches.match(request).then((response) => {
       if (response) {
         return response;
       }
 
       //if request is not cached, add it to cache
-      return fetch(request).then(function(response) {
+      return fetch(request).then((response) => {
         var responseToCache = response.clone();
-        caches.open(cacheName).then(
-          function(cache) {
-            cache.put(request, responseToCache).catch(function(err) {
+        caches.open(cacheName).then((cache) => {
+            cache.put(request, responseToCache).catch((err) => {
               console.warn(request.url + ': ' + err.message);
             });
           });
@@ -86,14 +83,14 @@ self.addEventListener('fetch', function (event) {
 */
 
 //Adding `activate` event listener
-self.addEventListener('activate', function (event) {
+self.addEventListener('activate', (event) => {
   console.info('Event: Activate');
 
   //Remove old and unwanted caches
   event.waitUntil( 
-    caches.keys().then(function(cacheNames) {
+    caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheNames.map(function(cache) {
+        cacheNames.map((cache) => {
           if (cache !== cacheName) {     //cacheName = 'cache-v1'
             return caches.delete(cache); //Deleting the cache
           }
@@ -108,7 +105,7 @@ self.addEventListener('activate', function (event) {
 */
 
 //Adding `push` event listener
-self.addEventListener('push', function(event) {
+self.addEventListener('push', (event) => {
   console.info('Event: Push');
 
   var title = 'Push notification demo';
@@ -133,19 +130,19 @@ self.addEventListener('push', function(event) {
   another sync is scheduled to retry (will will also waits for network connection)
 */
 
-self.addEventListener('sync', function(event) {
+self.addEventListener('sync', (event) => {
   console.info('Event: Sync');
 
   //Check registered sync name or emulated sync from devTools
   if (event.tag === 'github' || event.tag === 'test-tag-from-devtools') {
     event.waitUntil(
       //To check all opened tabs and send postMessage to those tabs
-      self.clients.matchAll().then(function (all) {
-        return all.map(function (client) {
+      self.clients.matchAll().then((all) => {
+        return all.map((client) => {
           return client.postMessage('online'); //To make fetch request, check app.js - line no: 122
         })
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.error(error);
       })
     );
@@ -157,8 +154,8 @@ self.addEventListener('sync', function(event) {
 */
 
 //Adding `notification` click event listener
-self.addEventListener('notificationclick', function(event) {
-  var url = 'https://demopwa.in';
+self.addEventListener('notificationclick', (event) => {
+  var url = 'https://demopwa.in/';
 
   //Listen to custom action buttons in push notification
   if (event.action === 'yes') {
@@ -175,7 +172,7 @@ self.addEventListener('notificationclick', function(event) {
     clients.matchAll({
       type: 'window'
     })
-    .then(function(clients) {
+    .then((clients) => {
       for (var i = 0; i < clients.length; i++) {
         var client = clients[i];
         //If site is opened, focus to the site
@@ -189,7 +186,7 @@ self.addEventListener('notificationclick', function(event) {
         return clients.openWindow('/');
       }
     })
-    .catch(function (error) {
+    .catch((error) => {
       console.error(error);
     })
   );
