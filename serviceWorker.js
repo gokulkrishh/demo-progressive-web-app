@@ -87,7 +87,7 @@ self.addEventListener('activate', (event) => {
   console.info('Event: Activate');
 
   //Remove old and unwanted caches
-  event.waitUntil( 
+  event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cache) => {
@@ -98,6 +98,8 @@ self.addEventListener('activate', (event) => {
       );
     })
   );
+
+  return self.clients.claim(); // To activate sw faster
 });
 
 /*

@@ -14,6 +14,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Progressive Web Application">
     <meta name="application-name" content="Progressive Web Application">
+    <!-- Origin Trial Token, feature = Web Share, origin = https://demopwa.in, expires = 2017-03-23 -->
+		<meta http-equiv="origin-trial" data-feature="Web Share" data-expires="2017-03-23" content="AlYNIZ4+tv6lkvtFFQFTKujCIEzi7xGnYiU8GuZGZRzubDLpjq8G8DbMRGu9+VcVtmPXGD60xC0i2mYaduWXiAoAAABfeyJvcmlnaW4iOiJodHRwczovL2RlbW9wd2EuaW46NDQzIiwiZmVhdHVyZSI6IldlYlNoYXJlIiwiZXhwaXJ5IjoxNDkwMzEzMTk2LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=">
     <link rel="apple-touch-icon" href="./images/icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="./images/icons/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="./images/icons/favicon-16x16.png" sizes="16x16">
@@ -94,6 +96,8 @@
           <li><b>Step 1: </b>Go to <a href="https://play.google.com/store/apps/details?id=com.chrome.dev&hl=en" target="_blank" rel="noopener">Chrome Beta on Android</a></li>
           <li><b>Step 2: </b>Toggle <a href="chrome://flags/#enable-experimental-web-platform-features" target="_blank" rel="noopener">chrome://flags/#enable-experimental-web-platform-features</a></li>
           <li><b>Step 3: </b>Click below button to share.</li>
+          <li><b>OR </b></li>
+          <li><a href="https://github.com/jpchase/OriginTrials/blob/gh-pages/developer-guide.md">Try Origin Trial Token</a> in chrome stable.</li>
         </ul>
 
         <button class="share">Share</button>
@@ -103,7 +107,7 @@
         <div class="fab__ripple"></div>
         <img class="fab__image" src="./images/push-off.png" alt="Push Notification" />
       </div>
-      
+
       <!-- Toast msg's  -->
       <div class="toast__container"></div>
     </div>
