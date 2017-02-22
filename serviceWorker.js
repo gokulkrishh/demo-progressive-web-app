@@ -1,7 +1,7 @@
 //Cache polyfil to support cacheAPI in all browsers
 importScripts('./cache-polyfill.js');
 
-var cacheName = 'cache-v1';
+var cacheName = 'cache-v2';
 
 //Files to save in cache
 var files = [
@@ -65,7 +65,7 @@ self.addEventListener('fetch', (event) => {
 
       // Checking for navigation preload response
       if (event.preloadResponse) {
-        console.info("Using navigation preload");
+        console.info('Using navigation preload');
         return response;
       }
 
@@ -102,8 +102,21 @@ self.addEventListener('activate', (event) => {
     self.registration.navigationPreload.enable();
   }
   else if (!self.registration.navigationPreload) { 
-    console.info("Your browser does not support navigation preload.");
+    console.info('Your browser does not support navigation preload.');
   }
+
+  //Remove old and unwanted caches
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cache) => {
+          if (cache !== cacheName) {     //cacheName = 'cache-v1'
+            return caches.delete(cache); //Deleting the cache
+          }
+        })
+      );
+    })
+  );
 
   return self.clients.claim(); // To activate service worker faster
 });
@@ -124,8 +137,8 @@ self.addEventListener('push', (event) => {
     'badge': './images/icons/apple-touch-icon.png',
     //Custom actions buttons
     'actions': [
-      { "action": "yes", "title": "I ♥ this app!"},
-      { "action": "no", "title": "I don\'t like this app"}
+      { 'action': 'yes', 'title': 'I ♥ this app!'},
+      { 'action': 'no', 'title': 'I don\'t like this app'}
     ]
   };
 

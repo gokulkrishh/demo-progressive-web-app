@@ -46,7 +46,7 @@
     <div class="menu__overlay"></div>
 
     <div class="app__content">
-      <h3>Fetch API: </h3>
+      <h3><a target="_blank" rel="noopener"href="https://developers.google.com/web/updates/2015/03/introduction-to-fetch">Fetch API</a></h3>
 
       <div class="card">
         <div class="card__spinner"></div>
@@ -67,25 +67,18 @@
       </div>
 
       <div class="add__card">
-        <b><i>Try BG Sync in <a href="https://www.google.com/chrome/browser/canary.html" target="_blank" rel="noopener">Chrome Canary</a> or Chrome in Android</i></b>
-        <h3>Enable OneTime BG Sync:
-          <span class="bg-sync__text" hidden>Registered</span>
-          <p class="custom__button custom__button-bg">
-            <button class="turn-on-sync">Register</button>
-          </p>
-        </h3>
-        <p>In chrome dev channel, Android</p>
+        <h3><a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2015/12/background-sync">Background Sync API</a></h3>
+        <h4>Emulate via chrome devTools</h4>
         <ul>
-          <li><b>Step 1:</b> Go offline.</li>
-          <li><b>Step 2:</b> Register BG Sync from above register button.<li>
-          <li><b>Step 3:</b> Enter a git username and click add.</li>
-          <li><b>Step 4:</b> Go online and sync will be triggered when user is gets connectivity and card will be updated.</li>
-        </ul>
-          <p>or Emulate via chrome devTools</p>
-        <ul>
-          <li><b>Step 1: </b> Go offline and register BG Sync.</li>
-          <li><b>Step 2: </b>Go to application tab in chrome canary devTools, navigate to serviceWorker tab.</li>
-          <li><b>Step 3: </b>Go online and click `sync` button to emulate sync.</li>
+          <li><b>Step 1: </b> Go offline in devTools and register BG Sync.</li>
+          <h4>Enable BG Sync:
+            <span class="bg-sync__text" hidden>Registered</span>
+            <p class="custom__button custom__button-bg">
+              <button class="turn-on-sync">Register</button>
+            </p>
+          </h4>
+          <li><b>Step 2: </b>Go to application tab in chrome devTools and navigate to serviceWorker tab.</li>
+          <li><b>Step 3: </b>Go online and click `sync` button to emulate bg sync.</li>
           <li><b>Step 4: </b>Above card will be updated as per your input.</li>
         </ul>
       </div>
@@ -93,7 +86,7 @@
       <div class="card__spinner"></div>
 
       <div class="share__container">
-        <h3>Share API</h3>
+        <h3><a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2016/10/navigator-share">Web Share API</a></h3>
         <ul>
           <li><b>Step 1: </b>Go to <a href="https://play.google.com/store/apps/details?id=com.chrome.dev&hl=en" target="_blank" rel="noopener">Chrome Beta on Android</a></li>
           <li><b>Step 2: </b>Toggle <a href="chrome://flags/#enable-experimental-web-platform-features" target="_blank" rel="noopener">chrome://flags/#enable-experimental-web-platform-features</a></li>
@@ -103,6 +96,15 @@
         </ul>
 
         <button class="share">Share</button>
+      </div>
+
+      <div class="share__container">
+        <h3><a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2017/02/navigation-preload">Navigation Preload</a></h3>
+        <ul>
+          <li><b>Step 1: </b>Toggle <a href="chrome://flags/#enable-experimental-web-platform-features" target="_blank" rel="noopener">chrome://flags/#enable-service-worker-navigation-preload</a></li>
+          <li><b>OR </b></li>
+          <li><a href="https://github.com/jpchase/OriginTrials/blob/gh-pages/developer-guide.md">Try Origin Trial Token</a> in chrome stable.</li>
+        </ul>
       </div>
 
       <div class="fab fab__push">
@@ -120,10 +122,10 @@
   //If serviceWorker supports, then register it.
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register('./serviceWorker.js', { scope: "./" }) //setting scope of sw
-    .then(function(registration) {
+    .then((registration) => {
       console.info('Service worker is registered!');
     })
-    .catch(function(error) {
+    .catch((error) => {
       console.error('Service worker failed ', error);
     });
   }
