@@ -34,38 +34,41 @@ $ npm run start
 
 In browser, open [http://localhost:3000](http://localhost:3000)
 
-## Main features
+## Main Features
 
 - [x] - App Shell Architecture
 
-- [x] - Service Worker
+- [x] - Service Worker + [Navigation Preload](https://mattto.github.io/sw/demo/navigation-preload/) [Origin Trial](https://docs.google.com/forms/d/e/1FAIpQLSfO0_ptFl8r8G0UFhT0xhV17eabG-erUWBDiKSRDTqEZ_9ULQ/viewform?fbzx=-8349956695398695000)
 
-- [x] - Add to home screen, Splash screen, Browser mode etc,
+- [x] - Add to Home Screen, Splash Screen, Browser Mode etc,
 
-- [x] - Fallback when offline
+- [x] - Offline Support
 
-- [x] - Online/Offline events
+- [x] - Online/Offline Events
 
 - [x] - Fetch API
 
-- [x] - Push notification
+- [x] - Push Notifications
 
-- [x] - Background sync
+- [x] - Background Sync
 
-- [x] - Web share
+- [x] - Web Share ([Origin Trial](https://docs.google.com/forms/d/e/1FAIpQLSfO0_ptFl8r8G0UFhT0xhV17eabG-erUWBDiKSRDTqEZ_9ULQ/viewform?fbzx=-8349956695398695000))
 
-### Get started with PWA development
+### Get started with PWA Development
 
 - [Codelabs](https://pwa.tips/codelabs)
 
-### Progressive Web Apps
+### List of Progressive Web Apps
 
 - [PWA Rocks](https://pwa.rocks)
 
-### Reference
+### References
 
 - [Google Developer Site](https://developers.google.com/web/progressive-web-apps)
+
 - [Web Share API](https://developers.google.com/web/updates/2016/10/navigator-share)
+
+- [Navigation Preload](https://developers.google.com/web/updates/2017/02/navigation-preload)
 
 #### License
 

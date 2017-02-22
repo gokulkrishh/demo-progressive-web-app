@@ -63,7 +63,13 @@ self.addEventListener('fetch', (event) => {
         return response;
       }
 
-      //if request is not cached, add it to cache
+      // Checking for navigation preload response
+      if (event.preloadResponse) {
+        console.info("Using navigation preload");
+        return response;
+      }
+
+      //if request is not cached or navigation preload response, add it to cache
       return fetch(request).then((response) => {
         var responseToCache = response.clone();
         caches.open(cacheName).then((cache) => {
@@ -86,20 +92,20 @@ self.addEventListener('fetch', (event) => {
 self.addEventListener('activate', (event) => {
   console.info('Event: Activate');
 
-  //Remove old and unwanted caches
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cache) => {
-          if (cache !== cacheName) {     //cacheName = 'cache-v1'
-            return caches.delete(cache); //Deleting the cache
-          }
-        })
-      );
-    })
-  );
+  //Navigation preload is help us make parallel request while service worker is booting up.
+  //Enable - chrome://flags/#enable-service-worker-navigation-preload
+  //Support - Chrome 57 beta (behing the flag)
+  //More info - https://developers.google.com/web/updates/2017/02/navigation-preload#the-problem
 
-  return self.clients.claim(); // To activate sw faster
+  // Check if navigationPreload is supported or not
+  if (self.registration.navigationPreload) { 
+    self.registration.navigationPreload.enable();
+  }
+  else if (!self.registration.navigationPreload) { 
+    console.info("Your browser does not support navigation preload.");
+  }
+
+  return self.clients.claim(); // To activate service worker faster
 });
 
 /*
