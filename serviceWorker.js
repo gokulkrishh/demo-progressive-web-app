@@ -1,7 +1,7 @@
 //Cache polyfil to support cacheAPI in all browsers
 importScripts('./cache-polyfill.js');
 
-var cacheName = 'cache-v2';
+var cacheName = 'cache-v5';
 
 //Files to save in cache
 var files = [
@@ -15,6 +15,7 @@ var files = [
   './images/push-off.png',
   './images/icons/favicon-16x16.png',
   './images/icons/favicon-32x32.png',
+  './js/main.js',
   './js/app.js',
   './js/offline.js',
   './js/push.js',
