@@ -40,18 +40,23 @@
     <div class="menu">
       <div class="menu__header"></div>
       <ul class="menu__list">
-        <li><a target="_blank" rel="noopener" href="https://github.com/gokulkrishh">Author</a></li>
-        <li><a target="_blank" rel="noopener" href="https://github.com/gokulkrishh/demo-progressive-web-app">Source</a></li>
+        <li>
+          <a target="_blank" rel="noopener" href="https://github.com/gokulkrishh">Author</a>
+        </li>
+        <li>
+          <a target="_blank" rel="noopener" href="https://github.com/gokulkrishh/demo-progressive-web-app">Source</a>
+        </li>
+      </ul>
     </div>
     <div class="menu__overlay"></div>
 
     <div class="app__content">
-      <h3><a target="_blank" rel="noopener"href="https://developers.google.com/web/updates/2015/03/introduction-to-fetch">Fetch API</a></h3>
+      <h3><a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2015/03/introduction-to-fetch">Fetch API</a></h3>
 
       <div class="card">
         <div class="card__spinner"></div>
         <div class="card__container">
-          <img alt="avatar" class="card__img">
+          <img alt="avatar" class="card__img" src="">
           <p class="card__title"></p>
           <p class="card__desc"></p>
           <p class="card__temp">
@@ -68,15 +73,15 @@
 
       <div class="add__card">
         <h3><a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2015/12/background-sync">Background Sync API</a></h3>
-        <h4>Emulate via chrome devTools</h4>
+        <h3>Emulate via chrome devTools</h3>
+        <h4>Enable BG Sync:
+          <span class="bg-sync__text" hidden>Registered</span>
+          <p class="custom__button custom__button-bg">
+            <button class="turn-on-sync">Register</button>
+          </p>
+        </h4>
         <ul>
           <li><b>Step 1: </b> Go offline in devTools and register BG Sync.</li>
-          <h4>Enable BG Sync:
-            <span class="bg-sync__text" hidden>Registered</span>
-            <p class="custom__button custom__button-bg">
-              <button class="turn-on-sync">Register</button>
-            </p>
-          </h4>
           <li><b>Step 2: </b>Go to application tab in chrome devTools and navigate to serviceWorker tab.</li>
           <li><b>Step 3: </b>Go online and click `sync` button to emulate bg sync.</li>
           <li><b>Step 4: </b>Above card will be updated as per your input.</li>
