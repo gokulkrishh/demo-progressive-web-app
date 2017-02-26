@@ -40,7 +40,7 @@ In browser, open [http://localhost:3000](http://localhost:3000)
 
 - [x] - Service Worker + [Navigation Preload](https://mattto.github.io/sw/demo/navigation-preload/) ([Origin Trial](https://docs.google.com/forms/d/e/1FAIpQLSfO0_ptFl8r8G0UFhT0xhV17eabG-erUWBDiKSRDTqEZ_9ULQ/viewform?fbzx=-8349956695398695000))
 
-- [x] - Add to Home Screen, Splash Screen, Browser Mode etc,
+- [x] - Add to Home Screen, Splash Screen, Browser Mode, Notify user if site is updated etc,
 
 - [x] - Offline Support
 
