@@ -6,10 +6,9 @@ var cacheName = 'cache-v1';
 //Files to save in cache
 var files = [
   './',
-  './index.html',
   './index.html?utm=homescreen', //SW treats query string as new request
-  './css/styles.css',
   'https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700', //caching 3rd party content
+  './css/styles.css',
   './images/icons/android-chrome-192x192.png',
   './images/push-on.png',
   './images/push-off.png',
@@ -64,11 +63,11 @@ self.addEventListener('fetch', (event) => {
         return response;
       }
 
-      // Checking for navigation preload response
-      if (event.preloadResponse) {
-        console.info('Using navigation preload');
-        return response;
-      }
+      // // Checking for navigation preload response
+      // if (event.preloadResponse) {
+      //   console.info('Using navigation preload');
+      //   return response;
+      // }
 
       //if request is not cached or navigation preload response, add it to cache
       return fetch(request).then((response) => {
@@ -99,27 +98,31 @@ self.addEventListener('activate', (event) => {
   //More info - https://developers.google.com/web/updates/2017/02/navigation-preload#the-problem
 
   // Check if navigationPreload is supported or not
-  if (self.registration.navigationPreload) { 
-    self.registration.navigationPreload.enable();
-  }
-  else if (!self.registration.navigationPreload) { 
-    console.info('Your browser does not support navigation preload.');
-  }
+  // if (self.registration.navigationPreload) { 
+  //   self.registration.navigationPreload.enable();
+  // }
+  // else if (!self.registration.navigationPreload) { 
+  //   console.info('Your browser does not support navigation preload.');
+  // }
 
   //Remove old and unwanted caches
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cache) => {
-          if (cache !== cacheName) {     //cacheName = 'cache-v1'
-            return caches.delete(cache); //Deleting the cache
+          if (cache !== cacheName) {
+            return caches.delete(cache); //Deleting the old cache
           }
         })
       );
     })
+    .then(function () {
+      console.info("Old caches are cleared!");
+      // To tell the service worker to activate current one 
+      // instead of waiting for the old one to finish.
+      return self.clients.claim(); 
+    }) 
   );
-
-  return self.clients.claim(); // To activate service worker faster
 });
 
 /*
