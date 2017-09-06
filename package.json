@@ -16,9 +16,9 @@
     "css": "postcss -u autoprefixer -r css/*",
     "postinstall": "npm run start"
   },
-  "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^6.4.0",
     "postcss-cli": "^2.6.0"
-  }
+  },
+  "license": "MIT"
 }
