@@ -1,5 +1,5 @@
 {
-  "name": "demo-progressive-web-app",
+  "name": "demo-pwa",
   "description": "Demo progressive web application",
   "version": "1.0.0",
   "author": "gokulkrishh",
@@ -8,17 +8,17 @@
     "express": "^4.13.4",
     "node-gcm": "^0.14.0"
   },
-  "engines": {
-    "node": "4.1.1"
-  },
   "scripts": {
     "start": "npm run css && node server.js",
     "css": "postcss -u autoprefixer -r css/*",
     "postinstall": "npm run start"
   },
   "devDependencies": {
-    "autoprefixer": "^6.4.0",
+    "autoprefixer": "^6.7.7",
     "postcss-cli": "^2.6.0"
+  },
+  "engines": {
+    "node": "4.1.1"
   },
   "license": "MIT"
 }
