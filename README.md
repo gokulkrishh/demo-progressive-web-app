@@ -52,7 +52,7 @@ In browser, open [http://localhost:3000](http://localhost:3000)
 
 - [x] - Background Sync
 
-- [x] - Web Share ([Origin Trial](https://docs.google.com/forms/d/e/1FAIpQLSfO0_ptFl8r8G0UFhT0xhV17eabG-erUWBDiKSRDTqEZ_9ULQ/viewform?fbzx=-8349956695398695000))
+- [x] - Web Share API
 
 ### Get started with PWA Development
 
