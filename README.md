@@ -1,4 +1,4 @@
-### <p align="center"><img width="150px" height="150px" src="https://gokulkrishh.github.io/demo-progressive-web-app/images/icons/android-chrome-192x192.png"></p>
+### <p align="center"><img width="150px" height="150px" src="https://raw.githubusercontent.com/gokulkrishh/demo-progressive-web-app/master/images/icons/android-chrome-192x192.png"></p>
 
 # [Progressive Web Application](https://demopwa.com/)
 
