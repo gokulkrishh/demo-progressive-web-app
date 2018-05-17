@@ -1,28 +1,30 @@
 {
-  "name": "Progressive Web App",
-  "short_name": "PWA",
-  "description": "Demo for progressive web app with push notifications, background sync etc.",
-  "start_url": "./index.html?utm=homescreen",
-  "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#f5f5f5",
-  "theme_color": "#f5f5f5",
-  "icons": [{
-      "src": "./images/icons/android-chrome-192x192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "./images/icons/android-chrome-512x512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-  }],
-  "author": {
-    "name": "Gokulakrishnan Kalaikovan",
-    "website": "https://gokulkrishh.github.io",
-    "github": "https://github.com/gokulkrishh",
-    "source-repo": "https://github.com/gokulkrishh/demo-progressive-web-app"
-  },
-  "gcm_sender_id": "847244712742",
-  "gcm_user_visible_only": true
+	"name": "Progressive Web App",
+	"short_name": "Demo PWA",
+	"description": "Demo for progressive web app with push notifications, background sync etc.",
+	"start_url": "./index.html?utm=homescreen",
+	"display": "standalone",
+	"orientation": "portrait",
+	"background_color": "#f5f5f5",
+	"theme_color": "#29434d",
+	"icons": [
+		{
+			"src": "./images/icons/android-chrome-192x192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "./images/icons/android-chrome-512x512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"author": {
+		"name": "Gokulakrishnan Kalaikovan",
+		"website": "https://gokulkrishh.github.io",
+		"github": "https://github.com/gokulkrishh",
+		"source-repo": "https://github.com/gokulkrishh/demo-progressive-web-app"
+	},
+	"gcm_sender_id": "847244712742",
+	"gcm_user_visible_only": true
 }

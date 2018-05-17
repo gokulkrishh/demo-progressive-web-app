@@ -1,24 +1,24 @@
 {
-  "name": "demo-pwa",
-  "description": "Demo progressive web application",
-  "version": "1.0.0",
-  "author": "gokulkrishh",
-  "dependencies": {
-    "body-parser": "^1.15.0",
-    "express": "^4.13.4",
-    "node-gcm": "^1.0.0"
-  },
-  "scripts": {
-    "start": "npm run css && node server.js",
-    "css": "postcss -u autoprefixer -r css/*",
-    "postinstall": "npm run start"
-  },
-  "devDependencies": {
-    "autoprefixer": "^6.7.7",
-    "postcss-cli": "^2.6.0"
-  },
-  "engines": {
-    "node": "4.1.1"
-  },
-  "license": "MIT"
+	"name": "demo-pwa",
+	"description": "Demo progressive web application",
+	"version": "1.0.1",
+	"author": "https://github.com/gokulkrishh",
+	"dependencies": {
+		"body-parser": "^1.18.3",
+		"express": "^4.16.3",
+		"node-gcm": "^1.0.0"
+	},
+	"scripts": {
+		"start": "npm run css && node server.js",
+		"css": "postcss -u autoprefixer -r css/*",
+		"postinstall": "npm run start"
+	},
+	"devDependencies": {
+		"autoprefixer": "^8.5.0",
+		"postcss-cli": "^5.0.0"
+	},
+	"engines": {
+		"node": ">=8.11.2"
+	},
+	"license": "MIT"
 }

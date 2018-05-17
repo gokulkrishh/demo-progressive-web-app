@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Demo Progressive Web Application</title>
-    <meta http-equiv=X-UA-Compatible content="IE=edge">
-    <meta name=description content="This a Demo Progressive Web Application which will work in offline, has a splash screen add to home screen etc,.">
-    <meta name=viewport content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="theme-color" content="#0288d1">
-    <meta name="msapplication-TileColor" content="#0288d1">
-    <meta name="msapplication-TileImage" content="./images/icons/mstile-150x150.png">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Progressive Web Application">
-    <meta name="application-name" content="Progressive Web Application">
-    <link rel="apple-touch-icon" href="./images/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="./images/icons/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="./images/icons/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="./manifest.json">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700">
-    <link rel="stylesheet" href="./css/styles.css">
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Demo Progressive Web Application</title>
+  <meta http-equiv=X-UA-Compatible content="IE=edge">
+  <meta name=description content="This a Demo Progressive Web Application which will work in offline, has a splash screen add to home screen etc,.">
+  <meta name=viewport content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#29434d">
+  <meta name="msapplication-TileColor" content="#29434d">
+  <meta name="msapplication-TileImage" content="./images/icons/mstile-150x150.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Progressive Web Application">
+  <meta name="application-name" content="Progressive Web Application">
+  <link rel="apple-touch-icon" href="./images/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="./images/icons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="./images/icons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
   <div class="app app__layout">
     <header>
       <span class="header__icon">
@@ -47,7 +49,9 @@
     <div class="menu__overlay"></div>
 
     <div class="app__content">
-      <h3><a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2015/03/introduction-to-fetch">Fetch API</a></h3>
+      <h3>
+        <a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2015/03/introduction-to-fetch">Fetch API</a>
+      </h3>
 
       <div class="card">
         <div class="card__spinner"></div>
@@ -56,10 +60,17 @@
           <p class="card__title"></p>
           <p class="card__desc"></p>
           <p class="card__temp">
-            <b>Company: </b><span></span>
+            <b>Company: </b>
+            <span></span>
           </p>
-          <p class="card__following"><b>Following: </b><span></span></p>
-          <p class="card__followers"><b>Followers: </b><span></span></p>
+          <p class="card__following">
+            <b>Following: </b>
+            <span></span>
+          </p>
+          <p class="card__followers">
+            <b>Followers: </b>
+            <span></span>
+          </p>
           <div class="add__to-card">
             <input type="text" class="add__input" placeholder="Enter a github username" />
             <button class="add__btn">Add</button>
@@ -68,7 +79,9 @@
       </div>
 
       <div class="add__card">
-        <h3><a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2015/12/background-sync">Background Sync API</a></h3>
+        <h3>
+          <a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2015/12/background-sync">Background Sync API</a>
+        </h3>
         <h3>Emulate via chrome devTools</h3>
         <h4>Enable BG Sync:
           <span class="bg-sync__text" hidden>Registered</span>
@@ -77,26 +90,40 @@
           </span>
         </h4>
         <ul>
-          <li><b>Step 1: </b> Go offline in devTools and register BG Sync.</li>
-          <li><b>Step 2: </b>Go to application tab in chrome devTools and navigate to serviceWorker tab.</li>
-          <li><b>Step 3: </b>Go online and click `sync` button to emulate bg sync.</li>
-          <li><b>Step 4: </b>Above card will be updated as per your input.</li>
+          <li>
+            <b>Step 1: </b> Go offline in devTools and register BG Sync.</li>
+          <li>
+            <b>Step 2: </b>Go to application tab in chrome devTools and navigate to serviceWorker tab.</li>
+          <li>
+            <b>Step 3: </b>Go online and click `sync` button to emulate bg sync.</li>
+          <li>
+            <b>Step 4: </b>Above card will be updated as per your input.</li>
         </ul>
       </div>
 
       <div class="card__spinner"></div>
 
       <div class="share__container">
-        <h3><a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2016/10/navigator-share">Web Share API</a></h3>
+        <h3>
+          <a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2016/10/navigator-share">Web Share API</a>
+        </h3>
         <button class="share">Share</button>
       </div>
 
       <div class="share__container">
-        <h3><a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2017/02/navigation-preload">Navigation Preload</a></h3>
+        <h3>
+          <a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2017/02/navigation-preload">Navigation Preload</a>
+        </h3>
         <ul>
-          <li><b>Step 1: </b>Toggle <a href="chrome://flags/#enable-experimental-web-platform-features" target="_blank" rel="noopener">chrome://flags/#enable-service-worker-navigation-preload</a></li>
-          <li><b>OR </b></li>
-          <li><a href="https://github.com/jpchase/OriginTrials/blob/gh-pages/developer-guide.md">Try Origin Trial Token</a> in chrome stable.</li>
+          <li>
+            <b>Step 1: </b>Toggle
+            <a href="chrome://flags/#enable-experimental-web-platform-features" target="_blank" rel="noopener">chrome://flags/#enable-service-worker-navigation-preload</a>
+          </li>
+          <li>
+            <b>OR </b>
+          </li>
+          <li>
+            <a href="https://github.com/jpchase/OriginTrials/blob/gh-pages/developer-guide.md">Try Origin Trial Token</a> in chrome stable.</li>
         </ul>
       </div>
 
@@ -122,13 +149,16 @@
 
   <!-- My Google Analytics Report -->
   <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-92627241-1', 'auto');
     ga('send', 'pageview');
   </script>
-  </body>
+</body>
+
 </html>
