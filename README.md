@@ -70,6 +70,8 @@ In browser, open [http://localhost:3000](http://localhost:3000)
 
 - [Navigation Preload](https://developers.google.com/web/updates/2017/02/navigation-preload)
 
+- [Awesome Meta and Manifest](https://github.com/gokulkrishh/awesome-meta-and-manifest)
+
 #### License
 
 MIT © [Gokulakrishnan](https://github.com/gokulkrishh)
