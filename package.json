@@ -1,21 +1,20 @@
 {
 	"name": "demo-pwa",
 	"description": "Demo progressive web application",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"author": "https://github.com/gokulkrishh",
 	"dependencies": {
 		"body-parser": "^1.18.3",
-		"express": "^4.16.3",
-		"node-gcm": "^1.0.0"
+		"express": "^4.16.4",
+		"node-gcm": "^1.0.2"
 	},
 	"scripts": {
 		"start": "npm run css && node server.js",
-		"css": "postcss -u autoprefixer -r css/*",
-		"postinstall": "npm run start"
+		"css": "postcss -u autoprefixer -r css/*"
 	},
 	"devDependencies": {
-		"autoprefixer": "^8.5.0",
-		"postcss-cli": "^5.0.0"
+		"autoprefixer": "^9.4.3",
+		"postcss-cli": "^6.1.0"
 	},
 	"engines": {
 		"node": ">=8.11.2"
