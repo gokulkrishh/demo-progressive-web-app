@@ -1,15 +1,15 @@
 ### <p align="center"><img width="150px" height="150px" src="https://raw.githubusercontent.com/gokulkrishh/demo-progressive-web-app/master/images/icons/android-chrome-192x192.png"></p>
 
-# [Progressive Web Application](https://demopwa.com/)
+# [Progressive Web Application](https://demopwa.surge.sh)
 
 *A demo for progressive web application with features like offline, push notifications, background sync etc,*
 
-### [Live](https://demopwa.com/)
+### [Live](https://demopwa.surge.sh)
 
 ### Installation
 
 #### `Step 1` - clone the repo
-  
+
 ```bash
 $ git clone https://github.com/gokulkrishh/demo-progressive-web-app
 ```
