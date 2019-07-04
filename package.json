@@ -1,23 +1,27 @@
 {
-	"name": "demo-pwa",
-	"description": "Demo progressive web application",
-	"version": "1.0.2",
-	"author": "https://github.com/gokulkrishh",
-	"dependencies": {
-		"body-parser": "^1.18.3",
-		"express": "^4.16.4",
-		"node-gcm": "^1.0.2"
-	},
-	"scripts": {
-		"start": "npm run css && node server.js",
-		"css": "postcss -u autoprefixer -r css/*"
-	},
-	"devDependencies": {
-		"autoprefixer": "^9.4.3",
-		"postcss-cli": "^6.1.0"
-	},
-	"engines": {
-		"node": ">=8.11.2"
-	},
-	"license": "MIT"
+  "name": "demo-pwa",
+  "description": "Demo progressive web application",
+  "version": "1.0.2",
+  "author": "https://github.com/gokulkrishh",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "node-gcm": "^1.0.2",
+    "snyk": "^1.190.0"
+  },
+  "scripts": {
+    "start": "npm run css && node server.js",
+    "css": "postcss -u autoprefixer -r css/*",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.4.3",
+    "postcss-cli": "^6.1.0"
+  },
+  "engines": {
+    "node": ">=8.11.2"
+  },
+  "license": "MIT",
+  "snyk": true
 }
