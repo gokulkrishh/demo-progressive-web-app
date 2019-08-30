@@ -17,7 +17,19 @@
 			"src": "./images/icons/android-chrome-512x512.png",
 			"type": "image/png",
 			"sizes": "512x512"
-		}
+		},
+		{
+            "src": "./images/icons/android-maskable-192x192.png",
+            "type": "image/png",
+			"sizes": "192x192",
+			"purpose": "maskable"
+        },
+        {
+            "src": "./images/icons/android-maskable-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+			"purpose": "maskable"
+        }
 	],
 	"author": {
 		"name": "Gokulakrishnan Kalaikovan",
