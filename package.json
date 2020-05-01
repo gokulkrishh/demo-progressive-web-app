@@ -7,7 +7,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "node-gcm": "^1.0.2",
-    "snyk": "^1.190.0"
+    "snyk": "^1.316.1"
   },
   "scripts": {
     "start": "npm run css && node server.js",
