@@ -54,35 +54,41 @@ self.addEventListener('fetch', (event) => {
   console.info('Event: Fetch');
 
   var request = event.request;
+  var url = new URL(request.url);
+  if (url.origin === location.origin) {
+    // Static files cache
+    event.respondWith(cacheFirst(request));
+  } else {
+    // Dynamic API cache
+    event.respondWith(networkFirst(request));
+  }
 
-  //Tell the browser to wait for newtwork request and respond with below
-  event.respondWith(
-    //If request is already in cache, return it
-    caches.match(request).then((response) => {
-      if (response) {
-        return response;
-      }
-
-      // // Checking for navigation preload response
-      // if (event.preloadResponse) {
-      //   console.info('Using navigation preload');
-      //   return response;
-      // }
-
-      //if request is not cached or navigation preload response, add it to cache
-      return fetch(request).then((response) => {
-        var responseToCache = response.clone();
-        caches.open(cacheName).then((cache) => {
-            cache.put(request, responseToCache).catch((err) => {
-              console.warn(request.url + ': ' + err.message);
-            });
-          });
-
-        return response;
-      });
-    })
-  );
+  // // Checking for navigation preload response
+  // if (event.preloadResponse) {
+  //   console.info('Using navigation preload');
+  //   return response;
+  // }
 });
+
+async function cacheFirst(request) {
+  const cachedResponse = await caches.match(request);
+  return cachedResponse || fetch(request);
+}
+
+async function networkFirst(request) {
+  const dynamicCache = await caches.open(cacheName);
+  try {
+    const networkResponse = await fetch(request);
+    // Cache the dynamic API response
+    dynamicCache.put(request, networkResponse.clone()).catch((err) => {
+      console.warn(request.url + ': ' + err.message);
+    });
+    return networkResponse;
+  } catch (err) {
+    const cachedResponse = await dynamicCache.match(request);
+    return cachedResponse;
+  }
+}
 
 /*
   ACTIVATE EVENT: triggered once after registering, also used to clean up caches.
