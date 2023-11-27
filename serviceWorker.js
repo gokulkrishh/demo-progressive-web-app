@@ -170,7 +170,7 @@ self.addEventListener('sync', (event) => {
       //To check all opened tabs and send postMessage to those tabs
       self.clients.matchAll().then((all) => {
         return all.map((client) => {
-          return client.postMessage('online'); //To make fetch request, check app.js - line no: 122
+          return client.postMessage('online'); //To make fetch request, check app.js - line no: 56
         })
       })
       .catch((error) => {
